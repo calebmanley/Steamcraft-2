@@ -1,5 +1,6 @@
 package com.steamcraft.mod.block;
 
+import java.util.List;
 import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
@@ -7,7 +8,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -23,6 +26,16 @@ public class BlockBrassLog extends Block
 		this.setHardness(5F);
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setUnlocalizedName("brasslog");
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int i, CreativeTabs tabs, List list)
+	{
+		for(int l = 0; l < 2; l++)
+		{
+			list.add(new ItemStack(i, 1, l));
+		}
 	}
 
 	@Override

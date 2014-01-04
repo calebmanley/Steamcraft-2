@@ -9,6 +9,7 @@ import net.minecraft.block.material.Material;
 
 import com.steamcraft.mod.lib.SC_BlockIDs;
 import com.steamcraft.mod.tileentity.TileEntityChemicalFurnace;
+import com.steamcraft.mod.tileentity.TileEntityLamp;
 import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
@@ -82,7 +83,7 @@ public class ModBlocks
 		lampOff = new BlockLamp(SC_BlockIDs.lampOffID);
 		brassWood = new BlockBrassLog(SC_BlockIDs.woodBrassID);
 		brassLeaves = new BlockSC(SC_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
-		//ironLampIdle = new BlockIronLamp(SC_BlockIDs.ironLampIdleID, com.steamcraft.mod.tileentity.TileEntityLamp.class);
+		ironLampIdle = new BlockIronLamp(SC_BlockIDs.ironLampIdleID, com.steamcraft.mod.tileentity.TileEntityLamp.class);
 		teaPlant = new BlockTeaPlant(SC_BlockIDs.teaPlantID);
 
 		registerBlocks();
@@ -130,5 +131,6 @@ public class ModBlocks
 		GameRegistry.registerTileEntity(TileEntityNukeFurnace.class, "TileEntityNukeFurnace");
 		GameRegistry.registerTileEntity(TileEntityChemicalFurnace.class, "TileEntityChemicalFurnace");
 		GameRegistry.registerTileEntity(TileEntitySteamFurnace.class, "TileEntitySteamFurnace");
+		GameRegistry.registerTileEntity(TileEntityLamp.class, "TileEntityLamp");
 	}
 }

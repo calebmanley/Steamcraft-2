@@ -22,6 +22,6 @@ public class BlockSC extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		blockIcon = icon.registerIcon("steamcraft:" + (getUnlocalizedName().substring(5)));
+		blockIcon = icon.registerIcon(SC_Info.MOD_ID.toLowerCase() + ":" + (getUnlocalizedName().substring(5))); // Cannot do a 'this' reflection!
 	}
 }

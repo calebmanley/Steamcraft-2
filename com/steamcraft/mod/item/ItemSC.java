@@ -21,6 +21,6 @@ public class ItemSC extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		itemIcon = icon.registerIcon("steamcraft:" + getUnlocalizedName().substring(5));
+		itemIcon = icon.registerIcon(SC_Info.MOD_ID.toLowerCase() + ":" + (getUnlocalizedName().substring(5))); // Cannot do a 'this' reflection!
 	}
 }

@@ -1,11 +1,13 @@
 package com.steamcraft.mod.block;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,8 +17,6 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import com.steamcraft.mod.lib.SC_CreativeTabs;
-import com.steamcraft.mod.lib.SC_Info;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -49,6 +49,16 @@ public class BlockSteamFurnace extends BlockContainer
 		if(flag)
 		{
 			this.setLightValue(0.875F);
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int i, CreativeTabs tabs, List list)
+	{
+		for(int l = 0; l < 2; l++)
+		{
+			list.add(new ItemStack(i, 1, l));
 		}
 	}
 
