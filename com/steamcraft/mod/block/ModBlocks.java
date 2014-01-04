@@ -4,12 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.BlockOre;
-import net.minecraft.block.BlockOreStorage;
 import net.minecraft.block.material.Material;
 
 import com.steamcraft.mod.lib.SC_BlockIDs;
+import com.steamcraft.mod.lib.SC_CreativeTabs;
 import com.steamcraft.mod.tileentity.TileEntityChemicalFurnace;
-import com.steamcraft.mod.tileentity.TileEntityLamp;
 import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
@@ -47,17 +46,15 @@ public class ModBlocks
 	public static Block lampOff;
 	public static Block brassWood;
 	public static Block brassLeaves;
-	public static Block ironLampIdle;
-	public static Block ironLampActive;
 	public static Block teaPlant;
 	
-	public static void initBlocks() // TODO: Check for SideOnly notations in ALL blocks
+	public static void initBlocks() // TODO: Check for SideOnly notations in ALL blocks, rewrite Tea, 
 	{
-		steamOvenIdle = new BlockSteamFurnace(SC_BlockIDs.steamOvenIdleID, false);
+		steamOvenIdle = new BlockSteamFurnace(SC_BlockIDs.steamOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);
 		steamOvenActive = new BlockSteamFurnace(SC_BlockIDs.steamOvenActiveID, true);
-		chemOvenIdle = new BlockChemicalFurnace(SC_BlockIDs.chemOvenIdleID, false);
+		chemOvenIdle = new BlockChemicalFurnace(SC_BlockIDs.chemOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);
 		chemOvenActive = new BlockChemicalFurnace(SC_BlockIDs.chemOvenActiveID, true);
-		nukeOvenIdle = new BlockNukeFurnace(SC_BlockIDs.nukeOvenIdleID, false);
+		nukeOvenIdle = new BlockNukeFurnace(SC_BlockIDs.nukeOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);;
 		nukeOvenActive = new BlockNukeFurnace(SC_BlockIDs.nukeOvenActiveID, true);
 		oreBrimstone = new BlockOre(SC_BlockIDs.oreBrimstoneID).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("brimstone");
 		orePhosphate = new BlockOre(SC_BlockIDs.orePhosphateID).setHardness(2.5F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setLightValue(0.75F).setUnlocalizedName("phosphate");
@@ -76,15 +73,14 @@ public class ModBlocks
 		decorBrass = new BlockSC(SC_BlockIDs.decorBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrbrass");
 		decorLapis = new BlockSC(SC_BlockIDs.decorLapisID, Material.rock).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("engrlapis");
 		decorStone = new BlockSC(SC_BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("carvedstone");
-		decorUranium = new BlockUranium(SC_BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("enguranium");
+		decorUranium = new BlockUranium(SC_BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engruranium");
 		gateCastIron = new BlockFenceGate(SC_BlockIDs.gateCastIronID).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
 		railingCastIron = new BlockFence(SC_BlockIDs.railingCastIronID, null, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
 		lampOn = new BlockLamp(SC_BlockIDs.lampOnID);
 		lampOff = new BlockLamp(SC_BlockIDs.lampOffID);
 		brassWood = new BlockBrassLog(SC_BlockIDs.woodBrassID);
 		brassLeaves = new BlockSC(SC_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
-		ironLampIdle = new BlockIronLamp(SC_BlockIDs.ironLampIdleID, com.steamcraft.mod.tileentity.TileEntityLamp.class);
-		teaPlant = new BlockTeaPlant(SC_BlockIDs.teaPlantID);
+		//teaPlant = new BlockTeaPlant(SC_BlockIDs.teaPlantID);
 
 		registerBlocks();
 	}
@@ -131,6 +127,5 @@ public class ModBlocks
 		GameRegistry.registerTileEntity(TileEntityNukeFurnace.class, "TileEntityNukeFurnace");
 		GameRegistry.registerTileEntity(TileEntityChemicalFurnace.class, "TileEntityChemicalFurnace");
 		GameRegistry.registerTileEntity(TileEntitySteamFurnace.class, "TileEntitySteamFurnace");
-		GameRegistry.registerTileEntity(TileEntityLamp.class, "TileEntityLamp");
 	}
 }

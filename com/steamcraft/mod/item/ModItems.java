@@ -73,7 +73,6 @@ public class ModItems
 	public static Item percussionCapRifle;
 	public static Item musketRound;
 	public static Item percussionRound;
-	public static Item ironLamp;
 	public static Item teaSeed;
 	public static Item teaLeaves;
 	public static Item coldKettle;
@@ -84,7 +83,7 @@ public class ModItems
 	
 	public static void initItems()
 	{
-		etherium = new ItemSC(SC_ItemIDs.etheriumID).setUnlocalizedName("etherium").setTextureName("steamcraft:etherium");
+		etherium = new ItemSC(SC_ItemIDs.etheriumID).setUnlocalizedName("etherium");
 		chemicSalt = new ItemSC(SC_ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
 		//bornite = new ItemSC(SC_ItemIDs.borniteID).setUnlocalizedName("sulphur");
 		obsidianSlate = new ItemSC(SC_ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
@@ -101,7 +100,7 @@ public class ModItems
 		shovelObsidian = new ItemSCSpade(SC_ItemIDs.shovelObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianspade");
 		axeObsidian = new ItemSCAxe(SC_ItemIDs.axeObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianaxe");
 		hoeObsidian = new ItemSCHoe(SC_ItemIDs.hoeObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianhoe");
-		swordObsidian = new ItemSCSword(SC_ItemIDs.swordObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("swordObsidian");
+		swordObsidian = new ItemSCSword(SC_ItemIDs.swordObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("swordobsidian");
 		drillObsidian = new ItemSCDrill(SC_ItemIDs.drillObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidiandrill");
 		// 0 = Helm, 1 = Chest, 2 = Leggings, 3 = Boots
 		helmetObsidian = new ItemSCArmor(SC_ItemIDs.helmetObsidianID, SC_Material.OBSIDIAN_ARMOR, 0, 0).setUnlocalizedName("obsidianhelmet");
@@ -147,14 +146,13 @@ public class ModItems
 		flintlockRifle = new ItemFirearm(SC_ItemIDs.flintlockRifleID, 120, musketRound, musketRound, 10, true).setUnlocalizedName("flintlockrifle");
 		matchlockRifle = new ItemFirearm(SC_ItemIDs.matchlockRifleID, 240, musketRound, musketRound, 8, true).setUnlocalizedName("matchlockrifle");
 		percussionCapRifle = new ItemFirearm(SC_ItemIDs.percussionCapRifleID, 60, percussionRound, musketRound, 12, true).setUnlocalizedName("percussionrifle");
-		//ironLamp = new ItemElectricLamp(SC_ItemIDs.ironLampID, ModBlocks.ironLampIdle).setUnlocalizedName("ironlamp");
 		teaSeed = new ItemSeeds(SC_ItemIDs.teaSeedID, ModBlocks.teaPlant.blockID, 0).setUnlocalizedName("teaseed"); 
 		teaLeaves = new ItemSC(SC_ItemIDs.teaLeavesID).setUnlocalizedName("tealeaves");
-		coldKettle = new ItemKettle(SC_ItemIDs.coldKettleID, 300).setUnlocalizedName("kettle");
-		hotKettle = new ItemKettle(SC_ItemIDs.hotKettleID, 300).setUnlocalizedName("kettle");
-		emptyKettle = new ItemKettle(SC_ItemIDs.emptyKettleID, 300).setUnlocalizedName("kettle");
-		fullTeacup = new ItemTeacup(SC_ItemIDs.fullTeacupID, 4, 0.6F, false).setUnlocalizedName("teacupfull");
-		emptyTeacup = new ItemTeacup(SC_ItemIDs.emptyTeacupID, 0, 0.0F, false).setUnlocalizedName("teacupempty");
+		//coldKettle = new ItemKettle(SC_ItemIDs.coldKettleID, 300).setUnlocalizedName("kettle");
+		//hotKettle = new ItemKettle(SC_ItemIDs.hotKettleID, 300).setUnlocalizedName("kettle");
+		//emptyKettle = new ItemKettle(SC_ItemIDs.emptyKettleID, 300).setUnlocalizedName("kettle");
+		//fullTeacup = new ItemTeacup(SC_ItemIDs.fullTeacupID, 4, 0.6F, false).setUnlocalizedName("teacupfull");
+		//emptyTeacup = new ItemTeacup(SC_ItemIDs.emptyTeacupID, 0, 0.0F, false).setUnlocalizedName("teacupempty");
 		
 		addNames();
 	}

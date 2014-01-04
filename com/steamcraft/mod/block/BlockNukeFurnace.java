@@ -1,27 +1,23 @@
 package com.steamcraft.mod.block;
 
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.ModLoader;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import com.steamcraft.mod.lib.SC_CreativeTabs;
+import com.steamcraft.mod.gui.GuiNukeFurnace;
 import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -46,24 +42,9 @@ public class BlockNukeFurnace extends BlockContainer
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setUnlocalizedName("nukefurnace");
 		
-		/*
-		if(this.blockID == ModBlocks.nukeOvenIdle.blockID)
-		{
-			this.setCreativeTab(SC_CreativeTabs.tabSCBlocks);
-		}*/
 		if(flag)
 		{
 			this.setLightValue(0.9375F);
-		}
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int i, CreativeTabs tabs, List list)
-	{
-		for(int l = 0; l < 2; l++)
-		{
-			list.add(new ItemStack(i, 1, l));
 		}
 	}
 	
@@ -104,35 +85,33 @@ public class BlockNukeFurnace extends BlockContainer
 
 	private void setDefaultDirection(World world, int i, int j, int k)
 	{
-		if(world.isRemote)
-		{
-			return;
-		}
+		if(!world.isRemote)
+        {
+            int l = world.getBlockId(i, j, k - 1);
+            int i1 = world.getBlockId(i, j, k + 1);
+            int j1 = world.getBlockId(i - 1, j, k);
+            int k1 = world.getBlockId(i + 1, j, k);
+            byte b0 = 3;
 
-		int l = world.getBlockId(i, j, k - 1);
-		int i1 = world.getBlockId(i, j, k + 1);
-		int j1 = world.getBlockId(i - 1, j, k);
-		int k1 = world.getBlockId(i + 1, j, k);
-		byte byte0 = 3;
+            if(Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
+            {
+                b0 = 3;
+            }
+            if(Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])
+            {
+                b0 = 2;
+            }
+            if(Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])
+            {
+                b0 = 5;
+            }
+            if(Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
+            {
+                b0 = 4;
+            }
 
-		if(Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
-		{
-			byte0 = 3;
-		}
-		if(Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])
-		{
-			byte0 = 2;
-		}
-		if(Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])
-		{
-			byte0 = 5;
-		}
-		if(Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
-		{
-			byte0 = 4;
-		}
-
-		world.setBlockMetadataWithNotify(i, j, k, this.blockID, byte0);
+            world.setBlockMetadataWithNotify(i, j, k, b0, 2);
+        }
 	}
 
 	@Override
@@ -182,7 +161,7 @@ public class BlockNukeFurnace extends BlockContainer
 		
 		if(furnace != null)
 		{
-			//TODO: ModLoader.OpenGUI(entityplayer, new GuiNukeFurnace(entityplayer.inventory, tileentitynukefurnace));
+			player.openGui(new GuiNukeFurnace(player.inventory, furnace), l, world, i, j, k);
 		}
 		
 		return true;

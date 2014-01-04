@@ -17,7 +17,7 @@ public class ItemCoreDrill extends ItemSC
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int i, int j, int k, int l, float f1, float f2, float f3)
 	{
-		world.createExplosion(null, i, j, k, 2F, false);
+		world.createExplosion(player, i, j, k, 2F, true);
 		double d = (double)((float)i + 0.5F) + (double)(0.5F) * 2.0000000000000001D;
 		double d1 = (double)((float)j + 0.7F) + (double)(0.5F) * 2.0000000000000001D;
 		double d2 = (double)((float)k + 0.5F) + (double)(0.5F) * 2.0000000000000001D;

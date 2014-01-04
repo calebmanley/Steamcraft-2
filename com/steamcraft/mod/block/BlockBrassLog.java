@@ -3,6 +3,8 @@ package com.steamcraft.mod.block;
 import java.util.List;
 import java.util.Random;
 
+import com.steamcraft.mod.lib.SC_CreativeTabs;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -26,16 +28,7 @@ public class BlockBrassLog extends Block
 		this.setHardness(5F);
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setUnlocalizedName("brasslog");
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int i, CreativeTabs tabs, List list)
-	{
-		for(int l = 0; l < 2; l++)
-		{
-			list.add(new ItemStack(i, 1, l));
-		}
+		this.setCreativeTab(SC_CreativeTabs.tabSCBlocks);
 	}
 
 	@Override
@@ -76,4 +69,16 @@ public class BlockBrassLog extends Block
 		this.blockIcon = icon.registerIcon("steamcraft:brasslogside");
 		this.logTop = icon.registerIcon("steamcraft:brasslogtop");
 	}
+	
+	@Override
+    public boolean canSustainLeaves(World world, int x, int y, int z)
+    {
+        return true;
+    }
+
+    @Override
+    public boolean isWood(World world, int x, int y, int z)
+    {
+        return true;
+    }
 }
