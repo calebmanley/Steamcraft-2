@@ -9,7 +9,7 @@
 /ibxm
 /paulscode
 /net
-/assets
+/assets/forge
 *.cfg
 fmlversion.properties
 mcpmod.info
