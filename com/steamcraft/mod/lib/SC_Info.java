@@ -2,7 +2,7 @@ package com.steamcraft.mod.lib;
 
 public final class SC_Info 
 {
-    public static final String MOD_ID = "steamcraft";
+    public static final String MOD_ID = "SteamCraft";
     public static final String MOD_NAME = "SteamCraft";
     public static final String VERSION = "ANT:VERSION";
 

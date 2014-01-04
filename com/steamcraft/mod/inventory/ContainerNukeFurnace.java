@@ -1,4 +1,4 @@
-package com.steamcraft.mod.container;
+package com.steamcraft.mod.inventory;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -142,6 +142,7 @@ public class ContainerNukeFurnace extends Container
 				return null;
 			}
 		}
+		
 		return stack;
 	}
 }

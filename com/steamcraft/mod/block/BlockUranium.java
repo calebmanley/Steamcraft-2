@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockUranium extends BlockBasicSC
+public class BlockUranium extends BlockSC
 {
 	private boolean glowing;
 

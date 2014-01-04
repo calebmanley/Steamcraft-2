@@ -10,9 +10,9 @@ import com.steamcraft.mod.lib.SC_Info;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBasicSC extends Block
+public class BlockSC extends Block
 {
-	public BlockBasicSC(int id, Material mat)
+	public BlockSC(int id, Material mat)
 	{
 		super(id, mat);
 		this.setCreativeTab(SC_CreativeTabs.tabSCBlocks);
@@ -22,6 +22,6 @@ public class BlockBasicSC extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon("steamcraft:" + (this.getUnlocalizedName().substring(5)));
+		blockIcon = icon.registerIcon("steamcraft:" + (getUnlocalizedName().substring(5)));
 	}
 }

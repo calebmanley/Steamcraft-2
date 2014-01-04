@@ -1,4 +1,4 @@
-package com.steamcraft.mod.container;
+package com.steamcraft.mod.inventory;
 
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;

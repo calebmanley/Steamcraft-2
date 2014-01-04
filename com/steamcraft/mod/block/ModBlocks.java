@@ -8,6 +8,9 @@ import net.minecraft.block.BlockOreStorage;
 import net.minecraft.block.material.Material;
 
 import com.steamcraft.mod.lib.SC_BlockIDs;
+import com.steamcraft.mod.tileentity.TileEntityChemicalFurnace;
+import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
+import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -60,25 +63,25 @@ public class ModBlocks
 		oreUranite = new BlockUraniteOre(SC_BlockIDs.oreUraniteID);
 		oreBornite = new BlockOre(SC_BlockIDs.oreBorniteID).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("bornite");
 		oreVolucite = new BlockOre(SC_BlockIDs.oreVoluciteID).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("volucite");
-		blockCastIron = new BlockBasicSC(SC_BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
-		blockVolucite = new BlockBasicSC(SC_BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
-		blockBrass = new BlockBasicSC(SC_BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
+		blockCastIron = new BlockSC(SC_BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
+		blockVolucite = new BlockSC(SC_BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
+		blockBrass = new BlockSC(SC_BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
 		blockUranium = new BlockUranium(SC_BlockIDs.blockUraniumID);
-		decorIron = new BlockBasicSC(SC_BlockIDs.decorIronID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engriron");
-		decorGold = new BlockBasicSC(SC_BlockIDs.decorGoldID, Material.iron).setHardness(3F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrgold");
-		decorDiamond = new BlockBasicSC(SC_BlockIDs.decorDiamondID, Material.rock).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrdiamond");
-		decorCastIron = new BlockBasicSC(SC_BlockIDs.decorCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrcastiron");
-		decorVolucite = new BlockBasicSC(SC_BlockIDs.decorVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrvolucite");
-		decorBrass = new BlockBasicSC(SC_BlockIDs.decorBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrbrass");
-		decorLapis = new BlockBasicSC(SC_BlockIDs.decorLapisID, Material.rock).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("engrlapis");
-		decorStone = new BlockBasicSC(SC_BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("carvedstone");
+		decorIron = new BlockSC(SC_BlockIDs.decorIronID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engriron");
+		decorGold = new BlockSC(SC_BlockIDs.decorGoldID, Material.iron).setHardness(3F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrgold");
+		decorDiamond = new BlockSC(SC_BlockIDs.decorDiamondID, Material.rock).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrdiamond");
+		decorCastIron = new BlockSC(SC_BlockIDs.decorCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrcastiron");
+		decorVolucite = new BlockSC(SC_BlockIDs.decorVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrvolucite");
+		decorBrass = new BlockSC(SC_BlockIDs.decorBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrbrass");
+		decorLapis = new BlockSC(SC_BlockIDs.decorLapisID, Material.rock).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("engrlapis");
+		decorStone = new BlockSC(SC_BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("carvedstone");
 		decorUranium = new BlockUranium(SC_BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("enguranium");
 		gateCastIron = new BlockFenceGate(SC_BlockIDs.gateCastIronID).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
 		railingCastIron = new BlockFence(SC_BlockIDs.railingCastIronID, null, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
 		lampOn = new BlockLamp(SC_BlockIDs.lampOnID);
 		lampOff = new BlockLamp(SC_BlockIDs.lampOffID);
 		brassWood = new BlockBrassLog(SC_BlockIDs.woodBrassID);
-		brassLeaves = new BlockBasicSC(SC_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
+		brassLeaves = new BlockSC(SC_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
 		//ironLampIdle = new BlockIronLamp(SC_BlockIDs.ironLampIdleID, com.steamcraft.mod.tileentity.TileEntityLamp.class);
 		teaPlant = new BlockTeaPlant(SC_BlockIDs.teaPlantID);
 
@@ -122,5 +125,10 @@ public class ModBlocks
 		GameRegistry.registerBlock(teaPlant, "teaplant");
 	}
 	
-	public static void initTileEntities() {}
+	public static void initTileEntities() 
+	{
+		GameRegistry.registerTileEntity(TileEntityNukeFurnace.class, "TileEntityNukeFurnace");
+		GameRegistry.registerTileEntity(TileEntityChemicalFurnace.class, "TileEntityChemicalFurnace");
+		GameRegistry.registerTileEntity(TileEntitySteamFurnace.class, "TileEntitySteamFurnace");
+	}
 }

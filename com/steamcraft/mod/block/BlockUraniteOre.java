@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockUraniteOre extends BlockBasicSC
+public class BlockUraniteOre extends BlockSC
 {
 	private boolean glowing;
 
