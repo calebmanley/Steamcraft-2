@@ -17,3 +17,5 @@ mcp.png
 Start.java
 forge_logo.png
 deobfuscation_data-1.6.4.lzma
+.DS_Store
+*.cfg~
