@@ -22,72 +22,40 @@ public class SC_GuiHandler implements IGuiHandler
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) 
 	{
-		TileEntity entity = world.getBlockTileEntity(x, y, z);
+		TileEntity tile = world.getBlockTileEntity(x, y, z);
 
 		switch(id)
 		{
 		case SC_GuiIDs.GUI_ID_NukeOven:
-			if(entity != null && entity instanceof TileEntityNukeFurnace) 
-			{
-				return new ContainerNukeFurnace(player.inventory, (TileEntityNukeFurnace) entity);
-			} else 
-			{
-				return null;
-			}
+			return new ContainerNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
+
 		case SC_GuiIDs.GUI_ID_ChemicalOven:
-			if(entity != null && entity instanceof TileEntityChemicalFurnace) 
-			{
-				return new ContainerChemicalFurnace(player.inventory, (TileEntityChemicalFurnace) entity);
-			} else 
-			{
-				return null;
-			}
+			return new ContainerChemicalFurnace(player.inventory, (TileEntityChemicalFurnace) tile);
+
 		case SC_GuiIDs.GUI_ID_SteamOven:
-			if(entity != null && entity instanceof TileEntitySteamFurnace) 
-			{
-				return new ContainerSteamFurnace(player.inventory, (TileEntitySteamFurnace) entity);
-			} else 
-			{
-				return null;
-			}
-		default:
-			return null;
+			return new ContainerSteamFurnace(player.inventory, (TileEntitySteamFurnace) tile);
 		}
+		
+		return null;
 	}
 
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) 
 	{
-		TileEntity entity = world.getBlockTileEntity(x, y, z);
+		TileEntity tile = world.getBlockTileEntity(x, y, z);
 
 		switch(id)
 		{
 		case SC_GuiIDs.GUI_ID_NukeOven:
-			if(entity != null && entity instanceof TileEntityNukeFurnace) 
-			{
-				return new GuiNukeFurnace(player.inventory, (TileEntityNukeFurnace) entity);
-			} else 
-			{
-				return null;
-			}
+			return new GuiNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
+
 		case SC_GuiIDs.GUI_ID_ChemicalOven:
-			if(entity != null && entity instanceof TileEntityNukeFurnace) 
-			{
-				return new GuiChemicalFurnace(player.inventory, (TileEntityChemicalFurnace) entity);
-			} else 
-			{
-				return null;
-			}
+			return new GuiChemicalFurnace(player.inventory, (TileEntityChemicalFurnace) tile);
+
 		case SC_GuiIDs.GUI_ID_SteamOven:
-			if(entity != null && entity instanceof TileEntitySteamFurnace) 
-			{
-				return new GuiSteamFurnace(player.inventory, (TileEntitySteamFurnace) entity);
-			} else 
-			{
-				return null;
-			}
-		default:
-			return null;
+			return new GuiSteamFurnace(player.inventory, (TileEntitySteamFurnace) tile);
 		}
+		
+		return null;
 	}
 }

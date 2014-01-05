@@ -1,12 +1,11 @@
 package com.steamcraft.mod.lib;
 
-import com.steamcraft.mod.block.ModBlocks;
-import com.steamcraft.mod.item.ModItems;
-
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import com.steamcraft.mod.block.ModBlocks;
+import com.steamcraft.mod.item.ModTools;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,7 +34,7 @@ public class SC_CreativeTabs extends CreativeTabs
 		@SideOnly(Side.CLIENT)
 		public ItemStack getIconItemStack() 
 		{
-			return new ItemStack(ModItems.coreDrill);
+			return new ItemStack(ModTools.drillCore);
 		}
 	};
 }

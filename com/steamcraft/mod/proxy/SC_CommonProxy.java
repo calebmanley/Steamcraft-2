@@ -9,6 +9,7 @@ import com.steamcraft.mod.handler.SC_GuiHandler;
 import com.steamcraft.mod.item.ModItems;
 import com.steamcraft.mod.main.SC_Generator;
 import com.steamcraft.mod.main.SC_Main;
+import com.steamcraft.mod.main.SC_PlayerTracker;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -31,6 +32,7 @@ public class SC_CommonProxy
 		MinecraftForge.EVENT_BUS.register(new SC_EventHandler());
 		GameRegistry.registerWorldGenerator(new SC_Generator());
 		NetworkRegistry.instance().registerGuiHandler(SC_Main.instance, new SC_GuiHandler());
+		GameRegistry.registerPlayerTracker(new SC_PlayerTracker());
 	}
 
 	public void postInit(FMLPostInitializationEvent event) 

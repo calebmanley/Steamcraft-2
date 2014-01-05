@@ -16,6 +16,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.steamcraft.mod.gui.GuiSteamFurnace;
+import com.steamcraft.mod.lib.SC_GuiIDs;
+import com.steamcraft.mod.main.SC_Main;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -164,7 +166,7 @@ public class BlockSteamFurnace extends BlockContainer
 
 		if(furnace != null)
 		{
-			player.openGui(new GuiSteamFurnace(player.inventory, furnace), 21, world, i, j, k);
+			player.openGui(SC_Main.instance, SC_GuiIDs.GUI_ID_SteamOven, world, i, j, k);
 		}
 
 		return true;

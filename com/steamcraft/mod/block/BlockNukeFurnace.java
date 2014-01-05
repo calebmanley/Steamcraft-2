@@ -18,6 +18,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.steamcraft.mod.gui.GuiNukeFurnace;
+import com.steamcraft.mod.lib.SC_GuiIDs;
+import com.steamcraft.mod.main.SC_Main;
 import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -161,7 +163,7 @@ public class BlockNukeFurnace extends BlockContainer
 		
 		if(furnace != null)
 		{
-			player.openGui(new GuiNukeFurnace(player.inventory, furnace), 22, world, i, j, k);
+			player.openGui(SC_Main.instance, SC_GuiIDs.GUI_ID_NukeOven, world, i, j, k);
 		}
 		
 		return true;
