@@ -30,7 +30,7 @@ public class EntityBullet extends Entity implements IProjectile
 	public EntityLiving owner;
 	private int ticksInGround;
 	private int ticksInAir;
-	
+
 	public EntityBullet(World world)
 	{
 		super(world);
@@ -129,7 +129,7 @@ public class EntityBullet extends Entity implements IProjectile
 		motionX = d;
 		motionY = d1;
 		motionZ = d2;
-		
+
 		if(prevRotationPitch == 0.0F && prevRotationYaw == 0.0F)
 		{
 			float f = MathHelper.sqrt_double(d * d + d2 * d2);
@@ -146,21 +146,21 @@ public class EntityBullet extends Entity implements IProjectile
 	public void onUpdate()
 	{
 		super.onUpdate();
-		
+
 		if(prevRotationPitch == 0.0F && prevRotationYaw == 0.0F)
 		{
 			float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
 			prevRotationYaw = rotationYaw = (float)((Math.atan2(motionX, motionZ) * 180D) / 3.1415927410125732D);
 			prevRotationPitch = rotationPitch = (float)((Math.atan2(motionY, f) * 180D) / 3.1415927410125732D);
 		}
-		
+
 		int i = worldObj.getBlockId(xTile, yTile, zTile);
-		
+
 		if(i > 0)
 		{
 			Block.blocksList[i].setBlockBoundsBasedOnState(worldObj, xTile, yTile, zTile);
 			AxisAlignedBB axisalignedbb = Block.blocksList[i].getCollisionBoundingBoxFromPool(worldObj, xTile, yTile, zTile);
-			
+
 			if(axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(posX, posY, posZ)))
 			{
 				this.setDead();
@@ -170,43 +170,43 @@ public class EntityBullet extends Entity implements IProjectile
 		{
 			arrowShake--;
 		}
-		
-		++this.ticksInAir;
-        Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
-        Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-        MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks_do_do(vec3, vec31, false, true);
-        vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
-        vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
-        if(movingobjectposition != null)
-        {
-            vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
-        }
-		
+		++this.ticksInAir;
+		Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
+		Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+		MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks_do_do(vec3, vec31, false, true);
+		vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
+		vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+
+		if(movingobjectposition != null)
+		{
+			vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
+		}
+
 		Entity entity = null;
 		List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
 		double d = 0.0D;
-		
+
 		for(int l = 0; l < list.size(); l++)
 		{
 			Entity entity1 = (Entity)list.get(l);
-			
+
 			if(!entity1.canBeCollidedWith() || entity1 == owner && ticksInAir < 5)
 			{
 				continue;
 			}
-			
+
 			float f4 = 0.3F;
 			AxisAlignedBB axisalignedbb1 = entity1.boundingBox.expand(f4, f4, f4);
 			MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec3, vec31);
-			
+
 			if(movingobjectposition1 == null)
 			{
 				continue;
 			}
-			
+
 			double d1 = vec3.distanceTo(movingobjectposition1.hitVec);
-			
+
 			if(d1 < d || d == 0.0D)
 			{
 				entity = entity1;
@@ -240,19 +240,28 @@ public class EntityBullet extends Entity implements IProjectile
 				zTile = movingobjectposition.blockZ;
 				inTile = worldObj.getBlockId(xTile, yTile, zTile);
 				inData = worldObj.getBlockMetadata(xTile, yTile, zTile);
-				motionX = (float)(movingobjectposition.hitVec.xCoord - posX);
-				motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
-				motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);
-				float f1 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-				posX -= (motionX / (double)f1) * 0.05000000074505806D;
-				posY -= (motionY / (double)f1) * 0.05000000074505806D;
-				posZ -= (motionZ / (double)f1) * 0.05000000074505806D;
-				worldObj.spawnParticle("smoke", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
-				this.setDead();
-				arrowShake = 7;
+				// TODO: Breaks glass, mo' fo'!
+				if(inTile == Block.glass.blockID || inTile == Block.glowStone.blockID || inTile == Block.leaves.blockID)
+				{
+					Block block = Block.blocksList[inTile];
+					//worldObj.playSoundEffect(xTile, yTile, zTile, "", 1.0F, worldObj.rand.nextFloat() * 0.1F + 0.9F);
+					worldObj.setBlockToAir(xTile, yTile, zTile);
+				} else
+				{
+					motionX = (float)(movingobjectposition.hitVec.xCoord - posX);
+					motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
+					motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);
+					float f1 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
+					posX -= (motionX / (double)f1) * 0.05000000074505806D;
+					posY -= (motionY / (double)f1) * 0.05000000074505806D;
+					posZ -= (motionZ / (double)f1) * 0.05000000074505806D;
+					worldObj.spawnParticle("smoke", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
+					this.setDead();
+					arrowShake = 7;
+				}
 			}
 		}
-		
+
 		posX += motionX;
 		posY += motionY;
 		posZ += motionZ;
@@ -267,7 +276,7 @@ public class EntityBullet extends Entity implements IProjectile
 		rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
 		float f3 = 0.99F;
 		float f5 = 0.03F;
-		
+
 		if(isRifled == true)
 		{
 			f5 = 0.001F;
@@ -282,7 +291,7 @@ public class EntityBullet extends Entity implements IProjectile
 
 			f3 = 0.8F;
 		}
-		
+
 		motionX *= f3;
 		motionY *= f3;
 		motionZ *= f3;

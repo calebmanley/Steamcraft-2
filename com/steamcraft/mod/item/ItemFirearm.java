@@ -11,7 +11,7 @@ import com.steamcraft.mod.entity.EntityBullet;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemFirearm extends Item
+public class ItemFirearm extends ItemSC
 {
 	private Item Ammunition;
 	private Item Ammunitionb;

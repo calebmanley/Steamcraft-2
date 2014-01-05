@@ -18,10 +18,10 @@ import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = SC_Info.MOD_ID, name = SC_Info.MOD_NAME, version = SC_Info.VERSION)
 @NetworkMod(clientSideRequired = true, channels = {SC_Info.NETWORK_CHANNEL})//, packetHandler = PacketManager.class)
-public class SC_Main
+public class Steamcraft
 {
 	@Instance(SC_Info.MOD_ID)
-	public static SC_Main instance;
+	public static Steamcraft instance;
 	
 	@SidedProxy(clientSide = SC_Info.CLIENT_PROXY, serverSide = SC_Info.COMMON_PROXY)
     public static SC_CommonProxy proxy;
@@ -47,4 +47,5 @@ public class SC_Main
 	}
 }
 
-// TODO: Fix placement orientation for furnaces/brass log, add names to items/blocks, add IDs to config handler, fix chisel crafting, fix GUIs, add mouse-over info to items
+// TODO: Fix placement orientation for furnaces/brass log, add names to items/blocks, add IDs to config handler, fix chisel crafting, fix GUIs, add mouse-over info to items,
+// fix tea plant, change ore generation, change tool material aspects, add drill functionality

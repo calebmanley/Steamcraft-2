@@ -6,6 +6,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 
 import com.steamcraft.mod.block.ModBlocks;
+import com.steamcraft.mod.block.ModOres;
 import com.steamcraft.mod.lib.SC_Material;
 
 public class ItemSCPickaxe extends ItemSCTool
@@ -26,7 +27,7 @@ public class ItemSCPickaxe extends ItemSCTool
 	@Override
 	public boolean canHarvestBlock(Block block)
 	{
-		if(block == ModBlocks.oreVolucite || block == ModBlocks.blockVolucite || block == ModBlocks.decorVolucite)
+		if(block == ModOres.oreVolucite || block == ModBlocks.blockVolucite || block == ModBlocks.decorVolucite)
 		{
 			return toolMaterial.getHarvestLevel() == 4;
 		}
@@ -34,7 +35,7 @@ public class ItemSCPickaxe extends ItemSCTool
 		{
 			return true;
 		}
-		if(block == ModBlocks.oreUranite || block == ModBlocks.blockUranium || block == ModBlocks.decorUranium)
+		if(block == ModOres.oreUranite || block == ModBlocks.blockUranium || block == ModBlocks.decorUranium)
 		{
 			return toolMaterial.getHarvestLevel() >= 2;
 		}
@@ -54,15 +55,15 @@ public class ItemSCPickaxe extends ItemSCTool
 		{
 			return toolMaterial.getHarvestLevel() >= 1;
 		}
-		if(block == ModBlocks.oreBornite || block == ModBlocks.blockBrass || block == ModBlocks.brassWood || block == ModBlocks.decorBrass)
+		if(block == ModOres.oreBornite || block == ModBlocks.blockBrass || block == ModBlocks.brassWood || block == ModBlocks.decorBrass)
 		{
 			return toolMaterial.getHarvestLevel() >= 2;
 		}
-		if(block == ModBlocks.oreBrimstone)
+		if(block == ModOres.oreBrimstone)
 		{
 			return toolMaterial.getHarvestLevel() >= 2;
 		}
-		if(block == ModBlocks.orePhosphate)
+		if(block == ModOres.orePhosphate)
 		{
 			return toolMaterial.getHarvestLevel() >= 2;
 		}

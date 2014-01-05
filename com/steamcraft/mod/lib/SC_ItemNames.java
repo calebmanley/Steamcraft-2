@@ -1,6 +1,6 @@
 package com.steamcraft.mod.lib;
 
-import com.steamcraft.mod.main.SC_Main;
+import com.steamcraft.mod.main.Steamcraft;
 
 public class SC_ItemNames 
 {

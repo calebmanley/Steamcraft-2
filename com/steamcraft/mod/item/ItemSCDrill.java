@@ -6,6 +6,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 
 import com.steamcraft.mod.block.ModBlocks;
+import com.steamcraft.mod.block.ModOres;
 import com.steamcraft.mod.lib.SC_Material;
 
 public class ItemSCDrill extends ItemSCTool
@@ -22,7 +23,7 @@ public class ItemSCDrill extends ItemSCTool
 	@Override
 	public boolean canHarvestBlock(Block block)
 	{
-		if(block == ModBlocks.oreVolucite)
+		if(block == ModOres.oreVolucite)
 		{
 			return false;
 		}
@@ -34,7 +35,7 @@ public class ItemSCDrill extends ItemSCTool
 		{
 			return toolMaterial.getHarvestLevel() == 4;
 		}
-		if(block == ModBlocks.oreUranite)
+		if(block == ModOres.oreUranite)
 		{
 			return false;
 		}
@@ -74,11 +75,11 @@ public class ItemSCDrill extends ItemSCTool
 		{
 			return toolMaterial.getHarvestLevel() >= 2;
 		}
-		if(block == ModBlocks.oreBrimstone)
+		if(block == ModOres.oreBrimstone)
 		{
 			return false;
 		}
-		if(block == ModBlocks.orePhosphate)
+		if(block == ModOres.orePhosphate)
 		{
 			return false;
 		}

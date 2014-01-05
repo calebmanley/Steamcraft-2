@@ -18,16 +18,18 @@ public class ContainerNukeFurnace extends Container
 	private int cookTime;
 	private int burnTime;
 	private int itemBurnTime;
+	private int furnaceHeat;
 
-	public ContainerNukeFurnace(InventoryPlayer inventoryplayer, TileEntityNukeFurnace tileentitynukefurnace)
+	public ContainerNukeFurnace(InventoryPlayer inventoryplayer, TileEntityNukeFurnace tileFurnace)
 	{
 		cookTime = 0;
 		burnTime = 0;
 		itemBurnTime = 0;
-		furnace = tileentitynukefurnace;
-		this.addSlotToContainer(new Slot(tileentitynukefurnace, 0, 56, 17));
-		this.addSlotToContainer(new Slot(tileentitynukefurnace, 1, 56, 53));
-		this.addSlotToContainer(new SlotNukeFurnace(inventoryplayer.player, tileentitynukefurnace, 2, 116, 35));
+		furnaceHeat = 0;
+		furnace = tileFurnace;
+		this.addSlotToContainer(new Slot(tileFurnace, 0, 56, 17));
+		this.addSlotToContainer(new Slot(tileFurnace, 1, 56, 53));
+		this.addSlotToContainer(new SlotNukeFurnace(inventoryplayer.player, tileFurnace, 2, 116, 35));
 
 		for(int i = 0; i < 3; i++)
 		{
@@ -49,6 +51,7 @@ public class ContainerNukeFurnace extends Container
         crafting.sendProgressBarUpdate(this, 0, this.furnace.furnaceCookTime);
         crafting.sendProgressBarUpdate(this, 1, this.furnace.furnaceBurnTime);
         crafting.sendProgressBarUpdate(this, 2, this.furnace.currentItemBurnTime);
+        crafting.sendProgressBarUpdate(this, 3, this.furnace.furnaceHeat);
     }
 
 	@Override
@@ -72,11 +75,16 @@ public class ContainerNukeFurnace extends Container
 			{
 				crafting.sendProgressBarUpdate(this, 2, furnace.currentItemBurnTime);
 			}
+			if(furnaceHeat != furnace.furnaceHeat)
+			{
+				crafting.sendProgressBarUpdate(this, 3, furnace.furnaceHeat);
+			}
 		}
 
 		cookTime = furnace.furnaceCookTime;
 		burnTime = furnace.furnaceBurnTime;
 		itemBurnTime = furnace.currentItemBurnTime;
+		furnaceHeat = furnace.furnaceHeat;
 	}
 
 	@Override
@@ -94,6 +102,10 @@ public class ContainerNukeFurnace extends Container
 		if(i == 2)
 		{
 			furnace.currentItemBurnTime = j;
+		}
+		if(i == 3)
+		{
+			furnace.furnaceHeat = j;
 		}
 	}
 

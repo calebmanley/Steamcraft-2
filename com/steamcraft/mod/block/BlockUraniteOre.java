@@ -54,7 +54,7 @@ public class BlockUraniteOre extends BlockSC
 	@Override
 	public int idDropped(int i, Random random, int j)
 	{
-		return ModBlocks.oreUranite.blockID;
+		return ModOres.oreUranite.blockID;
 	}
 
 	@Override

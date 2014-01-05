@@ -18,7 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.steamcraft.mod.gui.GuiChemicalFurnace;
 import com.steamcraft.mod.lib.SC_GuiIDs;
-import com.steamcraft.mod.main.SC_Main;
+import com.steamcraft.mod.main.Steamcraft;
 import com.steamcraft.mod.tileentity.TileEntityChemicalFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -53,7 +53,7 @@ public class BlockChemicalFurnace extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int i, int j)
 	{
-		return i == 1 ? this.furnaceIconTop : (i == 0 ? this.furnaceIconTop : (i != j ? this.blockIcon : this.furnaceIconFront));
+		return i == 1 ? this.furnaceIconTop : (i == 0 ? this.blockIcon : (i != j ? this.blockIcon : this.furnaceIconFront));
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class BlockChemicalFurnace extends BlockContainer
 	@Override
 	public int idDropped(int i, Random random, int j)
 	{
-		return ModBlocks.chemOvenIdle.blockID;
+		return ModMachines.chemOvenIdle.blockID;
 	}
 
 	@Override
@@ -155,7 +155,7 @@ public class BlockChemicalFurnace extends BlockContainer
 		
 		if(furnace != null)
 		{
-			player.openGui(SC_Main.instance, SC_GuiIDs.GUI_ID_ChemicalOven, world, i, j, k);
+			player.openGui(Steamcraft.instance, SC_GuiIDs.GUI_ID_ChemicalOven, world, i, j, k);
 		}
 		
 		return true;
@@ -169,10 +169,10 @@ public class BlockChemicalFurnace extends BlockContainer
 		
 		if(flag)
 		{
-			world.setBlock(i, j, k, ModBlocks.chemOvenActive.blockID);
+			world.setBlock(i, j, k, ModMachines.chemOvenActive.blockID);
 		} else
 		{
-			world.setBlock(i, j, k, ModBlocks.chemOvenIdle.blockID);
+			world.setBlock(i, j, k, ModMachines.chemOvenIdle.blockID);
 		}
 		
 		keepFurnaceInventory = false;
@@ -195,22 +195,22 @@ public class BlockChemicalFurnace extends BlockContainer
 	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase living, ItemStack stack)
 	{
 		int l = MathHelper.floor_double((double)((living.rotationYaw * 4F) / 360F) + 0.5D) & 3;
-		
+
 		if(l == 0)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 2);
+			world.setBlockMetadataWithNotify(i, j, k, 2, 2);
 		}
 		if(l == 1)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 5);
+			world.setBlockMetadataWithNotify(i, j, k, 5, 2);
 		}
 		if(l == 2)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 3);
+			world.setBlockMetadataWithNotify(i, j, k, 3, 2);
 		}
 		if(l == 3)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 4);
+			world.setBlockMetadataWithNotify(i, j, k, 4, 2);
 		}
 	}
 

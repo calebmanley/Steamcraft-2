@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 import com.steamcraft.mod.gui.GuiNukeFurnace;
 import com.steamcraft.mod.lib.SC_GuiIDs;
-import com.steamcraft.mod.main.SC_Main;
+import com.steamcraft.mod.main.Steamcraft;
 import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -53,8 +53,8 @@ public class BlockNukeFurnace extends BlockContainer
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int i, int j)
-	{
-		return i == 1 ? this.furnaceIconTop : (i == 0 ? this.furnaceIconTop : (i != j ? this.blockIcon : this.furnaceIconFront));
+	{	
+		return i == 1 ? this.furnaceIconTop : (i == 0 ? this.blockIcon : (i != j ? this.blockIcon : this.furnaceIconFront));
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class BlockNukeFurnace extends BlockContainer
 	@Override
 	public int idDropped(int i, Random random, int j)
 	{
-		return ModBlocks.nukeOvenIdle.blockID;
+		return ModMachines.nukeOvenIdle.blockID;
 	}
 
 	@Override
@@ -163,7 +163,7 @@ public class BlockNukeFurnace extends BlockContainer
 		
 		if(furnace != null)
 		{
-			player.openGui(SC_Main.instance, SC_GuiIDs.GUI_ID_NukeOven, world, i, j, k);
+			player.openGui(Steamcraft.instance, SC_GuiIDs.GUI_ID_NukeOven, world, i, j, k);
 		}
 		
 		return true;
@@ -180,15 +180,15 @@ public class BlockNukeFurnace extends BlockContainer
 			world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "mob.ghast.fireball", 1.0F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.7F);
 			world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "mob.zombiepig.zpigdeath", 0.1F, 0.1F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.6F);
 			world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "fire.ignite", 1.5F, 1.0F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
-			world.setBlock(i, j, k, ModBlocks.nukeOvenActive.blockID);
+			world.setBlock(i, j, k, ModMachines.nukeOvenActive.blockID);
 		} else
 		{
 			world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, "ambient.cave.cave", 0.1F, 0.1F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
-			world.setBlock(i, j, k, ModBlocks.nukeOvenIdle.blockID);
+			world.setBlock(i, j, k, ModMachines.nukeOvenIdle.blockID);
 		}
 		
 		keepFurnaceInventory = false;
-		world.setBlockMetadataWithNotify(i, j, k, ModBlocks.nukeOvenIdle.blockID, meta);
+		world.setBlockMetadataWithNotify(i, j, k, ModMachines.nukeOvenIdle.blockID, meta);
 		
 		if(tile != null)
 		{
@@ -207,22 +207,22 @@ public class BlockNukeFurnace extends BlockContainer
 	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase living, ItemStack stack)
 	{
 		int l = MathHelper.floor_double((double)((living.rotationYaw * 4F) / 360F) + 0.5D) & 3;
-	
+
 		if(l == 0)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 2);
+			world.setBlockMetadataWithNotify(i, j, k, 2, 2);
 		}
 		if(l == 1)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 5);
+			world.setBlockMetadataWithNotify(i, j, k, 5, 2);
 		}
 		if(l == 2)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 3);
+			world.setBlockMetadataWithNotify(i, j, k, 3, 2);
 		}
 		if(l == 3)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 4);
+			world.setBlockMetadataWithNotify(i, j, k, 4, 2);
 		}
 	}
 	
@@ -446,6 +446,6 @@ public class BlockNukeFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
-        return ModBlocks.nukeOvenIdle.blockID;
+        return ModMachines.nukeOvenIdle.blockID;
     }
 }

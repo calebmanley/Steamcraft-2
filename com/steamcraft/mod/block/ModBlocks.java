@@ -17,21 +17,11 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModBlocks 
 {
-	public static Block steamOvenIdle;
-	public static Block steamOvenActive;
-	public static Block chemOvenIdle;
-	public static Block chemOvenActive;
-	public static Block nukeOvenIdle;
-	public static Block nukeOvenActive;
-	public static Block oreBrimstone;
-	public static Block oreBornite;
-	public static Block orePhosphate;
-	public static Block oreUranite;
-	public static Block oreVolucite;
 	public static Block blockCastIron;
 	public static Block blockVolucite;
 	public static Block blockBrass;
 	public static Block blockUranium;
+	
 	public static Block decorIron;
 	public static Block decorGold;
 	public static Block decorDiamond;
@@ -41,6 +31,7 @@ public class ModBlocks
 	public static Block decorLapis;
 	public static Block decorStone;
 	public static Block decorUranium;
+	
 	public static Block railingCastIron;
 	public static Block gateCastIron;
 	public static Block lampOn;
@@ -51,21 +42,11 @@ public class ModBlocks
 	
 	public static void initBlocks() // TODO: Check for SideOnly notations in ALL blocks, rewrite Tea, 
 	{
-		steamOvenIdle = new BlockSteamFurnace(SC_BlockIDs.steamOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);
-		steamOvenActive = new BlockSteamFurnace(SC_BlockIDs.steamOvenActiveID, true);
-		chemOvenIdle = new BlockChemicalFurnace(SC_BlockIDs.chemOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);
-		chemOvenActive = new BlockChemicalFurnace(SC_BlockIDs.chemOvenActiveID, true);
-		nukeOvenIdle = new BlockNukeFurnace(SC_BlockIDs.nukeOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);;
-		nukeOvenActive = new BlockNukeFurnace(SC_BlockIDs.nukeOvenActiveID, true);
-		oreBrimstone = new BlockOre(SC_BlockIDs.oreBrimstoneID).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("brimstone");
-		orePhosphate = new BlockOre(SC_BlockIDs.orePhosphateID).setHardness(2.5F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setLightValue(0.75F).setUnlocalizedName("phosphate");
-		oreUranite = new BlockUraniteOre(SC_BlockIDs.oreUraniteID);
-		oreBornite = new BlockOre(SC_BlockIDs.oreBorniteID).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("bornite");
-		oreVolucite = new BlockOre(SC_BlockIDs.oreVoluciteID).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("volucite");
 		blockCastIron = new BlockSC(SC_BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
 		blockVolucite = new BlockSC(SC_BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
 		blockBrass = new BlockSC(SC_BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
 		blockUranium = new BlockUranium(SC_BlockIDs.blockUraniumID);
+		
 		decorIron = new BlockSC(SC_BlockIDs.decorIronID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engriron");
 		decorGold = new BlockSC(SC_BlockIDs.decorGoldID, Material.iron).setHardness(3F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrgold");
 		decorDiamond = new BlockSC(SC_BlockIDs.decorDiamondID, Material.rock).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrdiamond");
@@ -75,31 +56,24 @@ public class ModBlocks
 		decorLapis = new BlockSC(SC_BlockIDs.decorLapisID, Material.rock).setHardness(3F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("engrlapis");
 		decorStone = new BlockSC(SC_BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("carvedstone");
 		decorUranium = new BlockUranium(SC_BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engruranium");
-		gateCastIron = new BlockFenceGate(SC_BlockIDs.gateCastIronID).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
-		railingCastIron = new BlockFence(SC_BlockIDs.railingCastIronID, null, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
+		
+		gateCastIron = new BlockFenceGate(SC_BlockIDs.gateCastIronID).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock").setTextureName("steamcraft:castironblock");
+		railingCastIron = new BlockFence(SC_BlockIDs.railingCastIronID, "steamcraft:castironblock", Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep);//.setUnlocalizedName("castironblock");
 		lampOn = new BlockLamp(SC_BlockIDs.lampOnID);
 		lampOff = new BlockLamp(SC_BlockIDs.lampOffID);
 		brassWood = new BlockBrassLog(SC_BlockIDs.woodBrassID);
 		brassLeaves = new BlockSC(SC_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
 		//teaPlant = new BlockTeaPlant(SC_BlockIDs.teaPlantID);
 
+		ModMachines.initMachines();
+		ModOres.initOres();
 		registerBlocks();
 		addNames();
 	}
 	
 	public static void registerBlocks()
 	{
-		GameRegistry.registerBlock(steamOvenIdle, "steamovenidle");
-		GameRegistry.registerBlock(steamOvenActive, "steamovenactive");
-		GameRegistry.registerBlock(oreBrimstone, "orebrimstone");
-		GameRegistry.registerBlock(orePhosphate, "orephosphate");
-		GameRegistry.registerBlock(oreUranite, "oreuranite");
-		GameRegistry.registerBlock(oreBornite, "orebornite");
-		GameRegistry.registerBlock(oreVolucite, "orevolucite");
-		GameRegistry.registerBlock(chemOvenIdle, "chemovenidle");
-		GameRegistry.registerBlock(chemOvenActive, "chemovenactive");
-		GameRegistry.registerBlock(nukeOvenIdle, "nukeovenidle");
-		GameRegistry.registerBlock(nukeOvenActive, "nukeovenactive");
+		
 		GameRegistry.registerBlock(blockCastIron, "blockcastiron");
 		GameRegistry.registerBlock(blockVolucite, "blockvolucite");
 		GameRegistry.registerBlock(blockBrass, "blockbrass");
@@ -124,14 +98,7 @@ public class ModBlocks
 	
 	public static void addNames()
 	{
-		LanguageRegistry.addName(steamOvenIdle, "Steam Oven");
-		LanguageRegistry.addName(oreBrimstone, "Brimstone Ore");
-		LanguageRegistry.addName(orePhosphate, "Phosphate Ore");
-		LanguageRegistry.addName(oreUranite, "Uranite Ore");
-		LanguageRegistry.addName(oreBornite, "Bornite Ore");
-		LanguageRegistry.addName(oreVolucite, "Volucite Ore");
-		LanguageRegistry.addName(chemOvenIdle, "Chemical Oven");
-		LanguageRegistry.addName(nukeOvenIdle, "Nuken Oven");
+		
 		LanguageRegistry.addName(blockCastIron, "Cast Iron Block");
 		LanguageRegistry.addName(blockVolucite, "Volucite Block");
 		LanguageRegistry.addName(blockBrass, "Brass Block");
@@ -151,12 +118,5 @@ public class ModBlocks
 		LanguageRegistry.addName(blockUranium, "Uranium Block");
 		LanguageRegistry.addName(decorUranium, "Carved Uranium");
 		//LanguageRegistry.addName(teaPlant, "Tea Plant");
-	}
-	
-	public static void initTileEntities() 
-	{
-		GameRegistry.registerTileEntity(TileEntityNukeFurnace.class, "TileEntityNukeFurnace");
-		GameRegistry.registerTileEntity(TileEntityChemicalFurnace.class, "TileEntityChemicalFurnace");
-		GameRegistry.registerTileEntity(TileEntitySteamFurnace.class, "TileEntitySteamFurnace");
 	}
 }

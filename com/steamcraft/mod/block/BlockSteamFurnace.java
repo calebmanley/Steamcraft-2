@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 import com.steamcraft.mod.gui.GuiSteamFurnace;
 import com.steamcraft.mod.lib.SC_GuiIDs;
-import com.steamcraft.mod.main.SC_Main;
+import com.steamcraft.mod.main.Steamcraft;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -51,8 +51,8 @@ public class BlockSteamFurnace extends BlockContainer
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int i, int j)
-	{
-		return i == 1 ? this.furnaceIconTop : (i == 0 ? this.furnaceIconTop : (i != j ? this.blockIcon : this.furnaceIconFront));
+	{	
+		return i == 1 ? this.furnaceIconTop : (i == 0 ? this.blockIcon : (i != j ? this.blockIcon : this.furnaceIconFront));
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class BlockSteamFurnace extends BlockContainer
 	@Override
 	public int idDropped(int i, Random random, int j)
 	{
-		return ModBlocks.steamOvenIdle.blockID;
+		return ModMachines.steamOvenIdle.blockID;
 	}
 
 	@Override
@@ -80,32 +80,32 @@ public class BlockSteamFurnace extends BlockContainer
 	private void setDefaultDirection(World world, int i, int j, int k)
 	{
 		if(!world.isRemote)
-        {
-            int l = world.getBlockId(i, j, k - 1);
-            int i1 = world.getBlockId(i, j, k + 1);
-            int j1 = world.getBlockId(i - 1, j, k);
-            int k1 = world.getBlockId(i + 1, j, k);
-            byte b0 = 3;
+		{
+			int l = world.getBlockId(i, j, k - 1);
+			int i1 = world.getBlockId(i, j, k + 1);
+			int j1 = world.getBlockId(i - 1, j, k);
+			int k1 = world.getBlockId(i + 1, j, k);
+			byte b0 = 3;
 
-            if(Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
-            {
-                b0 = 3;
-            }
-            if(Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])
-            {
-                b0 = 2;
-            }
-            if(Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])
-            {
-                b0 = 5;
-            }
-            if(Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
-            {
-                b0 = 4;
-            }
+			if(Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
+			{
+				b0 = 3;
+			}
+			if(Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])
+			{
+				b0 = 2;
+			}
+			if(Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])
+			{
+				b0 = 5;
+			}
+			if(Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
+			{
+				b0 = 4;
+			}
 
-            world.setBlockMetadataWithNotify(i, j, k, b0, 2);
-        }
+			world.setBlockMetadataWithNotify(i, j, k, b0, 2);
+		}
 	}
 
 	@Override
@@ -166,7 +166,7 @@ public class BlockSteamFurnace extends BlockContainer
 
 		if(furnace != null)
 		{
-			player.openGui(SC_Main.instance, SC_GuiIDs.GUI_ID_SteamOven, world, i, j, k);
+			player.openGui(Steamcraft.instance, SC_GuiIDs.GUI_ID_SteamOven, world, i, j, k);
 		}
 
 		return true;
@@ -180,14 +180,14 @@ public class BlockSteamFurnace extends BlockContainer
 
 		if(flag)
 		{
-			world.setBlock(i, j, k, ModBlocks.steamOvenActive.blockID);
+			world.setBlock(i, j, k, ModMachines.steamOvenActive.blockID);
 		} else
 		{
-			world.setBlock(i, j, k, ModBlocks.steamOvenIdle.blockID);
+			world.setBlock(i, j, k, ModMachines.steamOvenIdle.blockID);
 		}
 
 		keepFurnaceInventory = false;
-		world.setBlockMetadataWithNotify(i, j, k, ModBlocks.steamOvenIdle.blockID, meta);
+		world.setBlockMetadataWithNotify(i, j, k, meta, 2);
 
 		if(tile != null)
 		{
@@ -209,19 +209,19 @@ public class BlockSteamFurnace extends BlockContainer
 
 		if(l == 0)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 2);
+			world.setBlockMetadataWithNotify(i, j, k, 2, 2);
 		}
 		if(l == 1)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 5);
+			world.setBlockMetadataWithNotify(i, j, k, 5, 2);
 		}
 		if(l == 2)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 3);
+			world.setBlockMetadataWithNotify(i, j, k, 3, 2);
 		}
 		if(l == 3)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, this.blockID, 4);
+			world.setBlockMetadataWithNotify(i, j, k, 4, 2);
 		}
 	}
 

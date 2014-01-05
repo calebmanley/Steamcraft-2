@@ -4,11 +4,11 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 
 import com.steamcraft.mod.block.ModBlocks;
+import com.steamcraft.mod.block.ModOres;
 
 import cpw.mods.fml.common.IWorldGenerator;
 
@@ -40,7 +40,7 @@ public class SC_Generator implements IWorldGenerator
 			int etheriumYCoord = 8 + random.nextInt(12);
 			int etheriumZCoord = j + random.nextInt(16);
 			
-			new WorldGenMinable(ModBlocks.oreVolucite.blockID, 13).generate(world, random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
+			new WorldGenMinable(ModOres.oreVolucite.blockID, 13).generate(world, random, etheriumXCoord, etheriumYCoord, etheriumZCoord);
 		}
 		for(int chance = 0; chance < 2; chance++) 
 		{
@@ -48,7 +48,7 @@ public class SC_Generator implements IWorldGenerator
 			int uraniteYCoord = random.nextInt(24);
 			int uraniteZCoord = j + random.nextInt(16);
 			
-			new WorldGenMinable(ModBlocks.oreUranite.blockID, 13).generate(world, random, uraniteXCoord, uraniteYCoord, uraniteZCoord);
+			new WorldGenMinable(ModOres.oreUranite.blockID, 13).generate(world, random, uraniteXCoord, uraniteYCoord, uraniteZCoord);
 		}
 		for(int chance = 0; chance < 12; chance++) 
 		{
@@ -56,7 +56,7 @@ public class SC_Generator implements IWorldGenerator
 			int brimstoneYCoord = random.nextInt(64);
 			int brimstoneZCoord = j + random.nextInt(16);
 			
-			new WorldGenMinable(ModBlocks.oreBrimstone.blockID, 13).generate(world, random, brimstoneXCoord, brimstoneYCoord, brimstoneZCoord);
+			new WorldGenMinable(ModOres.oreBrimstone.blockID, 13).generate(world, random, brimstoneXCoord, brimstoneYCoord, brimstoneZCoord);
 		}
 		for(int chance = 0; chance < 16; chance++) 
 		{
@@ -64,7 +64,7 @@ public class SC_Generator implements IWorldGenerator
 			int borniteYCoord = random.nextInt(48);
 			int borniteZCoord = j + random.nextInt(16);
 			
-			new WorldGenMinable(ModBlocks.oreBornite.blockID, 13).generate(world, random, borniteXCoord, borniteYCoord, borniteZCoord);
+			new WorldGenMinable(ModOres.oreBornite.blockID, 13).generate(world, random, borniteXCoord, borniteYCoord, borniteZCoord);
 		}
 		for(int chance = 0; chance < 3; chance++) 
 		{
@@ -72,7 +72,7 @@ public class SC_Generator implements IWorldGenerator
 			int phosphateYCoord = random.nextInt(36);
 			int phosphateZCoord = j + random.nextInt(16);
 			
-			new WorldGenMinable(ModBlocks.orePhosphate.blockID, 13).generate(world, random, phosphateXCoord, phosphateYCoord, phosphateZCoord);
+			new WorldGenMinable(ModOres.orePhosphate.blockID, 13).generate(world, random, phosphateXCoord, phosphateYCoord, phosphateZCoord);
 		}
 	}
 
