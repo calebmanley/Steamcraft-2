@@ -115,7 +115,7 @@ public class BlockSteamFurnace extends BlockContainer
 			return;
 		}
 
-		TileEntitySteamFurnace furnace = (TileEntitySteamFurnace)world.getBlockTileEntity(i, j, k);
+		TileEntitySteamFurnace furnace = (TileEntitySteamFurnace) world.getBlockTileEntity(i, j, k);
 		int meta = world.getBlockMetadata(i, j, k);
 		float f = (float)i + 0.5F;
 		float f1 = (float)j + 0.0F + (random.nextFloat() * 6F) / 16F;
@@ -164,7 +164,7 @@ public class BlockSteamFurnace extends BlockContainer
 
 		if(furnace != null)
 		{
-			player.openGui(new GuiSteamFurnace(player.inventory, furnace), l, world, i, j, k);
+			player.openGui(new GuiSteamFurnace(player.inventory, furnace), 21, world, i, j, k);
 		}
 
 		return true;

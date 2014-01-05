@@ -17,6 +17,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.steamcraft.mod.gui.GuiChemicalFurnace;
+import com.steamcraft.mod.lib.SC_GuiIDs;
+import com.steamcraft.mod.main.SC_Main;
 import com.steamcraft.mod.tileentity.TileEntityChemicalFurnace;
 
 import cpw.mods.fml.relauncher.Side;
@@ -153,7 +155,7 @@ public class BlockChemicalFurnace extends BlockContainer
 		
 		if(furnace != null)
 		{
-			player.openGui(new GuiChemicalFurnace(player.inventory, furnace), l, world, i, j, k);
+			player.openGui(SC_Main.instance, SC_GuiIDs.GUI_ID_ChemicalOven, world, i, j, k);
 		}
 		
 		return true;

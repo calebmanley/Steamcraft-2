@@ -17,20 +17,16 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = SC_Info.MOD_ID, name = SC_Info.MOD_NAME, version = SC_Info.VERSION)
-@NetworkMod(clientSideRequired = true, serverSideRequired = true)
-
+@NetworkMod(clientSideRequired = true, channels = {SC_Info.NETWORK_CHANNEL})//, packetHandler = PacketManager.class)
 public class SC_Main
 {
-	@Instance(value = SC_Info.MOD_ID)
+	@Instance(SC_Info.MOD_ID)
 	public static SC_Main instance;
 	
 	@SidedProxy(clientSide = SC_Info.CLIENT_PROXY, serverSide = SC_Info.COMMON_PROXY)
     public static SC_CommonProxy proxy;
 	
 	public static final String SC_PREFIX = "steamcraft:";
-	
-	public static Material solidCircuit = (new MaterialLogic(MapColor.airColor));;
-	public static Material staticCircuit = (new MaterialLogic(MapColor.airColor)).setReplaceable();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
@@ -50,3 +46,5 @@ public class SC_Main
 		proxy.postInit(event);
 	}
 }
+
+// TODO: Fix placement orientation for furnaces/brass log, add names to items/blocks, add IDs to config handler, fix chisel crafting, fix GUIs, add mouse-over info to items

@@ -13,6 +13,7 @@ import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModBlocks 
 {
@@ -46,7 +47,7 @@ public class ModBlocks
 	public static Block lampOff;
 	public static Block brassWood;
 	public static Block brassLeaves;
-	public static Block teaPlant;
+	//public static Block teaPlant;
 	
 	public static void initBlocks() // TODO: Check for SideOnly notations in ALL blocks, rewrite Tea, 
 	{
@@ -83,6 +84,7 @@ public class ModBlocks
 		//teaPlant = new BlockTeaPlant(SC_BlockIDs.teaPlantID);
 
 		registerBlocks();
+		addNames();
 	}
 	
 	public static void registerBlocks()
@@ -117,9 +119,38 @@ public class ModBlocks
 		GameRegistry.registerBlock(decorStone, "decorstone");
 		GameRegistry.registerBlock(blockUranium, "blockuranium");
 		GameRegistry.registerBlock(decorUranium, "decoruranium");
-		//GameRegistry.registerBlock(ironLampIdle, "ironlampidle");
-		//GameRegistry.registerBlock(ironLampActive, "ironlampactive");
-		GameRegistry.registerBlock(teaPlant, "teaplant");
+		//GameRegistry.registerBlock(teaPlant, "teaplant");
+	}
+	
+	public static void addNames()
+	{
+		LanguageRegistry.addName(steamOvenIdle, "Steam Oven");
+		LanguageRegistry.addName(oreBrimstone, "Brimstone Ore");
+		LanguageRegistry.addName(orePhosphate, "Phosphate Ore");
+		LanguageRegistry.addName(oreUranite, "Uranite Ore");
+		LanguageRegistry.addName(oreBornite, "Bornite Ore");
+		LanguageRegistry.addName(oreVolucite, "Volucite Ore");
+		LanguageRegistry.addName(chemOvenIdle, "Chemical Oven");
+		LanguageRegistry.addName(nukeOvenIdle, "Nuken Oven");
+		LanguageRegistry.addName(blockCastIron, "Cast Iron Block");
+		LanguageRegistry.addName(blockVolucite, "Volucite Block");
+		LanguageRegistry.addName(blockBrass, "Brass Block");
+		LanguageRegistry.addName(lampOff, "Lamp");
+		LanguageRegistry.addName(brassWood, "Brasswood");
+		LanguageRegistry.addName(brassLeaves, "Brassleaves");
+		LanguageRegistry.addName(railingCastIron, "Cast Iron Railing");
+		LanguageRegistry.addName(gateCastIron, "Cast Iron Gate");
+		LanguageRegistry.addName(decorIron, "Carved Iron");
+		LanguageRegistry.addName(decorGold, "Carved Gold");
+		LanguageRegistry.addName(decorDiamond, "Carved Diamond");
+		LanguageRegistry.addName(decorCastIron, "Carved Cast Iron");
+		LanguageRegistry.addName(decorVolucite, "Carved Volucite");
+		LanguageRegistry.addName(decorBrass, "Carved Brass");
+		LanguageRegistry.addName(decorLapis, "Carved Lapis");
+		LanguageRegistry.addName(decorStone, "Carved Stone");
+		LanguageRegistry.addName(blockUranium, "Uranium Block");
+		LanguageRegistry.addName(decorUranium, "Carved Uranium");
+		//LanguageRegistry.addName(teaPlant, "Tea Plant");
 	}
 	
 	public static void initTileEntities() 

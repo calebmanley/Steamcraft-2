@@ -161,7 +161,7 @@ public class BlockNukeFurnace extends BlockContainer
 		
 		if(furnace != null)
 		{
-			player.openGui(new GuiNukeFurnace(player.inventory, furnace), l, world, i, j, k);
+			player.openGui(new GuiNukeFurnace(player.inventory, furnace), 22, world, i, j, k);
 		}
 		
 		return true;

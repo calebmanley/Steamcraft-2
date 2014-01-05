@@ -9,19 +9,18 @@ import net.minecraft.world.World;
 
 public class BlockLamp extends BlockSC
 {
-	private boolean isPowered;
+	private boolean isPowered = false;
 	
 	protected BlockLamp(int id)
 	{
 		super(id, Material.iron);
-		this.isPowered = false;
 		this.setHardness(2.0F);
 		this.setStepSound(Block.soundGlassFootstep);
 		this.setUnlocalizedName("lampblock");
 		
-		if(this.isPowered)
+		if(isPowered)
 		{
-			this.setLightValue(1.0F);
+			this.setLightValue(0.98F);
 		}
 	}
 
@@ -119,9 +118,9 @@ public class BlockLamp extends BlockSC
 	}
 
 	@Override
-	public void harvestBlock(World world, EntityPlayer entityplayer, int i, int j, int k, int l)
+	public void harvestBlock(World world, EntityPlayer player, int i, int j, int k, int l)
 	{
-		super.harvestBlock(world, entityplayer, i, j, k, l);
+		super.harvestBlock(world, player, i, j, k, l);
 	}
 
 	@Override

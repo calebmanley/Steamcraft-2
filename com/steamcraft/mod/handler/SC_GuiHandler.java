@@ -10,6 +10,7 @@ import com.steamcraft.mod.gui.GuiSteamFurnace;
 import com.steamcraft.mod.inventory.ContainerChemicalFurnace;
 import com.steamcraft.mod.inventory.ContainerNukeFurnace;
 import com.steamcraft.mod.inventory.ContainerSteamFurnace;
+import com.steamcraft.mod.lib.SC_GuiIDs;
 import com.steamcraft.mod.tileentity.TileEntityChemicalFurnace;
 import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
@@ -25,7 +26,7 @@ public class SC_GuiHandler implements IGuiHandler
 
 		switch(id)
 		{
-		case 0:
+		case SC_GuiIDs.GUI_ID_NukeOven:
 			if(entity != null && entity instanceof TileEntityNukeFurnace) 
 			{
 				return new ContainerNukeFurnace(player.inventory, (TileEntityNukeFurnace) entity);
@@ -33,7 +34,7 @@ public class SC_GuiHandler implements IGuiHandler
 			{
 				return null;
 			}
-		case 1:
+		case SC_GuiIDs.GUI_ID_ChemicalOven:
 			if(entity != null && entity instanceof TileEntityChemicalFurnace) 
 			{
 				return new ContainerChemicalFurnace(player.inventory, (TileEntityChemicalFurnace) entity);
@@ -41,7 +42,7 @@ public class SC_GuiHandler implements IGuiHandler
 			{
 				return null;
 			}
-		case 2:
+		case SC_GuiIDs.GUI_ID_SteamOven:
 			if(entity != null && entity instanceof TileEntitySteamFurnace) 
 			{
 				return new ContainerSteamFurnace(player.inventory, (TileEntitySteamFurnace) entity);
@@ -61,7 +62,7 @@ public class SC_GuiHandler implements IGuiHandler
 
 		switch(id)
 		{
-		case 0:
+		case SC_GuiIDs.GUI_ID_NukeOven:
 			if(entity != null && entity instanceof TileEntityNukeFurnace) 
 			{
 				return new GuiNukeFurnace(player.inventory, (TileEntityNukeFurnace) entity);
@@ -69,7 +70,7 @@ public class SC_GuiHandler implements IGuiHandler
 			{
 				return null;
 			}
-		case 1:
+		case SC_GuiIDs.GUI_ID_ChemicalOven:
 			if(entity != null && entity instanceof TileEntityNukeFurnace) 
 			{
 				return new GuiChemicalFurnace(player.inventory, (TileEntityChemicalFurnace) entity);
@@ -77,7 +78,7 @@ public class SC_GuiHandler implements IGuiHandler
 			{
 				return null;
 			}
-		case 2:
+		case SC_GuiIDs.GUI_ID_SteamOven:
 			if(entity != null && entity instanceof TileEntitySteamFurnace) 
 			{
 				return new GuiSteamFurnace(player.inventory, (TileEntitySteamFurnace) entity);
