@@ -34,40 +34,40 @@ public class ItemSCArmor extends ItemArmor
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack armor, Entity entity, int slot, int layer)
+	public String getArmorTexture(ItemStack armor, Entity entity, int slot, int layer) // TODO: This needs some cleanup!
 	{
-		if(this.material == SC_Material.OBSIDIAN_ARMOR)
+		if(armor.itemID == ModArmors.bootsObsidian.itemID || armor.itemID == ModArmors.legsObsidian.itemID || armor.itemID == ModArmors.plateObsidian.itemID || armor.itemID == ModArmors.helmetObsidian.itemID)
 		{
 			if(slot == 0 || slot == 1 || slot == 3)
 			{
-				return "/steamcraft/textures/armor/obsidian_1.png";
+				return "steamcraft:textures/armor/obsidian_1.png";
 			} else if(slot == 2)
 			{
-				return "/steamcraft/textures/armor/obsidian_2.png";
+				return "steamcraft:textures/armor/obsidian_2.png";
 			} else
 			{
 				return null;
 			}
-		} else if(this.material == SC_Material.ETHERIUM_ARMOR)
+		} else if(armor.itemID == ModArmors.bootsEtherium.itemID || armor.itemID == ModArmors.legsEtherium.itemID || armor.itemID == ModArmors.plateEtherium.itemID || armor.itemID == ModArmors.helmetEtherium.itemID)
 		{
 			if(slot == 0 || slot == 1 || slot == 3)
 			{
-				return "/steamcraft/textures/armor/etherium_1.png";
+				return "steamcraft:textures/armor/etherium_1.png";
 			} else if(slot == 2)
 			{
-				return "/steamcraft/textures/armor/etherium_2.png";
+				return "steamcraft:textures/armor/etherium_2.png";
 			} else
 			{
 				return null;
 			}
-		} else if(this.material == SC_Material.STEAM_ARMOR)
+		} else if(armor.itemID == ModArmors.rollerSkates.itemID || armor.itemID == ModArmors.legBraces.itemID || armor.itemID == ModArmors.aqualung.itemID || armor.itemID == ModArmors.brassGoggles.itemID)
 		{
 			if(slot == 0 || slot == 1 || slot == 3)
 			{
-				return "/steamcraft/textures/armor/brass_1.png";
+				return "steamcraft:textures/armor/brass_1.png";
 			} else if(slot == 2)
 			{
-				return "/steamcraft/textures/armor/brass_2.png";
+				return "steamcraft:textures/armor/brass_2.png";
 			} else
 			{
 				return null;

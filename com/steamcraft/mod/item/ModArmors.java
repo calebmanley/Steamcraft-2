@@ -5,13 +5,15 @@ import net.minecraft.item.Item;
 import com.steamcraft.mod.lib.SC_ItemIDs;
 import com.steamcraft.mod.lib.SC_Material;
 
+import cpw.mods.fml.common.registry.LanguageRegistry;
+
 public class ModArmors 
 {
 	// Steam
 	public static Item brassGoggles;
 	public static Item aqualung;
-	public static Item rollerSkates;
 	public static Item legBraces;
+	public static Item rollerSkates;
 	
 	// Etherium
 	public static Item helmetEtherium;
@@ -42,10 +44,25 @@ public class ModArmors
 		plateObsidian = new ItemSCArmor(SC_ItemIDs.plateObsidianID, SC_Material.OBSIDIAN_ARMOR, 0, 1).setUnlocalizedName("obsidianplate");
 		legsObsidian = new ItemSCArmor(SC_ItemIDs.legsObsidianID, SC_Material.OBSIDIAN_ARMOR, 0, 2).setUnlocalizedName("obsidianlegs");
 		bootsObsidian = new ItemSCArmor(SC_ItemIDs.bootsObsidianID, SC_Material.OBSIDIAN_ARMOR, 0, 3).setUnlocalizedName("obsidianboots");
+		
+		initArmorNames();
 	}
 
 	public static void initArmorNames()
 	{
-
+		LanguageRegistry.addName(brassGoggles, "Brass Goggles");
+		LanguageRegistry.addName(aqualung, "Aqualung");
+		LanguageRegistry.addName(legBraces, "Pneumatic Leg Braces");
+		LanguageRegistry.addName(rollerSkates, "Roller Skates");
+		
+		LanguageRegistry.addName(helmetEtherium, "Etherium Helmet");
+		LanguageRegistry.addName(plateEtherium, "Etherium Chestplate");
+		LanguageRegistry.addName(legsEtherium, "Etherium Leggings");
+		LanguageRegistry.addName(bootsEtherium, "Etherium Boots");
+		
+		LanguageRegistry.addName(helmetObsidian, "Obsidian Helmet");
+		LanguageRegistry.addName(plateObsidian, "Obsidian Chestplate");
+		LanguageRegistry.addName(legsObsidian, "Obsidian Leggings");
+		LanguageRegistry.addName(bootsObsidian, "Obsidian Boots");
 	}
 }
