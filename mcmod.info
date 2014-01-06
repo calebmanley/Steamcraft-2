@@ -1,0 +1,18 @@
+[
+{
+"modid": "Steamcraft",
+"name": "Steamcraft",
+"description": "Extends Minecraft by adding many post-apocalyptic, retro-futuristic blocks & items!",
+"version": "1.3",
+"credits": "Created by Proloe, further development by MrArcane111",
+"logoFile": "/assets/steamcraft/textures/logo/mclogo.png",
+"mcversion": "1.6.4",
+"url": "http://steamcraft.wikia.com/wiki/Steamcraft_Wiki",
+"updateUrl": "",
+"authorList": [ "Proloe", "MrArcane111", "Papertazer", "& others" ],
+"credits": "By MrArcane111, based on previous version by Proloe",
+"parent": "",
+"screenshots": "/assets/steamcraft/textures/screenshots/screenshot_1.png",
+"dependencies": []
+}
+]
