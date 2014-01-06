@@ -47,5 +47,5 @@ public class Steamcraft
 	}
 }
 
-// TODO: Fix placement orientation for furnaces/brass log, add names to items/blocks, add IDs to config handler, fix chisel crafting, fix GUIs, add mouse-over info to items,
+// TODO: Fix placement orientation for furnaces/brass log, add names to items, add IDs to config handler, fix chisel crafting, add mouse-over info to items,
 // fix tea plant, change ore generation, change tool material aspects, add drill functionality

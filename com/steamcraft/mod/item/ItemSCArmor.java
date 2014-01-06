@@ -22,7 +22,7 @@ public class ItemSCArmor extends ItemArmor
 		super(id, mat, renderIndex, armorType);
 		mat = material;
 		this.setMaxStackSize(1);
-		this.setCreativeTab(SC_CreativeTabs.INSTANCE.tabSCItems);
+		this.setCreativeTab(SC_CreativeTabs.tabSCItems);
 	}
 
 	@Override

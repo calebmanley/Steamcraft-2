@@ -25,72 +25,23 @@ public class ItemSCPickaxe extends ItemSCTool
 	}
 
 	@Override
-	public boolean canHarvestBlock(Block block)
-	{
-		if(block == ModOres.oreVolucite || block == ModBlocks.blockVolucite || block == ModBlocks.decorVolucite)
-		{
-			return toolMaterial.getHarvestLevel() == 4;
-		}
-		if(block == ModBlocks.lampOn || block == ModBlocks.brassLeaves)
-		{
-			return true;
-		}
-		if(block == ModOres.oreUranite || block == ModBlocks.blockUranium || block == ModBlocks.decorUranium)
-		{
-			return toolMaterial.getHarvestLevel() >= 2;
-		}
-		if(block == Block.obsidian)
-		{
-			return toolMaterial.getHarvestLevel() >= 3;
-		}
-		if(block == Block.blockGold || block == Block.oreGold || block == Block.blockDiamond ||  block == ModBlocks.decorDiamond)
-		{
-			return toolMaterial.getHarvestLevel() >= 2;
-		}
-		if(block == Block.blockIron || block == Block.oreIron || block == ModBlocks.blockCastIron || block == ModBlocks.decorIron || block == ModBlocks.decorCastIron)
-		{
-			return toolMaterial.getHarvestLevel() >= 1;
-		}
-		if(block == Block.blockLapis || block == Block.oreLapis || block == ModBlocks.decorLapis)
-		{
-			return toolMaterial.getHarvestLevel() >= 1;
-		}
-		if(block == ModOres.oreBornite || block == ModBlocks.blockBrass || block == ModBlocks.brassWood || block == ModBlocks.decorBrass)
-		{
-			return toolMaterial.getHarvestLevel() >= 2;
-		}
-		if(block == ModOres.oreBrimstone)
-		{
-			return toolMaterial.getHarvestLevel() >= 2;
-		}
-		if(block == ModOres.orePhosphate)
-		{
-			return toolMaterial.getHarvestLevel() >= 2;
-		}
-		if(block.blockMaterial == Material.rock)
-		{
-			return true;
-		}
-		
-		return block.blockMaterial == Material.iron;
-	}
-
+	public boolean canHarvestBlock(Block par1Block)
+    {
+        return par1Block == Block.obsidian ? this.toolMaterial.getHarvestLevel() == 3 : (par1Block != Block.blockDiamond && par1Block != Block.oreDiamond ? (par1Block != Block.oreEmerald && par1Block != Block.blockEmerald ? (par1Block != Block.blockGold && par1Block != Block.oreGold ? (par1Block != Block.blockIron && par1Block != Block.oreIron ? (par1Block != Block.blockLapis && par1Block != Block.oreLapis ? (par1Block != Block.oreRedstone && par1Block != Block.oreRedstoneGlowing ? (par1Block.blockMaterial == Material.rock ? true : (par1Block.blockMaterial == Material.iron ? true : par1Block.blockMaterial == Material.anvil)) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2);
+    }
+	
 	@Override
 	public float getStrVsBlock(ItemStack stack, Block block)
-	{
-		for(int i = 0; i < blocksEffectiveAgainst.length; i++)
+    {
+		if(this.toolMaterial == SC_Material.STEAM_TOOL)
 		{
-			if(blocksEffectiveAgainst[i] == block)
-			{
-				if(this.toolMaterial == SC_Material.STEAM_TOOL)
-				{
-					return (4.0F - (((float) stack.getItemDamage()) * 11 / 320));
-				}
-				
-				return 4.0F;
-			}
+			return (4.0F - (((float) stack.getItemDamage()) * 11 / 320));
+		}
+		if(block != null && (block.blockMaterial == Material.iron || block.blockMaterial == Material.anvil || block.blockMaterial == Material.rock))
+		{
+			super.getStrVsBlock(stack, block);
 		}
 		
-		return 1.0F;
-	}
+		return this.efficiencyOnProperMaterial;
+    }
 }

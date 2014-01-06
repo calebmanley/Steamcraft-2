@@ -1,13 +1,10 @@
 package com.steamcraft.mod.item;
 
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemSeeds;
-import net.minecraft.src.ModLoader;
 
-import com.steamcraft.mod.block.ModBlocks;
 import com.steamcraft.mod.lib.SC_ItemIDs;
-import com.steamcraft.mod.lib.SC_Material;
+
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModItems 
 {
@@ -34,7 +31,7 @@ public class ModItems
 	{
 		etherium = new ItemSC(SC_ItemIDs.etheriumID).setUnlocalizedName("etherium");
 		chemicSalt = new ItemSC(SC_ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
-		//bornite = new ItemSC(SC_ItemIDs.borniteID).setUnlocalizedName("sulphur");
+		bornite = new ItemSC(SC_ItemIDs.borniteID).setUnlocalizedName("copper");
 		obsidianSlate = new ItemSC(SC_ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
 		ingotBrass = new ItemSC(SC_ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
 		ingotCastIron = new ItemSC(SC_ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
@@ -59,6 +56,17 @@ public class ModItems
 	
 	public static void initNames()
 	{
-		
+		LanguageRegistry.addName(etherium, "Etherium Crystal");
+		LanguageRegistry.addName(chemicSalt, "Sulfur");
+		LanguageRegistry.addName(bornite, "Purified Copper");
+		LanguageRegistry.addName(obsidianSlate, "Obsidian Slate");
+		LanguageRegistry.addName(ingotBrass, "Brass Ingot");
+		LanguageRegistry.addName(ingotCastIron, "Cast Iron Ingot");
+		LanguageRegistry.addName(lightBulb, "Lightbulb");
+		LanguageRegistry.addName(phosphorus, "Phosphorus");
+		LanguageRegistry.addName(uraniumOre, "Uranium");
+		LanguageRegistry.addName(uraniumPellet, "Uranium Pellets");
+		LanguageRegistry.addName(reactorCore, "Reactor Core");
+		LanguageRegistry.addName(teaLeaves, "Tea Leaves");
 	}
 }

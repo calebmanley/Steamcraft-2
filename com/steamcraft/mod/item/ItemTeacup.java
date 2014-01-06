@@ -16,7 +16,7 @@ public class ItemTeacup extends ItemFood
 	{
 		super(id, amount, saturation, flag);
 		this.healAmount = amount;
-		this.setCreativeTab(SC_CreativeTabs.INSTANCE.tabSCItems);
+		this.setCreativeTab(SC_CreativeTabs.tabSCItems);
 	}
 
 	public ItemTeacup(int id, int amount, boolean flag)

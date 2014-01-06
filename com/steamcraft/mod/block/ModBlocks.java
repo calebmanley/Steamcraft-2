@@ -59,8 +59,8 @@ public class ModBlocks
 		
 		gateCastIron = new BlockFenceGate(SC_BlockIDs.gateCastIronID).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock").setTextureName("steamcraft:castironblock");
 		railingCastIron = new BlockFence(SC_BlockIDs.railingCastIronID, "steamcraft:castironblock", Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep);//.setUnlocalizedName("castironblock");
-		lampOn = new BlockLamp(SC_BlockIDs.lampOnID);
-		lampOff = new BlockLamp(SC_BlockIDs.lampOffID);
+		lampOn = new BlockLamp(SC_BlockIDs.lampOnID, true).setUnlocalizedName("lampblockon").setCreativeTab(null);
+		lampOff = new BlockLamp(SC_BlockIDs.lampOffID, false).setUnlocalizedName("lampblockoff");
 		brassWood = new BlockBrassLog(SC_BlockIDs.woodBrassID);
 		brassLeaves = new BlockSC(SC_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
 		//teaPlant = new BlockTeaPlant(SC_BlockIDs.teaPlantID);

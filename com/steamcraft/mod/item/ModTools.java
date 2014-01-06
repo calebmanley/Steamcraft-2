@@ -3,9 +3,10 @@ package com.steamcraft.mod.item;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 
-import com.steamcraft.mod.handler.SC_ConfigHandler;
 import com.steamcraft.mod.lib.SC_ItemIDs;
 import com.steamcraft.mod.lib.SC_Material;
+
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModTools 
 {
@@ -51,14 +52,14 @@ public class ModTools
 	{
 		drillCore = new ItemCoreDrill(SC_ItemIDs.coreDrillID).setUnlocalizedName("coredrill");
 		drillBase = new ItemSC(SC_ItemIDs.drillBaseID).setUnlocalizedName("coredrillbase");
-		drillWood = new ItemSCDrill(SC_ItemIDs.drillWoodID, EnumToolMaterial.WOOD).setUnlocalizedName("wooddrill");
-		drillStone = new ItemSCDrill(SC_ItemIDs.drillStoneID, EnumToolMaterial.STONE).setUnlocalizedName("stonedrill");
-		drillIron = new ItemSCDrill(SC_ItemIDs.drillIronID, EnumToolMaterial.IRON).setUnlocalizedName("irondrill");
-		drillDiamond = new ItemSCDrill(SC_ItemIDs.drillDiamondID, EnumToolMaterial.EMERALD).setUnlocalizedName("diamonddrill");
-		drillGold = new ItemSCDrill(SC_ItemIDs.drillGoldID, EnumToolMaterial.GOLD).setUnlocalizedName("golddrill");
-		drillSteam = new ItemSCDrill(SC_ItemIDs.drillSteamID, SC_Material.STEAM_TOOL).setUnlocalizedName("steamdrill");
-		drillEtherium = new ItemSCDrill(SC_ItemIDs.drillEtheriumID, SC_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumdrill");
-		drillObsidian = new ItemSCDrill(SC_ItemIDs.drillObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidiandrill");
+		drillWood = new ItemSCDrill(SC_ItemIDs.drillWoodID, SC_Material.D_WOOD).setUnlocalizedName("wooddrill");
+		drillStone = new ItemSCDrill(SC_ItemIDs.drillStoneID, SC_Material.D_STONE).setUnlocalizedName("stonedrill");
+		drillIron = new ItemSCDrill(SC_ItemIDs.drillIronID, SC_Material.D_IRON).setUnlocalizedName("irondrill");
+		drillDiamond = new ItemSCDrill(SC_ItemIDs.drillDiamondID, SC_Material.D_EMERALD).setUnlocalizedName("diamonddrill");
+		drillGold = new ItemSCDrill(SC_ItemIDs.drillGoldID, SC_Material.D_GOLD).setUnlocalizedName("golddrill");
+		drillSteam = new ItemSCDrill(SC_ItemIDs.drillSteamID, SC_Material.D_STEAM).setUnlocalizedName("steamdrill");
+		drillEtherium = new ItemSCDrill(SC_ItemIDs.drillEtheriumID, SC_Material.D_ETHERIUM).setUnlocalizedName("etheriumdrill");
+		drillObsidian = new ItemSCDrill(SC_ItemIDs.drillObsidianID, SC_Material.D_OBSIDIAN).setUnlocalizedName("obsidiandrill");
 		
 		pickaxeSteam = new ItemSCPickaxe(SC_ItemIDs.pickaxeSteamID, SC_Material.INSTANCE.STEAM_TOOL).setUnlocalizedName("steampick");
 		swordSteam = new ItemSCSword(SC_ItemIDs.swordSteamID, SC_Material.STEAM_TOOL).setUnlocalizedName("steamsword");
@@ -73,7 +74,7 @@ public class ModTools
 		hoeEtherium = new ItemSCHoe(SC_ItemIDs.hoeEtheriumID, SC_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumhoe");
 		
 		pickaxeObsidian = new ItemSCPickaxe(SC_ItemIDs.pickaxeObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianpick");
-		swordObsidian = new ItemSCSword(SC_ItemIDs.swordObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("swordobsidian");
+		swordObsidian = new ItemSCSword(SC_ItemIDs.swordObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidiansword");
 		shovelObsidian = new ItemSCSpade(SC_ItemIDs.shovelObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianspade");
 		axeObsidian = new ItemSCAxe(SC_ItemIDs.axeObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianaxe");
 		hoeObsidian = new ItemSCHoe(SC_ItemIDs.hoeObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianhoe");
@@ -86,6 +87,33 @@ public class ModTools
 
 	public static void initToolNames()
 	{
-
+		LanguageRegistry.addName(drillCore, "Drill Core");
+		LanguageRegistry.addName(drillBase, "Drill Base");
+		LanguageRegistry.addName(drillWood, "Wooden Drill");
+		LanguageRegistry.addName(drillStone, "Stone Drill");
+		LanguageRegistry.addName(drillIron, "Iron Drill");
+		LanguageRegistry.addName(drillDiamond, "Diamond Drill");
+		LanguageRegistry.addName(drillGold, "Golden Drill");
+		LanguageRegistry.addName(drillSteam, "Steam-Powered Drill");
+		LanguageRegistry.addName(drillEtherium, "Etherium Drill");
+		LanguageRegistry.addName(drillObsidian, "Obsidian Drill");
+		
+		LanguageRegistry.addName(pickaxeSteam, "Steam-Powered Pickaxe");
+		LanguageRegistry.addName(swordSteam, "Stean-Powered Sword");
+		LanguageRegistry.addName(axeSteam, "Steam-Powered Axe");
+		LanguageRegistry.addName(hoeSteam, "Steam-Powered Hoe");
+		
+		LanguageRegistry.addName(pickaxeEtherium, "Etherium Pickaxe");
+		LanguageRegistry.addName(swordEtherium, "Etherium Sword");
+		LanguageRegistry.addName(axeEtherium, "Etherium Axe");
+		LanguageRegistry.addName(hoeEtherium, "Etherium Hoe");
+		
+		LanguageRegistry.addName(pickaxeObsidian, "Obsidian Pickaxe");
+		LanguageRegistry.addName(swordObsidian, "Obsidian Sword");
+		LanguageRegistry.addName(axeObsidian, "Obsidian Axe");
+		LanguageRegistry.addName(hoeObsidian, "Obsidian Hoe");
+		
+		LanguageRegistry.addName(chisel, "Chisel");
+		LanguageRegistry.addName(spanner, "Spanner");
 	}
 }

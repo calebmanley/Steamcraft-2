@@ -11,14 +11,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class SC_CreativeTabs extends CreativeTabs 
 {
-	public static final SC_CreativeTabs INSTANCE = new SC_CreativeTabs();
-
-	public SC_CreativeTabs() 
+	public SC_CreativeTabs(int position, String name) 
 	{
-		super(SC_Info.MOD_ID);
+		super(position, name);
 	}
 
-	public static CreativeTabs tabSCBlocks = new CreativeTabs("SteamCraft Blocks") 
+	public static CreativeTabs tabSCBlocks = new SC_CreativeTabs(CreativeTabs.getNextID(), "Steamcraft Blocks") 
 	{
 		@Override
 		@SideOnly(Side.CLIENT)
@@ -26,15 +24,27 @@ public class SC_CreativeTabs extends CreativeTabs
 		{
 			return new ItemStack(ModBlocks.decorBrass); 
 		}
+		
+		@Override
+		public String getTranslatedTabLabel()
+		{
+			return "Steamcraft Blocks";
+		}
 	};
 
-	public static CreativeTabs tabSCItems = new CreativeTabs("SteamCraft Items")
+	public static CreativeTabs tabSCItems = new SC_CreativeTabs(CreativeTabs.getNextID(), "Steamcraft Items")
 	{
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getIconItemStack() 
 		{
 			return new ItemStack(ModTools.drillCore);
+		}
+		
+		@Override
+		public String getTranslatedTabLabel()
+		{
+			return "Steamcraft Items";
 		}
 	};
 }

@@ -1,6 +1,7 @@
 package com.steamcraft.mod.block;
 
 import net.minecraft.block.Block;
+import net.minecraftforge.common.MinecraftForge;
 
 import com.steamcraft.mod.lib.SC_BlockIDs;
 
@@ -25,6 +26,8 @@ public class ModOres
 		
 		registerOres();
 		initOreNames();
+		initOreHarvestLevels();
+		registerOreDictionary();
 	}
 	
 	public static void registerOres()
@@ -43,5 +46,19 @@ public class ModOres
 		LanguageRegistry.addName(orePhosphate, "Phosphate Ore");
 		LanguageRegistry.addName(oreUranite, "Uranite Ore");
 		LanguageRegistry.addName(oreVolucite, "Volucite Ore");
+	}
+	
+	public static void initOreHarvestLevels()
+	{
+		MinecraftForge.setBlockHarvestLevel(oreBornite, 0, "pickaxe", 1); 
+		MinecraftForge.setBlockHarvestLevel(oreBrimstone, 0, "pickaxe", 1); 
+		MinecraftForge.setBlockHarvestLevel(orePhosphate, 0, "pickaxe", 2); 
+		MinecraftForge.setBlockHarvestLevel(oreUranite, 0, "pickaxe", 2); 
+		MinecraftForge.setBlockHarvestLevel(oreVolucite, 0, "pickaxe", 4);
+	}
+	
+	public static void registerOreDictionary()
+	{
+		// TODO: 
 	}
 }
