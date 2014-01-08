@@ -2,8 +2,8 @@ package com.steamcraft.mod.block;
 
 import net.minecraft.block.Block;
 
-import com.steamcraft.mod.lib.SC_BlockIDs;
-import com.steamcraft.mod.lib.SC_CreativeTabs;
+import com.steamcraft.mod.lib.SC2_BlockIDs;
+import com.steamcraft.mod.lib.SC2_CreativeTabs;
 import com.steamcraft.mod.tileentity.TileEntityChemicalFurnace;
 import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
@@ -22,12 +22,12 @@ public class ModMachines
 
 	public static void initMachines()
 	{
-		steamOvenIdle = new BlockSteamFurnace(SC_BlockIDs.steamOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);
-		steamOvenActive = new BlockSteamFurnace(SC_BlockIDs.steamOvenActiveID, true);
-		chemOvenIdle = new BlockChemicalFurnace(SC_BlockIDs.chemOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);
-		chemOvenActive = new BlockChemicalFurnace(SC_BlockIDs.chemOvenActiveID, true);
-		nukeOvenIdle = new BlockNukeFurnace(SC_BlockIDs.nukeOvenIdleID, false).setCreativeTab(SC_CreativeTabs.tabSCBlocks);;
-		nukeOvenActive = new BlockNukeFurnace(SC_BlockIDs.nukeOvenActiveID, true);
+		steamOvenIdle = new BlockSteamFurnace(SC2_BlockIDs.steamOvenIdleID, false).setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
+		steamOvenActive = new BlockSteamFurnace(SC2_BlockIDs.steamOvenActiveID, true);
+		chemOvenIdle = new BlockChemicalFurnace(SC2_BlockIDs.chemOvenIdleID, false).setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
+		chemOvenActive = new BlockChemicalFurnace(SC2_BlockIDs.chemOvenActiveID, true);
+		nukeOvenIdle = new BlockNukeFurnace(SC2_BlockIDs.nukeOvenIdleID, false).setCreativeTab(SC2_CreativeTabs.tabSCBlocks);;
+		nukeOvenActive = new BlockNukeFurnace(SC2_BlockIDs.nukeOvenActiveID, true);
 		
 		registerMachines();
 		initMachineNames();

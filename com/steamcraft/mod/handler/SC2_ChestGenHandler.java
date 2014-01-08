@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 
-public class SC_ChestGenHandler 
+public class SC2_ChestGenHandler 
 {
 	public static void addItemsToChests()
 	{

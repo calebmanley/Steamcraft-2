@@ -6,9 +6,9 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-import com.steamcraft.mod.lib.SC_CreativeTabs;
-import com.steamcraft.mod.lib.SC_Info;
-import com.steamcraft.mod.lib.SC_Material;
+import com.steamcraft.mod.lib.SC2_CreativeTabs;
+import com.steamcraft.mod.lib.SC2_Info;
+import com.steamcraft.mod.lib.SC2_Material;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,14 +22,14 @@ public class ItemSCArmor extends ItemArmor
 		super(id, mat, renderIndex, armorType);
 		mat = material;
 		this.setMaxStackSize(1);
-		this.setCreativeTab(SC_CreativeTabs.tabSCItems);
+		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(SC_Info.MOD_NAME + ":" + this.getUnlocalizedName().substring(5));
+		this.itemIcon = icon.registerIcon(SC2_Info.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName().substring(5));
 	}
 
 	@Override

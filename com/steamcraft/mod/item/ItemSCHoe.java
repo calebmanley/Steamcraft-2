@@ -6,7 +6,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.steamcraft.mod.lib.SC_Material;
+import com.steamcraft.mod.lib.SC2_Material;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -46,7 +46,7 @@ public class ItemSCHoe extends ItemSC
 			{
 				world.setBlock(i, j, k, block.blockID);
 				
-				if(this.toolMaterial == SC_Material.STEAM_TOOL)
+				if(this.toolMaterial == SC2_Material.STEAM_TOOL)
 				{
 					stack.damageItem(1 + (int)Math.round(stack.getItemDamage() * 5 / 320), player);
 					return true;

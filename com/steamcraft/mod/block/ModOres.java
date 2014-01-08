@@ -3,7 +3,7 @@ package com.steamcraft.mod.block;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 
-import com.steamcraft.mod.lib.SC_BlockIDs;
+import com.steamcraft.mod.lib.SC2_BlockIDs;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -18,11 +18,11 @@ public class ModOres
 	
 	public static void initOres()
 	{
-		oreBornite = new BlockSCOre(SC_BlockIDs.oreBorniteID).setHardness(3F).setResistance(5F).setUnlocalizedName("bornite");
-		oreBrimstone = new BlockSCOre(SC_BlockIDs.oreBrimstoneID).setHardness(3F).setResistance(5F).setUnlocalizedName("brimstone");
-		orePhosphate = new BlockSCOre(SC_BlockIDs.orePhosphateID).setHardness(2.5F).setResistance(5F).setLightValue(0.75F).setUnlocalizedName("phosphate");
-		oreUranite = new BlockUraniteOre(SC_BlockIDs.oreUraniteID);
-		oreVolucite = new BlockSCOre(SC_BlockIDs.oreVoluciteID).setHardness(50F).setResistance(6000000F).setUnlocalizedName("volucite");
+		oreBornite = new BlockSCOre(SC2_BlockIDs.oreBorniteID).setHardness(3F).setResistance(5F).setUnlocalizedName("bornite");
+		oreBrimstone = new BlockSCOre(SC2_BlockIDs.oreBrimstoneID).setHardness(3F).setResistance(5F).setUnlocalizedName("brimstone");
+		orePhosphate = new BlockSCOre(SC2_BlockIDs.orePhosphateID).setHardness(2.5F).setResistance(5F).setLightValue(0.75F).setUnlocalizedName("phosphate");
+		oreUranite = new BlockUraniteOre(SC2_BlockIDs.oreUraniteID);
+		oreVolucite = new BlockSCOre(SC2_BlockIDs.oreVoluciteID).setHardness(50F).setResistance(6000000F).setUnlocalizedName("volucite");
 		
 		registerOres();
 		initOreNames();

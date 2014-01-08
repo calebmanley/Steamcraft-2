@@ -2,7 +2,7 @@ package com.steamcraft.mod.item;
 
 import net.minecraft.item.Item;
 
-import com.steamcraft.mod.lib.SC_ItemIDs;
+import com.steamcraft.mod.lib.SC2_ItemIDs;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -29,19 +29,19 @@ public class ModItems
 	
 	public static void initItems()
 	{
-		etherium = new ItemSC(SC_ItemIDs.etheriumID).setUnlocalizedName("etherium");
-		chemicSalt = new ItemSC(SC_ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
-		bornite = new ItemSC(SC_ItemIDs.borniteID).setUnlocalizedName("copper");
-		obsidianSlate = new ItemSC(SC_ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
-		ingotBrass = new ItemSC(SC_ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
-		ingotCastIron = new ItemSC(SC_ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
-		lightBulb = new ItemSC(SC_ItemIDs.lightBulbID).setUnlocalizedName("lightbulb");
-		phosphorus = new ItemSC(SC_ItemIDs.phosphorusID).setUnlocalizedName("phosphorus");
-		uraniumOre = new ItemSC(SC_ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");
-		uraniumPellet = new ItemSC(SC_ItemIDs.uraniumID).setUnlocalizedName("uraniumpellet");
-		reactorCore = new ItemSC(SC_ItemIDs.reactorCoreID).setUnlocalizedName("reactorcore");
+		etherium = new ItemSC(SC2_ItemIDs.etheriumID).setUnlocalizedName("etherium");
+		chemicSalt = new ItemSC(SC2_ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
+		bornite = new ItemSC(SC2_ItemIDs.borniteID).setUnlocalizedName("copper");
+		obsidianSlate = new ItemSC(SC2_ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
+		ingotBrass = new ItemSC(SC2_ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
+		ingotCastIron = new ItemSC(SC2_ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
+		lightBulb = new ItemSC(SC2_ItemIDs.lightBulbID).setUnlocalizedName("lightbulb");
+		phosphorus = new ItemSC(SC2_ItemIDs.phosphorusID).setUnlocalizedName("phosphorus");
+		uraniumOre = new ItemSC(SC2_ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");
+		uraniumPellet = new ItemSC(SC2_ItemIDs.uraniumID).setUnlocalizedName("uraniumpellet");
+		reactorCore = new ItemSC(SC2_ItemIDs.reactorCoreID).setUnlocalizedName("reactorcore");
 		//teaSeed = new ItemSeeds(SC_ItemIDs.teaSeedID, ModBlocks.teaPlant.blockID, 0).setUnlocalizedName("teaseed"); 
-		teaLeaves = new ItemSC(SC_ItemIDs.teaLeavesID).setUnlocalizedName("tealeaves");
+		teaLeaves = new ItemSC(SC2_ItemIDs.teaLeavesID).setUnlocalizedName("tealeaves");
 		//coldKettle = new ItemKettle(SC_ItemIDs.coldKettleID, 300).setUnlocalizedName("kettle");
 		//hotKettle = new ItemKettle(SC_ItemIDs.hotKettleID, 300).setUnlocalizedName("kettle");
 		//emptyKettle = new ItemKettle(SC_ItemIDs.emptyKettleID, 300).setUnlocalizedName("kettle");

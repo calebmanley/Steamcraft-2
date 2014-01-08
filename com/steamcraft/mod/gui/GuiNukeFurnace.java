@@ -7,12 +7,12 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.steamcraft.mod.inventory.ContainerNukeFurnace;
-import com.steamcraft.mod.lib.SC_Info;
+import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 
 public class GuiNukeFurnace extends GuiContainer
 {
-	private static final ResourceLocation nukeGuiTextures = new ResourceLocation(SC_Info.MOD_ID.toLowerCase(), "textures/gui/nukefurnace.png");
+	private static final ResourceLocation nukeGuiTextures = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/gui/nukefurnace.png");
 	private TileEntityNukeFurnace furnaceInventory;
 	
 	public GuiNukeFurnace(InventoryPlayer inventory, TileEntityNukeFurnace furnace)

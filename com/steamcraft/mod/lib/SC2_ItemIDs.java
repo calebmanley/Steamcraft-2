@@ -1,6 +1,6 @@
 package com.steamcraft.mod.lib;
 
-public class SC_ItemIDs 
+public class SC2_ItemIDs 
 {
 	public static int etheriumID = 2700;
 	public static int chemicSaltID = 2701;

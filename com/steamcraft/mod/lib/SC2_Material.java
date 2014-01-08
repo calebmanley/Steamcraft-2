@@ -4,10 +4,10 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.EnumHelper;
 
-public class SC_Material
+public class SC2_Material
 {
 	// Creates an instance of this class that is static
-	public static final SC_Material INSTANCE = new SC_Material();
+	public static final SC2_Material INSTANCE = new SC2_Material();
 
 	// Tool Materials
 	// name, int harvest level, int max uses, float efficiency, float damage, int enchantability

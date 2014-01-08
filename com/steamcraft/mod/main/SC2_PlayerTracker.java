@@ -5,7 +5,7 @@ import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.EnumChatFormatting;
 import cpw.mods.fml.common.IPlayerTracker;
 
-public class SC_PlayerTracker implements IPlayerTracker
+public class SC2_PlayerTracker implements IPlayerTracker
 {
 	@Override
 	public void onPlayerLogin(EntityPlayer player) 

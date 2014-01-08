@@ -3,7 +3,7 @@ package com.steamcraft.mod.block;
 import java.util.List;
 import java.util.Random;
 
-import com.steamcraft.mod.lib.SC_CreativeTabs;
+import com.steamcraft.mod.lib.SC2_CreativeTabs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,7 +28,7 @@ public class BlockBrassLog extends Block
 		this.setHardness(5F);
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setUnlocalizedName("brasslog");
-		this.setCreativeTab(SC_CreativeTabs.tabSCBlocks);
+		this.setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
 	}
 
 	@Override

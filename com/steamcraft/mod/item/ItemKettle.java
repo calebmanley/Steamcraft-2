@@ -1,6 +1,6 @@
 package com.steamcraft.mod.item;
 
-import com.steamcraft.mod.lib.SC_Info;
+import com.steamcraft.mod.lib.SC2_Info;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,7 +24,7 @@ public class ItemKettle extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		this.itemIcon = icon.registerIcon(SC_Info.MOD_ID + ":" + (this.getUnlocalizedName().substring(5)));
+		this.itemIcon = icon.registerIcon(SC2_Info.MOD_ID + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 
 	@Override

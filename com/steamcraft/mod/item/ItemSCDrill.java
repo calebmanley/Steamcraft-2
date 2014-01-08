@@ -1,16 +1,20 @@
 package com.steamcraft.mod.item;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
-import com.steamcraft.mod.block.ModBlocks;
-import com.steamcraft.mod.block.ModOres;
-import com.steamcraft.mod.lib.SC_Material;
+import com.steamcraft.mod.lib.SC2_Material;
 
 public class ItemSCDrill extends ItemSCTool
 {
+	private Random random = new Random();
 	public static final Block[] blocksEffectiveAgainst = new Block[] {Block.cobblestone, 
 		Block.cobblestoneMossy, Block.cobblestoneWall, Block.stone, Block.sandStone, 
 		Block.netherrack, Block.dirt, Block.gravel, Block.grass, Block.sand};
@@ -21,6 +25,20 @@ public class ItemSCDrill extends ItemSCTool
 		super(id, 1.0F, toolMat, blocksEffectiveAgainst);
 		this.toolMaterial = toolMat;
 	}
+	
+	@Override
+	public boolean onBlockDestroyed(ItemStack stack, World world, int i, int j, int k, int l, EntityLivingBase living)
+    {
+		world.spawnParticle("smoke", i + 0.5, j + 0.5, k + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+        return true;
+    }
+	
+	@Override 
+	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
+    {
+		world.playSoundAtEntity(player, "steamcraft:drill", 1.0F, 1.0F);
+        return true;
+    }
 
 	@Override
 	public boolean canHarvestBlock(Block block)
@@ -36,7 +54,7 @@ public class ItemSCDrill extends ItemSCTool
 	@Override
 	public float getStrVsBlock(ItemStack stack, Block block)
 	{
-		if(this.toolMaterial == SC_Material.STEAM_TOOL)
+		if(this.toolMaterial == SC2_Material.STEAM_TOOL)
 		{
 			return (4.0F - (((float) stack.getItemDamage()) * 11 / 320));
 		}

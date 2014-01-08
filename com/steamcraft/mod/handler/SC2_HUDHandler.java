@@ -12,14 +12,14 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import com.steamcraft.mod.item.ModArmors;
-import com.steamcraft.mod.lib.SC_Info;
+import com.steamcraft.mod.lib.SC2_Info;
 
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
-public class SC_HUDHandler implements ITickHandler
+public class SC2_HUDHandler implements ITickHandler
 {
-	private static final ResourceLocation overlay = new ResourceLocation(SC_Info.MOD_ID.toLowerCase(), "/textures/misc/goggles.png");
+	private static final ResourceLocation overlay = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "/textures/misc/goggles.png");
 	
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {}

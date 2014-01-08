@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 import cpw.mods.fml.common.FMLLog;
 
-public class SC_Logger 
+public class SC2_Logger 
 {
 	private static Logger logger = Logger.getLogger("SteamCraft");
 

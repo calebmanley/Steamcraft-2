@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
-import com.steamcraft.mod.lib.SC_Material;
+import com.steamcraft.mod.lib.SC2_Material;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,7 +29,7 @@ public class ItemSCSword extends ItemSCTool
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
 
-		if(this.toolMaterial == SC_Material.STEAM_TOOL)
+		if(this.toolMaterial == SC2_Material.STEAM_TOOL)
 		{
 			this.weaponDamage = 4 - (int) Math.round(this.getMaxDamage() * 10 / 320);
 		} else

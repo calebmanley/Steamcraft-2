@@ -6,12 +6,12 @@ import net.minecraft.client.settings.KeyBinding;
 import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.common.TickType;
 
-public class SC_KeyHandler extends KeyHandler
+public class SC2_KeyHandler extends KeyHandler
 {
 	private EnumSet tickTypes = EnumSet.of(TickType.CLIENT);
 	public static boolean keyPressed = false;
 
-	public SC_KeyHandler(KeyBinding[] keyBindings, boolean[] repeating)
+	public SC2_KeyHandler(KeyBinding[] keyBindings, boolean[] repeating)
 	{
 		super(keyBindings, repeating);
 	}

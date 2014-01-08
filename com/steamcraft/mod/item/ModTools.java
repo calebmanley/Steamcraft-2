@@ -3,8 +3,8 @@ package com.steamcraft.mod.item;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 
-import com.steamcraft.mod.lib.SC_ItemIDs;
-import com.steamcraft.mod.lib.SC_Material;
+import com.steamcraft.mod.lib.SC2_ItemIDs;
+import com.steamcraft.mod.lib.SC2_Material;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -50,37 +50,37 @@ public class ModTools
 
 	public static void initTools()
 	{
-		drillCore = new ItemCoreDrill(SC_ItemIDs.coreDrillID).setUnlocalizedName("coredrill");
-		drillBase = new ItemSC(SC_ItemIDs.drillBaseID).setUnlocalizedName("coredrillbase");
-		drillWood = new ItemSCDrill(SC_ItemIDs.drillWoodID, SC_Material.D_WOOD).setUnlocalizedName("wooddrill");
-		drillStone = new ItemSCDrill(SC_ItemIDs.drillStoneID, SC_Material.D_STONE).setUnlocalizedName("stonedrill");
-		drillIron = new ItemSCDrill(SC_ItemIDs.drillIronID, SC_Material.D_IRON).setUnlocalizedName("irondrill");
-		drillDiamond = new ItemSCDrill(SC_ItemIDs.drillDiamondID, SC_Material.D_EMERALD).setUnlocalizedName("diamonddrill");
-		drillGold = new ItemSCDrill(SC_ItemIDs.drillGoldID, SC_Material.D_GOLD).setUnlocalizedName("golddrill");
-		drillSteam = new ItemSCDrill(SC_ItemIDs.drillSteamID, SC_Material.D_STEAM).setUnlocalizedName("steamdrill");
-		drillEtherium = new ItemSCDrill(SC_ItemIDs.drillEtheriumID, SC_Material.D_ETHERIUM).setUnlocalizedName("etheriumdrill");
-		drillObsidian = new ItemSCDrill(SC_ItemIDs.drillObsidianID, SC_Material.D_OBSIDIAN).setUnlocalizedName("obsidiandrill");
+		drillCore = new ItemCoreDrill(SC2_ItemIDs.coreDrillID).setUnlocalizedName("coredrill");
+		drillBase = new ItemSC(SC2_ItemIDs.drillBaseID).setUnlocalizedName("coredrillbase");
+		drillWood = new ItemSCDrill(SC2_ItemIDs.drillWoodID, SC2_Material.D_WOOD).setUnlocalizedName("wooddrill");
+		drillStone = new ItemSCDrill(SC2_ItemIDs.drillStoneID, SC2_Material.D_STONE).setUnlocalizedName("stonedrill");
+		drillIron = new ItemSCDrill(SC2_ItemIDs.drillIronID, SC2_Material.D_IRON).setUnlocalizedName("irondrill");
+		drillDiamond = new ItemSCDrill(SC2_ItemIDs.drillDiamondID, SC2_Material.D_EMERALD).setUnlocalizedName("diamonddrill");
+		drillGold = new ItemSCDrill(SC2_ItemIDs.drillGoldID, SC2_Material.D_GOLD).setUnlocalizedName("golddrill");
+		drillSteam = new ItemSCDrill(SC2_ItemIDs.drillSteamID, SC2_Material.D_STEAM).setUnlocalizedName("steamdrill");
+		drillEtherium = new ItemSCDrill(SC2_ItemIDs.drillEtheriumID, SC2_Material.D_ETHERIUM).setUnlocalizedName("etheriumdrill");
+		drillObsidian = new ItemSCDrill(SC2_ItemIDs.drillObsidianID, SC2_Material.D_OBSIDIAN).setUnlocalizedName("obsidiandrill");
 		
-		pickaxeSteam = new ItemSCPickaxe(SC_ItemIDs.pickaxeSteamID, SC_Material.INSTANCE.STEAM_TOOL).setUnlocalizedName("steampick");
-		swordSteam = new ItemSCSword(SC_ItemIDs.swordSteamID, SC_Material.STEAM_TOOL).setUnlocalizedName("steamsword");
-		shovelSteam = new ItemSCSpade(SC_ItemIDs.shovelSteamID, SC_Material.STEAM_TOOL).setUnlocalizedName("steamspade");
-		axeSteam = new ItemSCAxe(SC_ItemIDs.axeSteamID, SC_Material.STEAM_TOOL).setUnlocalizedName("steamaxe");
-		hoeSteam = new ItemSCHoe(SC_ItemIDs.hoeSteamID, SC_Material.STEAM_TOOL).setUnlocalizedName("steamhoe");
+		pickaxeSteam = new ItemSCPickaxe(SC2_ItemIDs.pickaxeSteamID, SC2_Material.INSTANCE.STEAM_TOOL).setUnlocalizedName("steampick");
+		swordSteam = new ItemSCSword(SC2_ItemIDs.swordSteamID, SC2_Material.STEAM_TOOL).setUnlocalizedName("steamsword");
+		shovelSteam = new ItemSCSpade(SC2_ItemIDs.shovelSteamID, SC2_Material.STEAM_TOOL).setUnlocalizedName("steamspade");
+		axeSteam = new ItemSCAxe(SC2_ItemIDs.axeSteamID, SC2_Material.STEAM_TOOL).setUnlocalizedName("steamaxe");
+		hoeSteam = new ItemSCHoe(SC2_ItemIDs.hoeSteamID, SC2_Material.STEAM_TOOL).setUnlocalizedName("steamhoe");
 		
-		pickaxeEtherium = new ItemSCPickaxe(SC_ItemIDs.pickaxeEtheriumID, SC_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumpick");
-		swordEtherium = new ItemSCSword(SC_ItemIDs.swordEtheriumID, SC_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumsword");
-		shovelEtherium = new ItemSCSpade(SC_ItemIDs.shovelEtheriumID, SC_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumspade");
-		axeEtherium = new ItemSCAxe(SC_ItemIDs.axeEtheriumID, SC_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumaxe");
-		hoeEtherium = new ItemSCHoe(SC_ItemIDs.hoeEtheriumID, SC_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumhoe");
+		pickaxeEtherium = new ItemSCPickaxe(SC2_ItemIDs.pickaxeEtheriumID, SC2_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumpick");
+		swordEtherium = new ItemSCSword(SC2_ItemIDs.swordEtheriumID, SC2_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumsword");
+		shovelEtherium = new ItemSCSpade(SC2_ItemIDs.shovelEtheriumID, SC2_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumspade");
+		axeEtherium = new ItemSCAxe(SC2_ItemIDs.axeEtheriumID, SC2_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumaxe");
+		hoeEtherium = new ItemSCHoe(SC2_ItemIDs.hoeEtheriumID, SC2_Material.ETHERIUM_TOOL).setUnlocalizedName("etheriumhoe");
 		
-		pickaxeObsidian = new ItemSCPickaxe(SC_ItemIDs.pickaxeObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianpick");
-		swordObsidian = new ItemSCSword(SC_ItemIDs.swordObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidiansword");
-		shovelObsidian = new ItemSCSpade(SC_ItemIDs.shovelObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianspade");
-		axeObsidian = new ItemSCAxe(SC_ItemIDs.axeObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianaxe");
-		hoeObsidian = new ItemSCHoe(SC_ItemIDs.hoeObsidianID, SC_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianhoe");
+		pickaxeObsidian = new ItemSCPickaxe(SC2_ItemIDs.pickaxeObsidianID, SC2_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianpick");
+		swordObsidian = new ItemSCSword(SC2_ItemIDs.swordObsidianID, SC2_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidiansword");
+		shovelObsidian = new ItemSCSpade(SC2_ItemIDs.shovelObsidianID, SC2_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianspade");
+		axeObsidian = new ItemSCAxe(SC2_ItemIDs.axeObsidianID, SC2_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianaxe");
+		hoeObsidian = new ItemSCHoe(SC2_ItemIDs.hoeObsidianID, SC2_Material.OBSIDIAN_TOOL).setUnlocalizedName("obsidianhoe");
 		
-		chisel = new ItemChisel(SC_ItemIDs.chiselID, 64).setUnlocalizedName("chisel"); // TODO: Change from crafting to right-click
-		spanner = new ItemChisel(SC_ItemIDs.spannerID, 3).setUnlocalizedName("spanner");	
+		chisel = new ItemChisel(SC2_ItemIDs.chiselID, 64).setUnlocalizedName("chisel"); // TODO: Change from crafting to right-click
+		spanner = new ItemChisel(SC2_ItemIDs.spannerID, 3).setUnlocalizedName("spanner");	
 		
 		initToolNames();
 	}

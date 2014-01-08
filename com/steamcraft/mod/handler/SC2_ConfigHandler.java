@@ -5,7 +5,7 @@ import java.io.File;
 import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
 
-public final class SC_ConfigHandler 
+public final class SC2_ConfigHandler 
 {
 	private static Configuration config;
 

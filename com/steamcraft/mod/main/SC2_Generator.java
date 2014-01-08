@@ -12,7 +12,7 @@ import com.steamcraft.mod.block.ModOres;
 
 import cpw.mods.fml.common.IWorldGenerator;
 
-public class SC_Generator implements IWorldGenerator
+public class SC2_Generator implements IWorldGenerator
 {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider generator, IChunkProvider chunk) 

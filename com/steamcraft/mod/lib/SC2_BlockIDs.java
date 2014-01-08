@@ -1,6 +1,6 @@
 package com.steamcraft.mod.lib;
 
-public class SC_BlockIDs 
+public class SC2_BlockIDs 
 {
 	/*
 	public static int torchElectricIdleID = 2600;

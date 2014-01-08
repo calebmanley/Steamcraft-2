@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.steamcraft.mod.entity.EntityBullet;
-import com.steamcraft.mod.lib.SC_Info;
+import com.steamcraft.mod.lib.SC2_Info;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,7 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderBullet extends Render
 {
-	private static final ResourceLocation gunTexture = new ResourceLocation(SC_Info.MOD_ID.toLowerCase(), "textures/item/musketball.png");
+	private static final ResourceLocation gunTexture = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/item/musketball.png");
 
     public void renderBullet(EntityBullet bullet, double d1, double d2, double d3, float f, float f1)
     {

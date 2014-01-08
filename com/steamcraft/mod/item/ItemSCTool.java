@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
-import com.steamcraft.mod.lib.SC_Material;
+import com.steamcraft.mod.lib.SC2_Material;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,7 +33,7 @@ public class ItemSCTool extends ItemSC
 		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
 		
-		if(this.toolMaterial == SC_Material.STEAM_TOOL)
+		if(this.toolMaterial == SC2_Material.STEAM_TOOL)
 		{
 			damageVsEntity = damage - (int) Math.round(this.getMaxDamage() * 5 / 320);
 		} else
@@ -56,7 +56,7 @@ public class ItemSCTool extends ItemSC
 		{
 			if(blocksEffectiveAgainst[i] == block)
 			{
-				if(this.toolMaterial == SC_Material.STEAM_TOOL)
+				if(this.toolMaterial == SC2_Material.STEAM_TOOL)
 				{
 					return (efficiencyOnProperMaterial - (((float) stack.getItemDamage()) * 11 / 320));
 				}
@@ -98,7 +98,7 @@ public class ItemSCTool extends ItemSC
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, int i, int j, int k, int l, EntityLivingBase living)
 	{
-		if(toolMaterial == SC_Material.STEAM_TOOL)
+		if(toolMaterial == SC2_Material.STEAM_TOOL)
 		{
 			System.out.println(efficiencyOnProperMaterial - (((float) stack.getItemDamage()) * 11 / 320));
 			int itemDamage = stack.getItemDamage();

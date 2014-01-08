@@ -1,9 +1,9 @@
 [
 {
 "modid": "Steamcraft",
-"name": "Steamcraft",
+"name": "Steamcraft 2",
 "description": "Extends Minecraft by adding many post-apocalyptic, retro-futuristic blocks & items!",
-"version": "1.3",
+"version": "1.0",
 "credits": "Created by Proloe, further development by MrArcane111",
 "logoFile": "/assets/steamcraft/textures/logo/mclogo.png",
 "mcversion": "1.6.4",

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 import com.steamcraft.mod.block.ModBlocks;
 import com.steamcraft.mod.block.ModOres;
-import com.steamcraft.mod.lib.SC_Material;
+import com.steamcraft.mod.lib.SC2_Material;
 
 public class ItemSCPickaxe extends ItemSCTool
 {
@@ -33,7 +33,7 @@ public class ItemSCPickaxe extends ItemSCTool
 	@Override
 	public float getStrVsBlock(ItemStack stack, Block block)
     {
-		if(this.toolMaterial == SC_Material.STEAM_TOOL)
+		if(this.toolMaterial == SC2_Material.STEAM_TOOL)
 		{
 			return (4.0F - (((float) stack.getItemDamage()) * 11 / 320));
 		}

@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
-public class SC_ServerTickHandler implements ITickHandler
+public class SC2_ServerTickHandler implements ITickHandler
 {
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {}

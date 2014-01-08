@@ -3,7 +3,7 @@ package com.steamcraft.mod.block;
 import java.util.Random;
 
 import com.steamcraft.mod.item.ModItems;
-import com.steamcraft.mod.lib.SC_CreativeTabs;
+import com.steamcraft.mod.lib.SC2_CreativeTabs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -16,7 +16,7 @@ public class BlockSCOre extends BlockSC
 	public BlockSCOre(int id)
 	{
 		super(id, Material.rock);
-		this.setCreativeTab(SC_CreativeTabs.tabSCBlocks);
+		this.setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
 		this.setStepSound(Block.soundStoneFootstep);
 	}
 

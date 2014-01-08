@@ -11,7 +11,7 @@ import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 
 import com.steamcraft.mod.item.ModArmors;
 
-public class SC_EventHandler 
+public class SC2_EventHandler 
 {
 	@ForgeSubscribe
 	public void onHarvestDrops(HarvestDropsEvent event)
