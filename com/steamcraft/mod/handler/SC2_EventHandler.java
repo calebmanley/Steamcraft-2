@@ -3,13 +3,13 @@ package com.steamcraft.mod.handler;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 
 import com.steamcraft.mod.item.ModArmors;
+import com.steamcraft.mod.item.ModTools;
 
 public class SC2_EventHandler 
 {
@@ -50,14 +50,31 @@ public class SC2_EventHandler
 
 			if(bootsSlot != null)
 			{
-				if(!player.isInsideOfMaterial(Material.water) && !player.isInWater() && player.onGround && bootsSlot.itemID == ModArmors.rollerSkates.itemID)
+				if(!player.isInWater() && player.onGround && bootsSlot.itemID == ModArmors.rollerSkates.itemID)
 				{	
 					player.moveEntityWithHeading(player.moveStrafing, player.moveForward * 0.8F);
+					player.jumpMovementFactor = 0.03F;
 					player.stepHeight = 0.0F;
 				}
 			} else if(bootsSlot == null || bootsSlot.itemID != ModArmors.rollerSkates.itemID)
 			{
 				player.stepHeight = 0.5F;
+			}
+		}
+	}
+	
+	@ForgeSubscribe
+	public void playerInteractEvent(PlayerInteractEvent event)
+	{
+		EntityPlayer player = event.entityPlayer;
+		
+		ItemStack heldItem = player.inventory.getCurrentItem();
+		
+		if(heldItem.itemID == ModTools.drillSteam.itemID)
+		{
+			if(event.action == event.action.LEFT_CLICK_BLOCK)
+			{
+				player.worldObj.playSoundAtEntity(player, "steamcraft:drill", 1.0F, 1.0F);
 			}
 		}
 	}

@@ -29,14 +29,8 @@ public class ItemSCDrill extends ItemSCTool
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, int i, int j, int k, int l, EntityLivingBase living)
     {
+		//world.playSoundAtEntity((EntityPlayer)living, "steamcraft:drill", 1.0F, 1.0F);
 		world.spawnParticle("smoke", i + 0.5, j + 0.5, k + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
-        return true;
-    }
-	
-	@Override 
-	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
-    {
-		world.playSoundAtEntity(player, "steamcraft:drill", 1.0F, 1.0F);
         return true;
     }
 

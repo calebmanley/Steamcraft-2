@@ -10,6 +10,9 @@ public class SC2_SoundEventHandler
 	@ForgeSubscribe
 	public void onSound(SoundLoadEvent event) 
 	{
-		event.manager.addSound(SC2_Info.MOD_ID.toLowerCase() + ":drill.ogg");
+		event.manager.addSound("steamcraft:drill.ogg");
+		event.manager.addSound("steamcraft:musket.ogg");
+		event.manager.addSound("steamcraft:rifle.ogg");
+		event.manager.addSound("steamcraft:reload.ogg");
 	}
 }
