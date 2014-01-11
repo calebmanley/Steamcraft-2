@@ -1,9 +1,6 @@
 package com.steamcraft.mod.main;
 
-import net.minecraft.block.material.MapColor;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialLogic;
-
+import com.steamcraft.mod.handler.SC2_PacketHandler;
 import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.proxy.SC2_CommonProxy;
 
@@ -17,7 +14,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = SC2_Info.MOD_ID, name = SC2_Info.MOD_NAME, version = SC2_Info.VERSION)
-@NetworkMod(clientSideRequired = true, channels = {SC2_Info.NETWORK_CHANNEL})//, packetHandler = PacketManager.class)
+@NetworkMod(clientSideRequired = true)//, serverSideRequired = false, channels = {SC2_Info.NETWORK_CHANNEL}, packetHandler = SC2_PacketHandler.class)
 public class SC2
 {
 	@Instance(SC2_Info.MOD_ID)
@@ -47,5 +44,6 @@ public class SC2
 	}
 }
 
-// TODO: Fix placement orientation for furnaces/brass log, add names to items, add IDs to config handler, fix chisel crafting, add mouse-over info to items,
-// fix tea plant, change ore generation, change tool material aspects, add drill functionality
+// TODO: Fix placement orientation for furnaces/brass log, add IDs to config handler, add mouse-over info to items,
+// change ore generation, change tool material aspects, add extra drill functionality, fix nuke furnace texture bug,
+// 

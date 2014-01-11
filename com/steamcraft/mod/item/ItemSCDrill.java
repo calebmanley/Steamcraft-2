@@ -29,7 +29,7 @@ public class ItemSCDrill extends ItemSCTool
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, int i, int j, int k, int l, EntityLivingBase living)
     {
-		//world.playSoundAtEntity((EntityPlayer)living, "steamcraft:drill", 1.0F, 1.0F);
+		world.playSoundAtEntity((EntityPlayer)living, "steamcraft:drill", 1.0F, 1.0F);
 		world.spawnParticle("smoke", i + 0.5, j + 0.5, k + 0.5, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
         return true;
     }

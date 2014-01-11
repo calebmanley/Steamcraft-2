@@ -29,8 +29,9 @@ public class ModGuns
 		smoothBarrel = new ItemSC(SC2_ItemIDs.smoothBarrelID).setUnlocalizedName("smoothbarrel");
 		rifledBarrel = new ItemSC(SC2_ItemIDs.rifledBarrelID).setUnlocalizedName("rifledbarrel");
 		woodenStock = new ItemSC(SC2_ItemIDs.woodenStockID).setUnlocalizedName("woodenstock");
-		flintlockMusket = new ItemFirearm(SC2_ItemIDs.flintlockMusketID, 100, musketRound, musketRound, 8, false).setUnlocalizedName("flintlockmusket");
-		matchlockMusket = new ItemFirearm(SC2_ItemIDs.matchlockMusketID, 200, musketRound, musketRound, 6, false).setUnlocalizedName("matchlockmusket");
+		// ID, damage, ammo, ammo ID, delay, gun-shot sound, reload sound, is rifled
+		flintlockMusket = new ItemGun(SC2_ItemIDs.flintlockMusketID, 5, 1, musketRound.itemID, 5, "steamcraft:musket", "steamcraft:reload", false).setUnlocalizedName("flintlockmusket");
+		matchlockMusket = new ItemGun(SC2_ItemIDs.matchlockMusketID, 6, 1, musketRound.itemID, 6, "steamcraft:musket", "steamcraft:reload", false).setUnlocalizedName("matchlockmusket");
 		percussionCapMusket = new ItemFirearm(SC2_ItemIDs.percussionCapMusketID, 50, percussionRound, musketRound, 10, false).setUnlocalizedName("percussionmusket");
 		flintlockRifle = new ItemFirearm(SC2_ItemIDs.flintlockRifleID, 120, musketRound, musketRound, 10, true).setUnlocalizedName("flintlockrifle");
 		matchlockRifle = new ItemFirearm(SC2_ItemIDs.matchlockRifleID, 240, musketRound, musketRound, 8, true).setUnlocalizedName("matchlockrifle");
@@ -41,17 +42,17 @@ public class ModGuns
 	
 	public static void initGunNames()
 	{
-		LanguageRegistry.addName(smoothBarrel, "");
-		LanguageRegistry.addName(rifledBarrel, "");
-		LanguageRegistry.addName(woodenStock, "");
-		LanguageRegistry.addName(percussionLock, "");
-		LanguageRegistry.addName(flintlockMusket, "");
-		LanguageRegistry.addName(matchlockMusket, "");
-		LanguageRegistry.addName(percussionCapMusket, "");
-		LanguageRegistry.addName(flintlockRifle, "");
-		LanguageRegistry.addName(matchlockRifle, "");
-		LanguageRegistry.addName(percussionCapRifle, "");
-		LanguageRegistry.addName(musketRound, "");
-		LanguageRegistry.addName(percussionRound, "");
+		LanguageRegistry.addName(smoothBarrel, "Smooth Barrel");
+		LanguageRegistry.addName(rifledBarrel, "Rifled Barrel");
+		LanguageRegistry.addName(woodenStock, "Wooden Stock");
+		LanguageRegistry.addName(percussionLock, "Percussion Lock");
+		LanguageRegistry.addName(flintlockMusket, "Flintlock Musket");
+		LanguageRegistry.addName(matchlockMusket, "Matchlock Musket");
+		LanguageRegistry.addName(percussionCapMusket, "Percussion-Cap Musket");
+		LanguageRegistry.addName(flintlockRifle, "Flintlock Rifle");
+		LanguageRegistry.addName(matchlockRifle, "Matchlock Rifle");
+		LanguageRegistry.addName(percussionCapRifle, "Percussion-Cap Rifle");
+		LanguageRegistry.addName(musketRound, "Musket Round");
+		LanguageRegistry.addName(percussionRound, "Percussion-Cap Round");
 	}
 }

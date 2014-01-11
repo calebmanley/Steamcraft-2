@@ -17,7 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderBullet extends Render
 {
-	private static final ResourceLocation gunTexture = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/item/musketball.png");
+	private static final ResourceLocation gunTexture = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/projectiles/musketball.png");
 
     public void renderBullet(EntityBullet bullet, double d1, double d2, double d3, float f, float f1)
     {

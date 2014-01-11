@@ -1,28 +1,26 @@
 package com.steamcraft.mod.handler;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 
 import com.steamcraft.mod.item.ModArmors;
-import com.steamcraft.mod.item.ModTools;
+import com.steamcraft.mod.item.ModItems;
 
 public class SC2_EventHandler 
 {
 	@ForgeSubscribe
 	public void onHarvestDrops(HarvestDropsEvent event)
 	{
-		/*
 		if(event.block.blockID == Block.tallGrass.blockID)
 		{
 			event.drops.add(new ItemStack(ModItems.teaSeed, 1));
 			event.dropChance = 0.16F; // Should be 16% chance for tea seeds to drop
 		}
-		 */
 	}
 
 	@ForgeSubscribe
@@ -59,22 +57,6 @@ public class SC2_EventHandler
 			} else if(bootsSlot == null || bootsSlot.itemID != ModArmors.rollerSkates.itemID)
 			{
 				player.stepHeight = 0.5F;
-			}
-		}
-	}
-	
-	@ForgeSubscribe
-	public void playerInteractEvent(PlayerInteractEvent event)
-	{
-		EntityPlayer player = event.entityPlayer;
-		
-		ItemStack heldItem = player.inventory.getCurrentItem();
-		
-		if(heldItem.itemID == ModTools.drillSteam.itemID)
-		{
-			if(event.action == event.action.LEFT_CLICK_BLOCK)
-			{
-				player.worldObj.playSoundAtEntity(player, "steamcraft:drill", 1.0F, 1.0F);
 			}
 		}
 	}

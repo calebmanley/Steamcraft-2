@@ -38,7 +38,7 @@ public class ModBlocks
 	public static Block lampOff;
 	public static Block brassWood;
 	public static Block brassLeaves;
-	//public static Block teaPlant;
+	public static Block teaPlant;
 	
 	public static void initBlocks() // TODO: Check for SideOnly notations in ALL blocks, rewrite Tea, 
 	{
@@ -63,7 +63,7 @@ public class ModBlocks
 		lampOff = new BlockLamp(SC2_BlockIDs.lampOffID, false).setUnlocalizedName("lampblockoff");
 		brassWood = new BlockBrassLog(SC2_BlockIDs.woodBrassID);
 		brassLeaves = new BlockSC(SC2_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
-		//teaPlant = new BlockTeaPlant(SC_BlockIDs.teaPlantID);
+		teaPlant = new BlockTeaPlant(SC2_BlockIDs.teaPlantID);
 
 		ModMachines.initMachines();
 		ModOres.initOres();
@@ -93,7 +93,7 @@ public class ModBlocks
 		GameRegistry.registerBlock(decorStone, "decorstone");
 		GameRegistry.registerBlock(blockUranium, "blockuranium");
 		GameRegistry.registerBlock(decorUranium, "decoruranium");
-		//GameRegistry.registerBlock(teaPlant, "teaplant");
+		GameRegistry.registerBlock(teaPlant, "teaplant");
 	}
 	
 	public static void addNames()
@@ -117,6 +117,6 @@ public class ModBlocks
 		LanguageRegistry.addName(decorStone, "Carved Stone");
 		LanguageRegistry.addName(blockUranium, "Uranium Block");
 		LanguageRegistry.addName(decorUranium, "Carved Uranium");
-		//LanguageRegistry.addName(teaPlant, "Tea Plant");
+		LanguageRegistry.addName(teaPlant, "Tea Plant");
 	}
 }

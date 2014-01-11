@@ -1,7 +1,9 @@
 package com.steamcraft.mod.item;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
+import com.steamcraft.mod.block.ModBlocks;
 import com.steamcraft.mod.lib.SC2_ItemIDs;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -40,7 +42,7 @@ public class ModItems
 		uraniumOre = new ItemSC(SC2_ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");
 		uraniumPellet = new ItemSC(SC2_ItemIDs.uraniumID).setUnlocalizedName("uraniumpellet");
 		reactorCore = new ItemSC(SC2_ItemIDs.reactorCoreID).setUnlocalizedName("reactorcore");
-		//teaSeed = new ItemSeeds(SC_ItemIDs.teaSeedID, ModBlocks.teaPlant.blockID, 0).setUnlocalizedName("teaseed"); 
+		teaSeed = new ItemTeaSeeds(SC2_ItemIDs.teaSeedID, ModBlocks.teaPlant.blockID, Block.tilledField.blockID).setUnlocalizedName("teaseed"); 
 		teaLeaves = new ItemSC(SC2_ItemIDs.teaLeavesID).setUnlocalizedName("tealeaves");
 		//coldKettle = new ItemKettle(SC_ItemIDs.coldKettleID, 300).setUnlocalizedName("kettle");
 		//hotKettle = new ItemKettle(SC_ItemIDs.hotKettleID, 300).setUnlocalizedName("kettle");
@@ -67,6 +69,7 @@ public class ModItems
 		LanguageRegistry.addName(uraniumOre, "Uranium");
 		LanguageRegistry.addName(uraniumPellet, "Uranium Pellets");
 		LanguageRegistry.addName(reactorCore, "Reactor Core");
+		LanguageRegistry.addName(teaSeed, "Tea Seeds");
 		LanguageRegistry.addName(teaLeaves, "Tea Leaves");
 	}
 }

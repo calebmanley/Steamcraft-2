@@ -1,16 +1,22 @@
 package com.steamcraft.mod.block;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 
 import com.steamcraft.mod.item.ModItems;
+import com.steamcraft.mod.lib.SC2_Info;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,176 +24,203 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockTeaPlant extends BlockFlower
 {
 	@SideOnly(Side.CLIENT)
-	private Icon[] iconArray;
+    private Icon[] iconArray;
 
-	protected BlockTeaPlant(int id)
-	{
-		super(id);
-		float f = 0.5F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
-		this.setHardness(0.0F);
-		this.disableStats();
-		this.setStepSound(soundGrassFootstep);
-		this.setUnlocalizedName("tea");
-	}
+    protected BlockTeaPlant(int id)
+    {
+        super(id);
+        this.setTickRandomly(true);
+        float f = 0.5F;
+        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+        this.setCreativeTab((CreativeTabs) null);
+        this.setHardness(0.0F);
+        this.setStepSound(soundGrassFootstep);
+        this.disableStats();
+        this.setUnlocalizedName("tea");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int i, int j)
-	{
-		if(j < 0 || j > 7)
-		{
-			j = 7;
-		}
+    @Override
+    protected boolean canThisPlantGrowOnThisBlockID(int id)
+    {
+        return id == Block.tilledField.blockID;
+    }
 
-		return this.iconArray[j];
-	}
+    @Override
+    public void updateTick(World world, int i, int j, int k, Random random)
+    {
+        super.updateTick(world, i, j, k, random);
 
-	@Override
-	protected boolean canThisPlantGrowOnThisBlockID(int bid)
-	{
-		return bid == Block.tilledField.blockID;
-	}
+        if(world.getBlockLightValue(i, j + 1, k) >= 9)
+        {
+            int l = world.getBlockMetadata(i, j, k);
 
-	@Override
-	public void updateTick(World world, int i, int j, int k, Random random)
-	{
-		super.updateTick(world, i, j, k, random);
+            if(l < 1)
+            {
+                float f = this.getGrowthRate(world, i, j, k);
 
-		if(world.getBlockLightValue(i, j + 1, k) >= 9)
-		{
-			int meta = world.getBlockMetadata(i, j, k);
+                if(random.nextInt((int)(25.0F / f) + 1) == 0)
+                {
+                    ++l;
+                    world.setBlockMetadataWithNotify(i, j, k, l, 2);
+                }
+            }
+        }
+    }
 
-			if(meta < 2)
-			{
-				float rate = getGrowthRate(world, i, j, k);
+    /**
+     * Apply bonemeal to the crops.
+     */
+    public void fertilize(World world, int i, int j, int k)
+    {
+        int l = world.getBlockMetadata(i, j, k) + MathHelper.getRandomIntegerInRange(world.rand, 2, 5);
 
-				if(random.nextInt((int)(100F / rate)) == 0)
-				{
-					meta++;
-					world.setBlockMetadataWithNotify(i, j, k, this.blockID, meta);
-				}
-			}
-		}
-	}
+        if(l > 1)
+        {
+            l = 1;
+        }
 
-	public void fertilize(World world, int i, int j, int k)
-	{
-		world.setBlockMetadataWithNotify(i, j, k, this.blockID, 7);
-	}
+        world.setBlockMetadataWithNotify(i, j, k, l, 2);
+    }
 
-	private float getGrowthRate(World world, int i, int j, int k) // I never bother to clean up these variables...
-	{
-		float f = 1.0F;
-		int l = world.getBlockId(i, j, k - 1);
-		int i1 = world.getBlockId(i, j, k + 1);
-		int j1 = world.getBlockId(i - 1, j, k);
-		int k1 = world.getBlockId(i + 1, j, k);
-		int l1 = world.getBlockId(i - 1, j, k - 1);
-		int i2 = world.getBlockId(i + 1, j, k - 1);
-		int j2 = world.getBlockId(i + 1, j, k + 1);
-		int k2 = world.getBlockId(i - 1, j, k + 1);
-		boolean flag = j1 == blockID || k1 == blockID;
-		boolean flag1 = l == blockID || i1 == blockID;
-		boolean flag2 = l1 == blockID || i2 == blockID || j2 == blockID || k2 == blockID;
+    /**
+     * Gets the growth rate for the crop. Setup to encourage rows by halving growth rate if there is diagonals, crops on
+     * different sides that aren't opposing, and by adding growth for every crop next to this one (and for crop below
+     * this one). Args: x, y, z
+     */
+    private float getGrowthRate(World world, int i, int j, int k)
+    {
+        float f = 1.0F;
+        int l = world.getBlockId(i, j, k - 1);
+        int i1 = world.getBlockId(i, j, k + 1);
+        int j1 = world.getBlockId(i - 1, j, k);
+        int k1 = world.getBlockId(i + 1, j, k);
+        int l1 = world.getBlockId(i - 1, j, k - 1);
+        int i2 = world.getBlockId(i + 1, j, k - 1);
+        int j2 = world.getBlockId(i + 1, j, k + 1);
+        int k2 = world.getBlockId(i - 1, j, k + 1);
+        boolean flag = j1 == this.blockID || k1 == this.blockID;
+        boolean flag1 = l == this.blockID || i1 == this.blockID;
+        boolean flag2 = l1 == this.blockID || i2 == this.blockID || j2 == this.blockID || k2 == this.blockID;
 
-		for(int l2 = i - 1; l2 <= i + 1; l2++)
-		{
-			for(int i3 = k - 1; i3 <= k + 1; i3++)
-			{
-				int j3 = world.getBlockId(l2, j - 1, i3);
-				float f1 = 0.0F;
+        for(int l2 = i - 1; l2 <= i + 1; ++l2)
+        {
+            for(int i3 = k - 1; i3 <= k + 1; ++i3)
+            {
+                int j3 = world.getBlockId(l2, j - 1, i3);
+                float f1 = 0.0F;
 
-				if(j3 == Block.tilledField.blockID)
-				{
-					f1 = 1.0F;
+                if(blocksList[j3] != null && blocksList[j3].canSustainPlant(world, l2, j - 1, i3, ForgeDirection.UP, this))
+                {
+                    f1 = 1.0F;
 
-					if(world.getBlockMetadata(l2, j - 1, i3) > 0)
-					{
-						f1 = 3F;
-					}
-				}
-				if(l2 != i || i3 != k)
-				{
-					f1 /= 4F;
-				}
+                    if(blocksList[j3].isFertile(world, l2, j - 1, i3))
+                    {
+                        f1 = 3.0F;
+                    }
+                }
+                if(l2 != i || i3 != k)
+                {
+                    f1 /= 4.0F;
+                }
 
-				f += f1;
-			}
+                f += f1;
+            }
+        }
+        if(flag2 || flag && flag1)
+        {
+            f /= 2.0F;
+        }
 
-		}
-		if(flag2 || flag && flag1)
-		{
-			f /= 2.0F;
-		}
+        return f;
+    }
 
-		return f;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int i, int j)
+    {
+        if(j < 0 || j > 1)
+        {
+            j = 1;
+        }
 
-	@Override
-	public int getRenderType()
-	{
-		return 6;
-	}
+        return this.iconArray[j];
+    }
 
-	@Override
-	public void dropBlockAsItemWithChance(World world, int i, int j, int k, int l, float f, int m)
-	{
-		super.dropBlockAsItemWithChance(world, i, j, k, l, f, m);
+    @Override
+    public int getRenderType()
+    {
+        return 6;
+    }
 
-		if(world.isRemote)
-		{
-			return;
-		}
-		for(int num = 0; num < 3; num++)
-		{
-			if(world.rand.nextInt(15) <= l)
-			{
-				float f1 = 0.7F;
-				float f2 = world.rand.nextFloat() * f1 + (1.0F - f1) * 0.5F;
-				float f3 = world.rand.nextFloat() * f1 + (1.0F - f1) * 0.5F;
-				float f4 = world.rand.nextFloat() * f1 + (1.0F - f1) * 0.5F;
-				EntityItem item = new EntityItem(world, (float)i + f2, (float)j + f3, (float)k + f4, new ItemStack(ModItems.teaSeed));
-				item.delayBeforeCanPickup = 10;
-				world.spawnEntityInWorld(item);
-			}
-		}
-	}
+    /**
+     * Generate a seed ItemStack for this crop.
+     */
+    protected int getSeedItem()
+    {
+        return ModItems.teaSeed.itemID;
+    }
 
-	@Override
-	public int idDropped(int i, Random random, int j)
-	{
-		if(i == 7)
-		{
-			return ModItems.teaLeaves.itemID;
-		} else
-		{
-			return 0;
-		}
-	}
+    /**
+     * Generate a crop produce ItemStack for this crop.
+     */
+    protected int getCropItem()
+    {
+        return ModItems.teaLeaves.itemID;
+    }
 
-	@Override
-	public int quantityDropped(Random random)
-	{
-		return 1;
-	}
+    @Override
+    public void dropBlockAsItemWithChance(World world, int i, int j, int k, int l, float f, int m)
+    {
+        super.dropBlockAsItemWithChance(world, i, j, k, l, f, 0);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int i, int j, int k)
-	{
-		return ModItems.teaSeed.itemID;
-	}
+    @Override 
+    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
+    {
+        ArrayList<ItemStack> ret = super.getBlockDropped(world, x, y, z, metadata, fortune);
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister icon)
-	{
-		this.iconArray = new Icon[3];
+        if(metadata >= 1)
+        {
+            for(int n = 0; n < 3 + fortune; n++)
+            {
+                if(world.rand.nextInt(3) <= metadata)
+                {
+                    ret.add(new ItemStack(this.getSeedItem(), 1, 0));
+                }
+            }
+        }
 
-		for(int i = 0; i < this.iconArray.length; ++i)
-		{
-			this.iconArray[i] = icon.registerIcon(this.getUnlocalizedName() + "_stage_" + i);
-		}
-	}
+        return ret;
+    }
+
+    @Override
+    public int idDropped(int i, Random random, int j)
+    {
+        return i == 1 ? this.getCropItem() : this.getSeedItem();
+    }
+
+    @Override
+    public int quantityDropped(Random par1Random)
+    {
+        return 1;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int idPicked(World par1World, int par2, int par3, int par4)
+    {
+        return this.getSeedItem();
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister icon)
+    {
+        this.iconArray = new Icon[2];
+
+        for(int i = 0; i < this.iconArray.length; ++i)
+        {
+            this.iconArray[i] = icon.registerIcon(SC2_Info.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName().substring(5) + "_stage_" + i);
+        }
+    }
 }

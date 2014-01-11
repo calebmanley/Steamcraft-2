@@ -48,20 +48,12 @@ public class SC2_CommonProxy
 		GameRegistry.registerPlayerTracker(new SC2_PlayerTracker());
 		TickRegistry.registerTickHandler(new SC2_ServerTickHandler(), Side.SERVER);
 		SC2_ChestGenHandler.addItemsToChests();
-		this.initBulletEntity();	
 		//this.registerKeyBinds();
 	}
 
 	public void postInit(FMLPostInitializationEvent event) 
 	{
 		//ModRecipes.initRecipes();
-	}
-	
-	public void initBulletEntity()
-	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
-		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", SC2_EntityIDs.BULLET_ID, SC2.instance, 100, 10, false);
 	}
 	
 	public void registerKeyBinds()

@@ -1,25 +1,32 @@
 package com.steamcraft.mod.block;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import com.steamcraft.mod.gui.GuiSteamFurnace;
 import com.steamcraft.mod.lib.SC2_GuiIDs;
+import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.main.SC2;
+import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
 import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -144,8 +151,8 @@ public class BlockSteamFurnace extends BlockContainer
 		}
 		if(furnace.getWater() > 0)
 		{
-			world.spawnParticle("smoke", f, f1+1, f2, 0.0D, 0.1D, 0.0D);
-			world.spawnParticle("smoke", f, f1+1, f2, 0.0D, 0.1D, 0.0D);
+			world.spawnParticle("smoke", f, f1 + 1, f2, 0.0D, 0.1D, 0.0D);
+			world.spawnParticle("smoke", f, f1 + 1, f2, 0.0D, 0.1D, 0.0D);
 		}
 	}
 
@@ -161,15 +168,57 @@ public class BlockSteamFurnace extends BlockContainer
 		{
 			return true;
 		}
-
-		TileEntitySteamFurnace furnace = (TileEntitySteamFurnace)world.getBlockTileEntity(i, j, k);
-
+		
+		TileEntitySteamFurnace furnace = (TileEntitySteamFurnace) world.getBlockTileEntity(i, j, k);
+		
 		if(furnace != null)
 		{
 			player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_SteamOven, world, i, j, k);
 		}
-
+		
 		return true;
+		
+		/*
+		TileEntitySteamFurnace furnace = (TileEntitySteamFurnace)world.getBlockTileEntity(i, j, k);
+		
+		if(world.isRemote && furnace != null)
+		{
+			Random random = new Random();
+			int randomInt1 = random.nextInt();
+			int randomInt2 = random.nextInt();
+			ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
+			DataOutputStream outputStream = new DataOutputStream(bos);
+
+			try {
+				outputStream.writeInt(randomInt1);
+				outputStream.writeInt(randomInt2);
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			}
+
+			Packet250CustomPayload packet = new Packet250CustomPayload();
+			packet.channel = SC2_Info.NETWORK_CHANNEL;
+			packet.data = bos.toByteArray();
+			packet.length = bos.size();
+			Side side = FMLCommonHandler.instance().getEffectiveSide();
+
+			if(side == Side.SERVER) 
+			{
+				EntityPlayerMP player = (EntityPlayerMP) playerEntity;
+				player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_SteamOven, world, i, j, k);
+				return true;
+			} else if(side == Side.CLIENT) 
+			{
+				EntityClientPlayerMP player = (EntityClientPlayerMP) playerEntity;
+				player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_SteamOven, world, i, j, k);
+				player.sendQueue.addToSendQueue(packet);
+				return true;
+			} else 
+			{
+				// We are on the Bukkit server
+				return false;
+			}
+		}*/
 	}
 
 	public static void updateFurnaceBlockState(boolean flag, World world, int i, int j, int k)

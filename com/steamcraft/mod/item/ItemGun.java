@@ -1,10 +1,15 @@
 package com.steamcraft.mod.item;
 
+import java.util.Random;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.steamcraft.mod.entity.EntityBullet;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemGun extends ItemSC
 {
@@ -15,33 +20,45 @@ public class ItemGun extends ItemSC
 	private int ammo; 
 	private int fireTick; 
 	private int fireMax; 
+	private boolean isRifled;
 	private String soundGunshot; 
 	private String soundReload; 
+	private Random random = new Random();
 
-	public ItemGun(int id, int damage, int ammo, int clipid, int firedelay, String firesound, String reloadsound)
+	public ItemGun(int id, int damage, int ammo, int ammoID, int delay, String soundGunshot, String soundReload, boolean rifled)
 	{ 
 		super(id); 
 		this.damage = damage;
-		this.fireMax = firedelay; 
+		this.fireMax = delay; 
 		this.fireTick = fireMax;
 		this.reloadMax = 5; 
 		this.reloadTick = 0;
 		this.ammo = ammo;
-		this.ammoID = clipid;
-		this.soundGunshot = firesound; 
-		this.soundReload = reloadsound; 
+		this.ammoID = ammoID;
+		this.soundGunshot = soundGunshot; 
+		this.soundReload = soundReload; 
+		this.isRifled = rifled;
 		this.setMaxStackSize(1);
 		this.setMaxDamage(ammo + 1);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean isFull3D()
+	{
+		return true;
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(!world.isRemote && stack.getItemDamage() < ammo)
+		EntityBullet bullet = new EntityBullet(world, player, damage, 1);
+		
+		if(!world.isRemote && stack.getItemDamage() < ammo && !player.isInWater())
 		{
 			if(fireTick == fireMax && fireMax != 0)
 			{
-				//par2World.spawnEntityInWorld(new EntityBullet(par2World, par3EntityPlayer, damage, 1));
+				world.spawnEntityInWorld(bullet);
 				world.playSoundAtEntity(player, soundGunshot, 1F, 1F);
 				stack.damageItem(1, player);
 				fireTick = 0;
@@ -53,7 +70,7 @@ public class ItemGun extends ItemSC
 			if(fireMax == 0)
 			{
 
-				//par2World.spawnEntityInWorld(new EntityBullet(par2World, par3EntityPlayer, damage, 1));
+				world.spawnEntityInWorld(bullet);
 				world.playSoundAtEntity(player, soundGunshot, 1F, 1F);
 				stack.damageItem(1, player);
 			}
