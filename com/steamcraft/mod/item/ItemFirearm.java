@@ -27,6 +27,7 @@ public class ItemFirearm extends ItemSC
 		isWeaponRifled = rifled;
 		weaponPower = power;
 		maxStackSize = 1;
+		// shit!
 	}
 	
 	@Override
