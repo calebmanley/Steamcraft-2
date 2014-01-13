@@ -26,13 +26,6 @@ public class BlockUranium extends BlockSC
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k)
-	{
-		float f = 0.1F;
-		return AxisAlignedBB.getBoundingBox((float)i + f, j, (float)k + f, (float)(i + 1) - f, (float)(j + 1) - f, (float)(k + 1) - f);
-	}
-
-	@Override
 	public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
 	{
 		entity.attackEntityFrom(DamageSource.magic, 1);

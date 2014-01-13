@@ -1,16 +1,6 @@
 package com.steamcraft.mod.item;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-
-import com.steamcraft.mod.entity.EntityBullet;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
+/*
 public class ItemFirearm extends ItemSC
 {
 	private Item Ammunition;
@@ -80,3 +70,4 @@ public class ItemFirearm extends ItemSC
 		return isWeaponRifled;
 	}
 }
+*/

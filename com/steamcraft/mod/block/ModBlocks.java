@@ -39,6 +39,8 @@ public class ModBlocks
 	public static Block brassWood;
 	public static Block brassLeaves;
 	public static Block teaPlant;
+	public static Block castIronLampIdle;
+	public static Block castIronLampActive;
 	
 	public static void initBlocks() // TODO: Check for SideOnly notations in ALL blocks, rewrite Tea, 
 	{
@@ -57,13 +59,15 @@ public class ModBlocks
 		decorStone = new BlockSC(SC2_BlockIDs.decorStoneID, Material.rock).setHardness(2F).setResistance(10F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("carvedstone");
 		decorUranium = new BlockUranium(SC2_BlockIDs.decorUraniumID).setHardness(10F).setResistance(6F).setLightValue(0.625F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engruranium");
 		
-		gateCastIron = new BlockFenceGate(SC2_BlockIDs.gateCastIronID).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock").setTextureName("steamcraft:castironblock");
-		railingCastIron = new BlockFence(SC2_BlockIDs.railingCastIronID, "steamcraft:castironblock", Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep);//.setUnlocalizedName("castironblock");
+		gateCastIron = new BlockCastIronGate(SC2_BlockIDs.gateCastIronID, Material.iron);
+		railingCastIron = new BlockFence(SC2_BlockIDs.railingCastIronID, "steamcraft:castironblock", Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setCreativeTab(SC2_CreativeTabs.tabSCBlocks);//.setUnlocalizedName("castironblock");
 		lampOn = new BlockLamp(SC2_BlockIDs.lampOnID, true).setUnlocalizedName("lampblockon").setCreativeTab(null);
 		lampOff = new BlockLamp(SC2_BlockIDs.lampOffID, false).setUnlocalizedName("lampblockoff");
 		brassWood = new BlockBrassLog(SC2_BlockIDs.woodBrassID);
 		brassLeaves = new BlockSC(SC2_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
 		teaPlant = new BlockTeaPlant(SC2_BlockIDs.teaPlantID);
+		castIronLampIdle = new BlockCastIronLamp(SC2_BlockIDs.castIronLampIdleID, com.steamcraft.mod.tileentity.TileEntityLamp.class, false);
+		castIronLampActive = new BlockCastIronLamp(SC2_BlockIDs.castIronLampActiveID, com.steamcraft.mod.tileentity.TileEntityLamp.class, true);
 
 		ModMachines.initMachines();
 		ModOres.initOres();
@@ -72,8 +76,7 @@ public class ModBlocks
 	}
 	
 	public static void registerBlocks()
-	{
-		
+	{	
 		GameRegistry.registerBlock(blockCastIron, "blockcastiron");
 		GameRegistry.registerBlock(blockVolucite, "blockvolucite");
 		GameRegistry.registerBlock(blockBrass, "blockbrass");
@@ -94,6 +97,8 @@ public class ModBlocks
 		GameRegistry.registerBlock(blockUranium, "blockuranium");
 		GameRegistry.registerBlock(decorUranium, "decoruranium");
 		GameRegistry.registerBlock(teaPlant, "teaplant");
+		GameRegistry.registerBlock(castIronLampIdle, "castironlampidle");
+		GameRegistry.registerBlock(castIronLampActive, "castironlampactive");
 	}
 	
 	public static void addNames()

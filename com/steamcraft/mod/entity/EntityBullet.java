@@ -72,7 +72,7 @@ public class EntityBullet extends Entity implements IProjectile
         double d0 = living2.posX - living1.posX;
         double d1 = living2.boundingBox.minY + (double)(living2.height / 3.0F) - this.posY;
         double d2 = living2.posZ - living1.posZ;
-        double d3 = (double)MathHelper.sqrt_double(d0 * d0 + d2 * d2);
+        double d3 = (double) MathHelper.sqrt_double(d0 * d0 + d2 * d2);
 
         if(d3 >= 1.0E-7D)
         {
@@ -142,14 +142,13 @@ public class EntityBullet extends Entity implements IProjectile
 		timeTillDeath = 0;
 	}
 	
-	/*
 	@Override
 	@SideOnly(Side.CLIENT)
-    public void setPositionAndRotation2(double par1, double par3, double par5, float par7, float par8, int par9)
+    public void setPositionAndRotation2(double d1, double d2, double d3, float f1, float f2, int i)
     {
-        this.setPosition(par1, par3, par5);
-        this.setRotation(par7, par8);
-    }*/
+        this.setPosition(d1, d2, d3);
+        this.setRotation(f1, f2);
+    }
 	
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -265,8 +264,7 @@ public class EntityBullet extends Entity implements IProjectile
 			{
 				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this), damage))
 				{
-					// TODO: Change this sound!
-					//worldObj.playSoundAtEntity(this, "BulletHit", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
+					worldObj.playSoundAtEntity(this, "steamcraft:hitflesh", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
 					this.setDead();
 				} else
 				{
@@ -286,8 +284,7 @@ public class EntityBullet extends Entity implements IProjectile
 				if(inTile == Block.glass.blockID || inTile == Block.glowStone.blockID || inTile == Block.leaves.blockID)
 				{
 					Block block = Block.blocksList[inTile];
-					// TODO: Glass break sound needed!
-					//ModLoader.getMinecraftInstance().sndManager.playSound(block.stepSound.stepSoundDir(), (float)xTile + 0.5F, (float)yTile + 0.5F, (float)zTile + 0.5F, (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
+					worldObj.playSoundEffect((double)xTile + 0.5D, (double)yTile + 0.5D, (double)zTile + 0.5D, block.stepSound.getBreakSound(), 1.0F, 1.0F);
 					worldObj.setBlockToAir(xTile, yTile, zTile);
 				} else
 				{
@@ -298,8 +295,7 @@ public class EntityBullet extends Entity implements IProjectile
 					posX -= (motionX / (double)f1) * 0.05000000074505806D;
 					posY -= (motionY / (double)f1) * 0.05000000074505806D;
 					posZ -= (motionZ / (double)f1) * 0.05000000074505806D;
-					// TODO: This sound needs changing!
-					//worldObj.playSoundAtEntity(this, "random.bowhit", 1.0F, 1.2F / (rand.nextFloat() * 0.2F + 0.9F));
+					worldObj.playSoundAtEntity(this, "steamcraft:hitblock", 1.0F, 1.0F);
 					this.setDead();
 				}
 			}
@@ -321,7 +317,7 @@ public class EntityBullet extends Entity implements IProjectile
 		
 		if(handleWaterMovement())
 		{
-			this.setDead(); // Bullets can't go through water!
+			this.setDead(); // Bullets can't go through water, silly!
 			
 			/*
 			for(int k = 0; k < 4; k++)

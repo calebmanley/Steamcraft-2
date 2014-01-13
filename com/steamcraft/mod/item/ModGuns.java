@@ -20,22 +20,24 @@ public class ModGuns
 	public static Item percussionCapRifle;
 	public static Item musketRound;
 	public static Item percussionRound;
+	public static Item rifleRound;
 
 	public static void initGuns()
 	{
 		musketRound = new ItemSC(SC2_ItemIDs.musketRoundID).setUnlocalizedName("musketcartridge");
+		rifleRound = new ItemSC(SC2_ItemIDs.rifleRoundID).setUnlocalizedName("rifleround");
 		percussionRound = new ItemSC(SC2_ItemIDs.percussionRoundID).setUnlocalizedName("percussioncap");
 		percussionLock = new ItemSC(SC2_ItemIDs.percussionLockID).setUnlocalizedName("percussionlock");
 		smoothBarrel = new ItemSC(SC2_ItemIDs.smoothBarrelID).setUnlocalizedName("smoothbarrel");
 		rifledBarrel = new ItemSC(SC2_ItemIDs.rifledBarrelID).setUnlocalizedName("rifledbarrel");
 		woodenStock = new ItemSC(SC2_ItemIDs.woodenStockID).setUnlocalizedName("woodenstock");
-		// ID, damage, ammo, ammo ID, delay, gun-shot sound, reload sound, is rifled
-		flintlockMusket = new ItemGun(SC2_ItemIDs.flintlockMusketID, 5, 10, musketRound.itemID, 0, "steamcraft:musket", "steamcraft:reload", false).setUnlocalizedName("flintlockmusket");
-		matchlockMusket = new ItemGun(SC2_ItemIDs.matchlockMusketID, 6, 10, musketRound.itemID, 0, "steamcraft:musket", "steamcraft:reload", false).setUnlocalizedName("matchlockmusket");
-		percussionCapMusket = new ItemGun(SC2_ItemIDs.percussionCapMusketID, 50, 15, percussionRound.itemID, 0, "steamcraft:musket", "steamcraft:reload", false).setUnlocalizedName("percussionmusket");
-		flintlockRifle = new ItemGun(SC2_ItemIDs.flintlockRifleID, 120, 10, musketRound.itemID, 10, "steamcraft:rifle", "steamcraft:reload", true).setUnlocalizedName("flintlockrifle");
-		matchlockRifle = new ItemFirearm(SC2_ItemIDs.matchlockRifleID, 240, musketRound, musketRound, 8, true).setUnlocalizedName("matchlockrifle");
-		percussionCapRifle = new ItemFirearm(SC2_ItemIDs.percussionCapRifleID, 60, percussionRound, musketRound, 12, true).setUnlocalizedName("percussionrifle");
+		// int id, int damage, int reloadDelay, int ammoID, String soundGunshot, String soundReload, boolean rifled
+		flintlockMusket = new ItemGun(SC2_ItemIDs.flintlockMusketID, 6, 10, musketRound.itemID, "steamcraft:musket", "steamcraft:reload", false).setUnlocalizedName("flintlockmusket");
+		matchlockMusket = new ItemGun(SC2_ItemIDs.matchlockMusketID, 7, 10, musketRound.itemID, "steamcraft:musket", "steamcraft:reload", false).setUnlocalizedName("matchlockmusket");
+		percussionCapMusket = new ItemGun(SC2_ItemIDs.percussionCapMusketID, 8, 10, percussionRound.itemID, "steamcraft:musket", "steamcraft:reload", false).setUnlocalizedName("percussionmusket");
+		flintlockRifle = new ItemGun(SC2_ItemIDs.flintlockRifleID, 9, 2, rifleRound.itemID, "steamcraft:rifle", "steamcraft:reload", true).setUnlocalizedName("flintlockrifle");
+		matchlockRifle = new ItemGun(SC2_ItemIDs.matchlockRifleID, 10, 10, rifleRound.itemID, "steamcraft:rifle", "steamcraft:reload", true).setUnlocalizedName("matchlockrifle");
+		percussionCapRifle = new ItemGun(SC2_ItemIDs.percussionCapRifleID, 11, 10, percussionRound.itemID, "steamcraft:rifle", "steamcraft:rifle", true).setUnlocalizedName("percussionrifle");
 		
 		initGunNames();
 	}
@@ -53,6 +55,7 @@ public class ModGuns
 		LanguageRegistry.addName(matchlockRifle, "Matchlock Rifle");
 		LanguageRegistry.addName(percussionCapRifle, "Percussion-Cap Rifle");
 		LanguageRegistry.addName(musketRound, "Musket Round");
-		LanguageRegistry.addName(percussionRound, "Percussion-Cap Round");
+		LanguageRegistry.addName(percussionRound, "Percussion Cap");
+		LanguageRegistry.addName(rifleRound, "Rifle Round");
 	}
 }

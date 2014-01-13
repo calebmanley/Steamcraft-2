@@ -34,15 +34,16 @@ public class SC2_BlockIDs
 	public static int decorVoluciteID = 2620;
 	public static int decorLapisID = 2621;
 	public static int decorStoneID = 2622;
-	public static int decorQuartzID = 2623;
-	public static int decorUraniumID = 2624;
-	public static int railingCastIronID = 2625;
-	public static int gateCastIronID = 2626;
-	public static int lampOnID = 2627;
-	public static int lampOffID = 2628;
-	public static int woodBrassID = 2629;
-	public static int leavesLampID = 2630;
-	public static int ironLampIdleID = 2631;
-	public static int ironLampActiveID = 2632;
-	public static int teaPlantID = 2633;
+	public static int decorUraniumID = 2623;
+	public static int railingCastIronID = 2624;
+	public static int gateCastIronID = 2625;
+	public static int lampOnID = 2626;
+	public static int lampOffID = 2627;
+	public static int woodBrassID = 2628;
+	public static int leavesLampID = 2629;
+	public static int ironLampIdleID = 2630;
+	public static int ironLampActiveID = 2631;
+	public static int teaPlantID = 2632;
+	public static int castIronLampIdleID = 2633;
+	public static int castIronLampActiveID = 2634;
 }

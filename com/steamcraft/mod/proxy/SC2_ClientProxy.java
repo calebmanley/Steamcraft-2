@@ -8,7 +8,10 @@ import com.steamcraft.mod.handler.SC2_SoundEventHandler;
 import com.steamcraft.mod.lib.SC2_EntityIDs;
 import com.steamcraft.mod.main.SC2;
 import com.steamcraft.mod.render.RenderBullet;
+import com.steamcraft.mod.tileentity.TileEntityLamp;
+import com.steamcraft.mod.tileentity.TileEntityLampRenderer;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -32,7 +35,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		// MinecraftForge.EVENT_BUS.register(new SC_GuiOpenEventHandler());
 		TickRegistry.registerTickHandler(new SC2_HUDHandler(), Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new SC2_SoundEventHandler());
-		//this.initBulletEntity();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLamp.class, new TileEntityLampRenderer());
 	}
 
 	public void initBulletEntity()

@@ -14,5 +14,8 @@ public class SC2_SoundEventHandler
 		event.manager.addSound("steamcraft:musket.ogg");
 		event.manager.addSound("steamcraft:rifle.ogg");
 		event.manager.addSound("steamcraft:reload.ogg");
+		event.manager.addSound("steamcraft:armor.ogg");
+		event.manager.addSound("steamcraft:hitflesh.ogg");
+		event.manager.addSound("steamcraft:hitblock.ogg");
 	}
 }
