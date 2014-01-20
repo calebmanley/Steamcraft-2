@@ -1,8 +1,9 @@
 package com.steamcraft.mod.tileentity;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -16,8 +17,8 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 {
 	private ModelLampUp lampModelUp;
 	private ModelLampSide lampModelSide;
-	private final ResourceLocation lampTextureOn = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "/textures/models/lampon.png");
-	private final ResourceLocation lampTextureOff = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "/textures/models/lampoff.png");
+	private static final ResourceLocation lampTextureOn = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/models/lampon.png");
+	private static final ResourceLocation lampTextureOff = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/models/lampoff.png");
 
 	public TileEntityLampRenderer()
 	{
@@ -28,9 +29,19 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float f) 
 	{
+		this.lampModelUp.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.lampModelSide.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		TileEntityLamp lamp = (TileEntityLamp) tile;
-		
 		Block block = lamp.getBlockType();
+		
+		if(block == Block.torchRedstoneActive)
+		{
+			this.bindTexture(lampTextureOn);
+		} else if(block == Block.torchRedstoneIdle)
+		{
+			this.bindTexture(lampTextureOff);
+		}
+		
 		GL11.glPushMatrix();
 		float f1 = 0.6666667F;
 		int meta = lamp.getBlockMetadata();
@@ -72,13 +83,6 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 			lampModelSide.CrossbarLeft.showModel = false;
 			lampModelSide.CrossbarRight.showModel = false;
 		} 
-		if(block == Block.torchRedstoneActive)
-		{
-			Minecraft.getMinecraft().renderEngine.bindTexture(this.lampTextureOn);
-		} else if(block == Block.torchRedstoneIdle)
-		{
-			Minecraft.getMinecraft().renderEngine.bindTexture(this.lampTextureOff);
-		}
 		
 		GL11.glPushMatrix();
 		GL11.glScalef(f1, -f1, -f1);
@@ -102,4 +106,15 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glPopMatrix();
 	}
+	
+	@Override
+	protected void bindTexture(ResourceLocation resource)
+    {
+        TextureManager texturemanager = this.tileEntityRenderer.renderEngine;
+
+        if(texturemanager != null)
+        {
+            texturemanager.bindTexture(resource);
+        }
+    }
 }

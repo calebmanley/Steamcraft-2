@@ -46,4 +46,4 @@ public class SC2
 
 // TODO: Fix placement orientation for furnaces/brass log, add IDs to config handler, add mouse-over info to items,
 // change ore generation, change tool material aspects, add extra drill functionality, fix nuke furnace texture bug,
-// 
+// there is so much more to this mod that I would like to add...

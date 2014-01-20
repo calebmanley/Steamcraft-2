@@ -28,14 +28,6 @@ public class ItemSCSword extends ItemSCTool
 		this.toolMaterial = toolMat;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
-
-		if(this.toolMaterial == SC2_Material.STEAM_TOOL)
-		{
-			this.weaponDamage = 4 - (int) Math.round(this.getMaxDamage() * 10 / 320);
-		} else
-		{
-			this.weaponDamage = 4 + toolMat.getDamageVsEntity() * 2;
-		}
 	}
 
 	@Override
@@ -110,9 +102,9 @@ public class ItemSCSword extends ItemSCTool
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2)
 	{
-		return this.toolMaterial.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return this.toolMaterial.getToolCraftingMaterial() == stack2.itemID ? true : super.getIsRepairable(stack1, stack2);
 	}
 
 	@Override

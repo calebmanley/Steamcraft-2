@@ -7,10 +7,15 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import com.steamcraft.mod.tileentity.TileEntityLamp;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -37,6 +42,20 @@ public class BlockCastIronLamp extends BlockContainer
 		{
 			this.setLightValue(1.0F);
 		}
+	}
+
+	/*
+	@Override
+	public void registerIcons(IconRegister icon)
+	{
+		this.blockIcon = icon.registerIcon("steamcraft:iron_spikes");
+	}
+	*/
+
+	@Override
+	public boolean shouldSideBeRendered(IBlockAccess iBlockAccess, int i, int j, int k, int l)
+	{
+		return false;
 	}
 
 	@Override
@@ -79,11 +98,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World world)
 	{
-		try {
-			return (TileEntity)EntityClass.newInstance();
-		} catch(Exception e) {
-			throw new RuntimeException(e);
-		}
+		return new TileEntityLamp();
 	}
 
 	@Override
