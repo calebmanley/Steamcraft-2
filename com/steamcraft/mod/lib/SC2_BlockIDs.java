@@ -46,4 +46,5 @@ public class SC2_BlockIDs
 	public static int teaPlantID = 2632;
 	public static int castIronLampIdleID = 2633;
 	public static int castIronLampActiveID = 2634;
+	public static int copperWireID = 2635;
 }

@@ -71,6 +71,7 @@ public class ModBlocks
 
 		ModMachines.initMachines();
 		ModOres.initOres();
+		ModPowerBlocks.initPowerBlocks();
 		registerBlocks();
 		addNames();
 	}
