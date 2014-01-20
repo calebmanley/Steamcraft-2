@@ -1,8 +1,5 @@
 package com.steamcraft.mod.item;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -14,26 +11,27 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemGun extends ItemSC
 {
-	private int damage; // Damage in half hearts
-	public static boolean timerComplete = true;
-	private int ammoID; 
-	private boolean isRifled;
-	private String soundGunshot; 
-	private String soundReload; 
-	private int delay;
-	Timer timer = new Timer();
+	private int damage; // damage in half-hearts
+	private int reloadTick; 
+	private int reloadMax; 
+	private int ammoID;
+	private int fireTick; 
+	private int fireMax; 
+	private String fireSound; 
+	private String reloadSound;
 
-	public ItemGun(int id, int damage, int delay, int ammoID, String soundGunshot, String soundReload, boolean rifled)
+	public ItemGun(int id, int damage, int delay, int ammoID, String fireSound, String reloadSound)
 	{ 
 		super(id); 
 		this.damage = damage;
-		this.ammoID = ammoID;
-		this.soundGunshot = soundGunshot; 
-		this.soundReload = soundReload; 
-		this.isRifled = rifled;
-		this.delay = delay;
-		this.setMaxStackSize(1);
-		this.setMaxDamage(300);
+		this.fireMax = delay;
+		this.fireTick = fireMax; 
+		this.reloadMax = 5; 
+		this.reloadTick = 0; 
+		this.ammoID = ammoID; 
+		this.fireSound = fireSound; 
+		this.reloadSound = reloadSound; 
+		this.setMaxStackSize(1);  
 	}
 
 	@Override
@@ -43,52 +41,54 @@ public class ItemGun extends ItemSC
 		return true;
 	}
 
-	private boolean hasAmmo(EntityPlayer player)
-	{
-		if(player.inventory.hasItem(ammoID))
-		{
-			return true;
-		} else
-		{
-			return false;
-		}
-	}
-
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		EntityBullet bullet = new EntityBullet(world, player, damage, 1);
-
-		if(!world.isRemote && !player.isInWater() && this.hasAmmo(player) == true)
+		if(player.inventory.hasItem(this.ammoID))
 		{
-			if(this.timerComplete == true)
+			player.inventory.consumeInventoryItem(this.ammoID);
+
+			if(this.fireTick == this.fireMax && this.fireMax != 0)
 			{
-				world.spawnEntityInWorld(bullet);
-				world.playSoundAtEntity(player, soundGunshot, 1.0F, 1.0F);
-				stack.damageItem(1, player);
-				this.timerComplete = false;
-			} 
-			if(this.timerComplete = false)
+				if(!world.isRemote)
+				{
+					world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 1));
+				}
+
+				world.playSoundAtEntity(player, this.fireSound, 1.0F, 1.0F);
+				this.fireTick = 0;
+			} else
 			{
-				world.playSoundAtEntity(player, soundReload, 1.0F, 1.0F);
-				player.inventory.consumeInventoryItem(ammoID);
-				this.initiateTimer(this.delay);
+				++this.fireTick;
 			}
+			if(this.fireMax == 0)
+			{
+				if(!world.isRemote)
+				{
+					world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 1));
+				}
+
+				world.playSoundAtEntity(player, this.fireSound, 1.0F, 1.0F);
+			}
+			/*
+			if(this.reloadTick == this.reloadMax)
+			{
+				this.reloadTick = 0;
+				world.playSoundAtEntity(player, this.reloadSound, 1.0F, 1.0F);
+				player.inventory.consumeInventoryItem(this.ammoID);
+			} else
+			{
+				++this.reloadTick;
+			}
+			 */
 		} 
 
 		return stack;
 	}
 
-	public void initiateTimer(int delay) // The delay in seconds
+	@Override
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int itemInUseCount)
 	{
-		timer.schedule(new TimerTask() 
-		{		
-			@Override
-			public void run()
-			{
-				ItemGun.timerComplete = true;
-				this.cancel();
-			}
-		}, delay * 1000);
+		this.fireTick = this.fireMax;
 	}
 }

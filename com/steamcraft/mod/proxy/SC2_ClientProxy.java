@@ -6,9 +6,9 @@ import com.steamcraft.mod.entity.EntityBullet;
 import com.steamcraft.mod.handler.SC2_HUDHandler;
 import com.steamcraft.mod.handler.SC2_SoundEventHandler;
 import com.steamcraft.mod.lib.SC2_EntityIDs;
+import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.main.SC2;
 import com.steamcraft.mod.render.RenderBullet;
-import com.steamcraft.mod.tileentity.TileEntityLamp;
 import com.steamcraft.mod.tileentity.TileEntityLampRenderer;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -16,6 +16,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
@@ -35,7 +36,9 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		// MinecraftForge.EVENT_BUS.register(new SC_GuiOpenEventHandler());
 		TickRegistry.registerTickHandler(new SC2_HUDHandler(), Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new SC2_SoundEventHandler());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLamp.class, new TileEntityLampRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(com.steamcraft.mod.tileentity.TileEntityLamp.class, new TileEntityLampRenderer());
+		GameRegistry.registerTileEntity(com.steamcraft.mod.tileentity.TileEntityLamp.class, SC2_Info.MOD_ID + "TELamp");
+		//MinecraftForgeClient.registerItemRenderer(ModTools.drillSteam.itemID, new SC2_ItemRenderer());
 	}
 
 	public void initBulletEntity()

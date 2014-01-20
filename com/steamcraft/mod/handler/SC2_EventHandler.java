@@ -3,8 +3,10 @@ package com.steamcraft.mod.handler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 
@@ -13,6 +15,8 @@ import com.steamcraft.mod.item.ModItems;
 
 public class SC2_EventHandler 
 {
+	public static EntityArrow arrow;
+	
 	@ForgeSubscribe
 	public void onHarvestDrops(HarvestDropsEvent event)
 	{
@@ -58,6 +62,16 @@ public class SC2_EventHandler
 			{
 				player.stepHeight = 0.5F;
 			}
+		}
+	}
+	
+	@ForgeSubscribe
+	public void arrowUpdate(EntityEvent event)
+	{
+		if(event.entity instanceof EntityArrow)
+		{
+			EntityArrow arrow = (EntityArrow) event.entity; 
+			this.arrow = arrow;
 		}
 	}
 }
