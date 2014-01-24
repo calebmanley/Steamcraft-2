@@ -50,12 +50,12 @@ public class SC2_CommonProxy
 	{
 		//ModRecipes.initRecipes();
 	}
-	
+
 	public void registerKeyBinds()
 	{
 		KeyBinding[] key = { new KeyBinding("FKey", Keyboard.KEY_F) };
-        boolean[] repeat = { false };
-        KeyBindingRegistry.registerKeyBinding(new SC2_KeyHandler(key, repeat));
+		boolean[] repeat = { false };
+		KeyBindingRegistry.registerKeyBinding(new SC2_KeyHandler(key, repeat));
 	}
 
 	public boolean isClient() 
