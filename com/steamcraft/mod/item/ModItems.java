@@ -29,6 +29,7 @@ public class ModItems
 	public static Item fullTeacup;
 	public static Item emptyKettle;
 	public static Item copperWire;
+	public static Item brassWatch;
 	
 	public static void initItems()
 	{
@@ -51,6 +52,7 @@ public class ModItems
 		//fullTeacup = new ItemTeacup(SC_ItemIDs.fullTeacupID, 4, 0.6F, false).setUnlocalizedName("teacupfull");
 		//emptyTeacup = new ItemTeacup(SC_ItemIDs.emptyTeacupID, 0, 0.0F, false).setUnlocalizedName("teacupempty");
 		copperWire = new ItemCopperWire(SC2_ItemIDs.copperWireID).setUnlocalizedName("copperwire");
+		brassWatch = new ItemBrassWatch(SC2_ItemIDs.brassWatchID);
 		
 		initNames();
 		ModTools.initTools();

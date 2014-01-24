@@ -3,12 +3,14 @@ package com.steamcraft.mod.proxy;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.steamcraft.mod.entity.EntityBullet;
+import com.steamcraft.mod.entity.EntityLaser;
 import com.steamcraft.mod.handler.SC2_HUDHandler;
 import com.steamcraft.mod.handler.SC2_SoundEventHandler;
 import com.steamcraft.mod.lib.SC2_EntityIDs;
 import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.main.SC2;
 import com.steamcraft.mod.render.RenderBullet;
+import com.steamcraft.mod.render.RenderLaser;
 import com.steamcraft.mod.tileentity.TileEntityLampRenderer;
 import com.steamcraft.mod.tileentity.TileEntityLightningRodRenderer;
 
@@ -27,7 +29,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		super.preInit(event);
-		this.initBulletEntity();
+		this.initWeaponEntities();
 	}
 	
 	@Override
@@ -42,11 +44,16 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		this.initTileEntities();
 	}
 
-	public void initBulletEntity()
+	public void initWeaponEntities()
 	{
+		// Bullet
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
 		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", SC2_EntityIDs.BULLET_ID, SC2.instance, 100, 10, false);
+		// Laser
+		RenderingRegistry.registerEntityRenderingHandler(EntityLaser.class, new RenderLaser());
+		EntityRegistry.registerGlobalEntityID(EntityLaser.class, "Laser", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityLaser.class, "Laser", SC2_EntityIDs.LASER_ID, SC2.instance, 100, 10, false);
 	}
 	
 	public void initTileEntities()

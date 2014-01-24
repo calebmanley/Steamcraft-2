@@ -62,5 +62,6 @@ public class ModGuns
 		LanguageRegistry.addName(musketRound, "Musket Round");
 		LanguageRegistry.addName(percussionRound, "Percussion Cap");
 		LanguageRegistry.addName(rifleRound, "Rifle Round");
+		LanguageRegistry.addName(rayGun, "Ray Gun");
 	}
 }
