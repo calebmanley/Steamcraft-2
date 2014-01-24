@@ -128,5 +128,7 @@ public class ModBlocks
 		LanguageRegistry.addName(decorUranium, "Carved Uranium");
 		LanguageRegistry.addName(teaPlant, "Tea Plant");
 		LanguageRegistry.addName(blockSlateTile, "Obsidian Slate Tiles");
+		LanguageRegistry.addName(castIronLampIdle, "Cast Iron Lamp");
+		LanguageRegistry.addName(castIronLampActive, "Cast Iron Lamp (Off)");
 	}
 }

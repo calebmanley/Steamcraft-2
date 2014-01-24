@@ -49,4 +49,5 @@ public class SC2_BlockIDs
 	public static int copperWireID = 2635;
 	public static int blockSlateTileID = 2636;
 	public static int stairsSlateTileID = 2637;
+	public static int lightningRodID = 2638;
 }
