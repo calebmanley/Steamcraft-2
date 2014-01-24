@@ -17,5 +17,6 @@ public class SC2_SoundEventHandler
 		event.manager.addSound("steamcraft:armor.ogg");
 		event.manager.addSound("steamcraft:hitflesh.ogg");
 		event.manager.addSound("steamcraft:hitblock.ogg");
+		event.manager.addSound("steamcraft:raygun.ogg");
 	}
 }

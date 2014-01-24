@@ -2,6 +2,7 @@ package com.steamcraft.mod.item;
 
 import net.minecraft.item.Item;
 
+import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.lib.SC2_ItemIDs;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -21,6 +22,7 @@ public class ModGuns
 	public static Item musketRound;
 	public static Item percussionRound;
 	public static Item rifleRound;
+	public static Item rayGun;
 
 	public static void initGuns()
 	{
@@ -38,6 +40,9 @@ public class ModGuns
 		flintlockRifle = new ItemGun(SC2_ItemIDs.flintlockRifleID, 9, 3, rifleRound.itemID, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("flintlockrifle");
 		matchlockRifle = new ItemGun(SC2_ItemIDs.matchlockRifleID, 10, 2, rifleRound.itemID, "steamcraft:rifle", "steamcraft:reload").setUnlocalizedName("matchlockrifle");
 		percussionCapRifle = new ItemGun(SC2_ItemIDs.percussionCapRifleID, 11, 1, percussionRound.itemID, "steamcraft:rifle", "steamcraft:rifle").setUnlocalizedName("percussionrifle");
+		
+		// Highly experimental!!
+		rayGun = new ItemRayGun(SC2_ItemIDs.rayGunID, SC2_Info.MOD_ID.toLowerCase() + ":raygun");
 		
 		initGunNames();
 	}

@@ -74,4 +74,5 @@ public class SC2_ItemIDs
 	public static int bootsEtheriumID = 1370;
 	public static int rifleRoundID = 1371;
 	public static int copperWireID = 1372;
+	public static int rayGunID = 1373;
 }
