@@ -14,6 +14,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.tileentity.TileEntityLamp;
 
 import cpw.mods.fml.relauncher.Side;
@@ -21,19 +22,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCastIronLamp extends BlockContainer
 {
-	private boolean powered;
-	private Class EntityClass;
+	public static boolean powered;
 	private static List torchUpdates = new ArrayList();
+	public static Block instance;
 
-	protected BlockCastIronLamp(int i, Class class1, boolean flag)
+	protected BlockCastIronLamp(int i, boolean flag)
 	{
 		super(i, Material.circuits);
-		this.EntityClass = class1;
 		this.powered = flag;
 		this.setTickRandomly(true);
 		float f = 0.25F;
-		float f1 = 1.0F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
+		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
 		this.setHardness(0.0F);
 		this.disableStats();
 		this.setCreativeTab((CreativeTabs) null);
@@ -43,14 +42,13 @@ public class BlockCastIronLamp extends BlockContainer
 			this.setLightValue(1.0F);
 		}
 	}
-
-	/*
+	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
 	{
-		this.blockIcon = icon.registerIcon("steamcraft:iron_spikes");
+		this.blockIcon = icon.registerIcon(SC2_Info.MOD_ID.toLowerCase() + ":" + "ironlamp");
 	}
-	*/
 
 	@Override
 	public boolean shouldSideBeRendered(IBlockAccess iBlockAccess, int i, int j, int k, int l)
@@ -346,7 +344,7 @@ public class BlockCastIronLamp extends BlockContainer
 	@Override
 	public int idDropped(int i, Random random, int j)
 	{
-		return 0; // TODO: mod_Steamcraft.wirelessLamp.shiftedIndex;
+		return ModBlocks.castIronLampIdle.blockID;
 	}
 
 	@Override

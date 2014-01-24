@@ -1,15 +1,19 @@
 package com.steamcraft.mod.tileentity;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
+import com.steamcraft.mod.block.BlockCastIronLamp;
+import com.steamcraft.mod.block.ModBlocks;
 import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.model.ModelLampSide;
 import com.steamcraft.mod.model.ModelLampUp;
@@ -18,8 +22,8 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 {
 	private ModelLampUp lampModelUp;
 	private ModelLampSide lampModelSide;
-	private static final ResourceLocation lampTextureOn = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/models/lampon.png");
-	private static final ResourceLocation lampTextureOff = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/models/lampoff.png");
+	//private static final ResourceLocation lampTextureOn = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/models/lampon.png");
+	//private static final ResourceLocation lampTextureOff = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/models/lampoff.png");
 
 	public TileEntityLampRenderer()
 	{
@@ -27,25 +31,21 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 		this.lampModelSide = new ModelLampSide();
 	}
 
+	private void adjustRotatePivotViaMeta(World world, int x, int y, int z) 
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+		GL11.glPushMatrix();
+		GL11.glRotatef(meta * (-90), 0.0F, 0.0F, 1.0F);
+		GL11.glPopMatrix();
+	}
+
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float f) 
 	{
-		this.lampModelUp.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		this.lampModelSide.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		TileEntityLamp lamp = (TileEntityLamp) tile;
-		Block block = lamp.getBlockType();
-		
-		if(block == Block.torchRedstoneActive)
-		{
-			this.bindTexture(lampTextureOn);
-		} else if(block == Block.torchRedstoneIdle)
-		{
-			this.bindTexture(lampTextureOff);
-		}
-		
+		Block block = tile.getBlockType();
 		GL11.glPushMatrix();
 		float f1 = 0.6666667F;
-		int meta = lamp.getBlockMetadata();
+		int meta = tile.getBlockMetadata();
 		float f3 = 0.0F;
 		float f2 = 1.0F;
 		
@@ -83,7 +83,26 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 			lampModelUp.CrossbarRight.showModel = false;
 			lampModelSide.CrossbarLeft.showModel = false;
 			lampModelSide.CrossbarRight.showModel = false;
-		} 
+		} else if(block == Block.torchWood)
+		{
+			lampModelUp.BracketWide.showModel = true;
+			lampModelUp.CrossbarLeft.showModel = true;
+			lampModelUp.CrossbarRight.showModel = true;
+			lampModelSide.CrossbarLeft.showModel = true;
+			lampModelSide.CrossbarRight.showModel = true;
+		}
+		
+		// Renders the textures based on torch state
+		 ResourceLocation lampOn = (new ResourceLocation(SC2_Info.MOD_ID.toLowerCase() + ":textures/models/lampon.png")); 
+		 ResourceLocation lampOff = (new ResourceLocation(SC2_Info.MOD_ID.toLowerCase() + ":textures/models/lampoff.png")); 
+		
+		if(BlockCastIronLamp.powered == true)
+		{
+			Minecraft.getMinecraft().renderEngine.bindTexture(lampOn);		
+		} else
+		{
+			Minecraft.getMinecraft().renderEngine.bindTexture(lampOff);		
+		}
 		
 		GL11.glPushMatrix();
 		GL11.glScalef(f1, -f1, -f1);
@@ -102,12 +121,23 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 		GL11.glScalef(f4, -f4, f4);
 		GL11.glNormal3f(0.0F, 0.0F, -1F * f4);
 		GL11.glDepthMask(false);
-		int j = 0;
 		GL11.glDepthMask(true);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glPopMatrix();
 	}
-	
+
+	private void adjustLightFixture(World world, int i, int j, int k, Block block) 
+	{
+		Tessellator tess = Tessellator.instance;
+		float brightness = block.getBlockBrightness(world, i, j, k);
+		int skyLight = world.getLightBrightnessForSkyBlocks(i, j, k, 0);
+		int modulousModifier = skyLight % 65536;
+		int divModifier = skyLight / 65536;
+		tess.setColorOpaque_F(brightness, brightness, brightness);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit,  (float) modulousModifier,  divModifier);
+	}
+
+	/*
 	@Override
 	protected void bindTexture(ResourceLocation resource)
     {
@@ -117,5 +147,5 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
         {
             texturemanager.bindTexture(TextureMap.locationBlocksTexture);
         }
-    }
+    }*/
 }

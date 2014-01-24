@@ -68,8 +68,8 @@ public class ModBlocks
 		brassWood = new BlockBrassLog(SC2_BlockIDs.woodBrassID);
 		brassLeaves = new BlockSC(SC2_BlockIDs.leavesLampID, Material.wood).setHardness(2F).setLightOpacity(1).setLightValue(0.9375F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brassleaves");
 		teaPlant = new BlockTeaPlant(SC2_BlockIDs.teaPlantID);
-		castIronLampIdle = new BlockCastIronLamp(SC2_BlockIDs.castIronLampIdleID, com.steamcraft.mod.tileentity.TileEntityLamp.class, false).setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
-		castIronLampActive = new BlockCastIronLamp(SC2_BlockIDs.castIronLampActiveID, com.steamcraft.mod.tileentity.TileEntityLamp.class, true);
+		castIronLampIdle = new BlockCastIronLamp(SC2_BlockIDs.castIronLampIdleID, false).setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
+		castIronLampActive = new BlockCastIronLamp(SC2_BlockIDs.castIronLampActiveID, true);
 
 		ModMachines.initMachines();
 		ModOres.initOres();

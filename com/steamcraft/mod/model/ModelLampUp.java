@@ -2,6 +2,9 @@ package com.steamcraft.mod.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+
+import com.steamcraft.mod.tileentity.TileEntityLamp;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -16,7 +19,7 @@ public class ModelLampUp extends ModelBase
 	public ModelRenderer Top;
 	public ModelRenderer TopPeak;
 	public ModelRenderer UpperLamp;
-	
+
 	public ModelLampUp()
 	{
 		Bracket = new ModelRenderer(this, 24, 3);
