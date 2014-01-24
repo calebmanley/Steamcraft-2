@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCastIronLamp extends BlockContainer
 {
-	public static boolean powered;
+	public boolean powered;
 	private static List torchUpdates = new ArrayList();
 	public static Block instance;
 
@@ -42,7 +42,7 @@ public class BlockCastIronLamp extends BlockContainer
 			this.setLightValue(1.0F);
 		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
@@ -100,7 +100,7 @@ public class BlockCastIronLamp extends BlockContainer
 	}
 
 	@Override
-	public int onBlockPlaced(World world, int i, int j, int k, int l, float f1, float f2, float f3, int m)
+	public int onBlockPlaced(World world, int i, int j, int k, int l, float hitX, float hitY, float hitZ, int meta)
 	{
 		if(l == 0 && canPlaceBottom(world, i, j + 1 , k))
 		{
@@ -127,7 +127,7 @@ public class BlockCastIronLamp extends BlockContainer
 			world.setBlockMetadataWithNotify(i, j, k, 1, 2);
 		}
 
-		return m;
+		return meta;
 	}
 
 	@Override
@@ -360,30 +360,31 @@ public class BlockCastIronLamp extends BlockContainer
 		if(!powered)
 		{
 			return;
-		}
-
-		int l = world.getBlockMetadata(i, j, k);
-		double d = (double)((float)i + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-		double d1 = (double)((float)j + 1.0F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-		double d2 = (double)((float)k + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
-		double d3 = 0.2199999988079071D;
-		double d4 = 0.27000001072883606D;
-
-		if(l == 1)
-		{
-			world.spawnParticle("reddust", d - d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
-		} else if(l == 2)
-		{
-			world.spawnParticle("reddust", d + d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
-		} else if(l == 3)
-		{
-			world.spawnParticle("reddust", d, d1 + d3, d2 - d4, -1.0D, 0.7D, 1.0D);
-		} else if(l == 4)
-		{
-			world.spawnParticle("reddust", d, d1 + d3, d2 + d4, -1.0D, 0.7D, 1.0D);
 		} else
 		{
-			world.spawnParticle("reddust", d, d1, d2, -1.0D, 0.7D, 1.0D);
+			int l = world.getBlockMetadata(i, j, k);
+			double d = (double)((float)i + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d1 = (double)((float)j + 1.0F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d2 = (double)((float)k + 0.5F) + (double)(random.nextFloat() - 0.5F) * 0.20000000000000001D;
+			double d3 = 0.2199999988079071D;
+			double d4 = 0.27000001072883606D;
+
+			if(l == 1)
+			{
+				world.spawnParticle("reddust", d - d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
+			} else if(l == 2)
+			{
+				world.spawnParticle("reddust", d + d4, d1 + d3, d2, -1.0D, 0.7D, 1.0D);
+			} else if(l == 3)
+			{
+				world.spawnParticle("reddust", d, d1 + d3, d2 - d4, -1.0D, 0.7D, 1.0D);
+			} else if(l == 4)
+			{
+				world.spawnParticle("reddust", d, d1 + d3, d2 + d4, -1.0D, 0.7D, 1.0D);
+			} else
+			{
+				world.spawnParticle("reddust", d, d1, d2, -1.0D, 0.7D, 1.0D);
+			}
 		}
 	}
 }

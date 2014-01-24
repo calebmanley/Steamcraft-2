@@ -22,9 +22,7 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 {
 	private ModelLampUp lampModelUp;
 	private ModelLampSide lampModelSide;
-	//private static final ResourceLocation lampTextureOn = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/models/lampon.png");
-	//private static final ResourceLocation lampTextureOff = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/models/lampoff.png");
-
+	
 	public TileEntityLampRenderer()
 	{
 		this.lampModelUp = new ModelLampUp();
@@ -40,7 +38,7 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 		int meta = tile.getBlockMetadata();
 		float f3 = 0.0F;
 		float f2 = 1.0F;
-		
+
 		if(meta == 2)
 		{
 			f3 = 180F;
@@ -57,17 +55,17 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 		{
 			f2 = 180F;
 		}
-		
+
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 0.75F * f1, (float)z + 0.5F);
 		GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
-		
+
 		if(meta == 6)
 		{
 			GL11.glRotatef(f2, 0.0F, 0.0F, 1.0F);
 		}
-		
+
 		GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
-		
+
 		if(block == Block.torchRedstoneActive || block == Block.torchRedstoneIdle)
 		{
 			lampModelUp.BracketWide.showModel = false;
@@ -83,22 +81,22 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 			lampModelSide.CrossbarLeft.showModel = true;
 			lampModelSide.CrossbarRight.showModel = true;
 		}
-		
+
 		// Renders the textures based on torch state
-		 ResourceLocation lampOn = (new ResourceLocation(SC2_Info.MOD_ID.toLowerCase() + ":textures/models/lampon.png")); 
-		 ResourceLocation lampOff = (new ResourceLocation(SC2_Info.MOD_ID.toLowerCase() + ":textures/models/lampoff.png")); 
-		
-		if(BlockCastIronLamp.powered == true)
+		ResourceLocation lampOn = (new ResourceLocation(SC2_Info.MOD_ID.toLowerCase() + ":textures/models/lampon.png")); 
+		ResourceLocation lampOff = (new ResourceLocation(SC2_Info.MOD_ID.toLowerCase() + ":textures/models/lampoff.png")); 
+
+		if(block == ModBlocks.castIronLampActive)
 		{
 			Minecraft.getMinecraft().renderEngine.bindTexture(lampOn);		
-		} else
+		} else if(block == ModBlocks.castIronLampIdle)
 		{
 			Minecraft.getMinecraft().renderEngine.bindTexture(lampOff);		
 		}
-		
+
 		GL11.glPushMatrix();
 		GL11.glScalef(f1, -f1, -f1);
-		
+
 		if(meta == 5 || meta == 6)
 		{
 			lampModelUp.renderSign();
@@ -106,7 +104,7 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 		{
 			lampModelSide.renderSign();
 		}
-		
+
 		GL11.glPopMatrix();
 		float f4 = 0.01666667F * f1;
 		GL11.glTranslatef(0.0F, 0.5F * f1, 0.07F * f1);
