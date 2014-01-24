@@ -2,15 +2,11 @@ package com.steamcraft.mod.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
-import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.BlockOre;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 
 import com.steamcraft.mod.lib.SC2_BlockIDs;
 import com.steamcraft.mod.lib.SC2_CreativeTabs;
-import com.steamcraft.mod.tileentity.TileEntityChemicalFurnace;
-import com.steamcraft.mod.tileentity.TileEntityNukeFurnace;
-import com.steamcraft.mod.tileentity.TileEntitySteamFurnace;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -21,6 +17,9 @@ public class ModBlocks
 	public static Block blockVolucite;
 	public static Block blockBrass;
 	public static Block blockUranium;
+	public static Block blockSlateTile;
+	
+	public static BlockStairs stairsSlateTile;
 	
 	public static Block decorIron;
 	public static Block decorGold;
@@ -42,12 +41,15 @@ public class ModBlocks
 	public static Block castIronLampIdle;
 	public static Block castIronLampActive;
 	
-	public static void initBlocks() // TODO: Check for SideOnly notations in ALL blocks, rewrite Tea, 
+	public static void initBlocks()
 	{
 		blockCastIron = new BlockSC(SC2_BlockIDs.blockCastIronID, Material.iron).setHardness(7F).setResistance(20F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("castironblock");
 		blockVolucite = new BlockSC(SC2_BlockIDs.blockVoluciteID, Material.rock).setHardness(50F).setResistance(6000000F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("voluciteblock");
 		blockBrass = new BlockSC(SC2_BlockIDs.blockBrassID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("brassblock");
 		blockUranium = new BlockUranium(SC2_BlockIDs.blockUraniumID);
+		blockSlateTile = new BlockSC(SC2_BlockIDs.blockSlateTileID, Material.rock).setUnlocalizedName("slatetiles");
+		
+		//stairsSlateTile = new (BlockStairs) BlockSC(SC2_BlockIDs.stairsSlateTileID, blockSlateTile, 0);
 		
 		decorIron = new BlockSC(SC2_BlockIDs.decorIronID, Material.iron).setHardness(5F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engriron");
 		decorGold = new BlockSC(SC2_BlockIDs.decorGoldID, Material.iron).setHardness(3F).setResistance(10F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("engrgold");
@@ -100,6 +102,7 @@ public class ModBlocks
 		GameRegistry.registerBlock(teaPlant, "teaplant");
 		GameRegistry.registerBlock(castIronLampIdle, "castironlampidle");
 		GameRegistry.registerBlock(castIronLampActive, "castironlampactive");
+		GameRegistry.registerBlock(blockSlateTile, "slatetiles");
 	}
 	
 	public static void addNames()
@@ -124,5 +127,6 @@ public class ModBlocks
 		LanguageRegistry.addName(blockUranium, "Uranium Block");
 		LanguageRegistry.addName(decorUranium, "Carved Uranium");
 		LanguageRegistry.addName(teaPlant, "Tea Plant");
+		LanguageRegistry.addName(blockSlateTile, "Obsidian Slate Tiles");
 	}
 }

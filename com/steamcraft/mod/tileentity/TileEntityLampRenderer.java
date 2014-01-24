@@ -2,6 +2,7 @@ package com.steamcraft.mod.tileentity;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
@@ -114,7 +115,7 @@ public class TileEntityLampRenderer extends TileEntitySpecialRenderer
 
         if(texturemanager != null)
         {
-            texturemanager.bindTexture(resource);
+            texturemanager.bindTexture(TextureMap.locationBlocksTexture);
         }
     }
 }
