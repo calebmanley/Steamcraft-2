@@ -24,7 +24,7 @@ Cloning this repository
 8. Under 'Commands,' click 'Clone a Git Repository.'
 9. Enter the HTTPS clone URL code into the URI field: <https://github.com/MrArcane111/Steamcraft-2.git>. All the other info should fill in automatically.
 10. Click 'Next.' Click 'Next' again.
-11. Now, for the Directory, click 'Browse,' and navigate to /forge/mcp/src/minecraft (it should be that new minecraft folder you created). Click 'Finish'.
+11. Now, for the Directory, click 'Browse,' and navigate to /forge/mcp/src/minecraft (it should be that new minecraft folder you created). Remove the "Steamcraft-2" project name at the end of the file browse. Click 'Finish'.
 12. Now, type Git again into the 'Quick Access' field. 
 13. Under 'Perspectives,' choose 'Git Repository Exploring.'
     - Note: to configure your views, you will need to play around with them. Google is your friend.
