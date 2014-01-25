@@ -22,7 +22,7 @@ public class ItemBrassWatch extends ItemSC
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		list.add("On right-click, this item\n"
+		list.add("On right-click, this item" + '\n'
 				+ "will display the MC time\n"
 				+ "and the real-world time");
 	}
@@ -37,7 +37,6 @@ public class ItemBrassWatch extends ItemSC
     	//System.out.println(sdf.format(cal.getTime()));
     	String message = "MC Time: " + mcTime + "; Real-World Time: " + sdf.format(cal.getTime());
     	player.sendChatToPlayer(ChatMessageComponent.createFromText(message).setColor(EnumChatFormatting.GOLD));
-		
 		return stack;
 	}
 }

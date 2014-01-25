@@ -33,11 +33,11 @@ public class ItemRayGun extends ItemSC
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		EntityLaser laser = new EntityLaser(world);
+		//EntityLaser laser = new EntityLaser(world);
 		
 		if(!world.isRemote)
 		{
-			world.spawnEntityInWorld(laser);
+			//world.spawnEntityInWorld(laser);
 			System.out.println("WOOF");
 		}
 		

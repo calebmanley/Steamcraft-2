@@ -27,6 +27,10 @@ public class ModArmors
 	public static Item legsObsidian;
 	public static Item bootsObsidian;
 	
+	// ==== Experimental! ==== //
+	public static Item brassMonocle;
+	public static Item brassWings;
+	
 	public static void initArmors()
 	{
 		// 0 = Helm, 1 = Chest, 2 = Leggings, 3 = Boots
@@ -44,6 +48,8 @@ public class ModArmors
 		plateObsidian = new ItemSCArmor(SC2_ItemIDs.plateObsidianID, SC2_Material.OBSIDIAN_ARMOR, 0, 1).setUnlocalizedName("obsidianplate");
 		legsObsidian = new ItemSCArmor(SC2_ItemIDs.legsObsidianID, SC2_Material.OBSIDIAN_ARMOR, 0, 2).setUnlocalizedName("obsidianlegs");
 		bootsObsidian = new ItemSCArmor(SC2_ItemIDs.bootsObsidianID, SC2_Material.OBSIDIAN_ARMOR, 0, 3).setUnlocalizedName("obsidianboots");
+		
+		brassMonocle = new ItemBrassMonocle(SC2_ItemIDs.brassMonocleID, SC2_Material.STEAM_ARMOR, 0, 0);
 		
 		initArmorNames();
 	}

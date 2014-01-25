@@ -76,4 +76,6 @@ public class SC2_ItemIDs
 	public static int copperWireID = 1372;
 	public static int rayGunID = 1373;
 	public static int brassWatchID = 1374;
+	public static int brassWingsID = 1375;
+	public static int brassMonocleID = 1376;
 }

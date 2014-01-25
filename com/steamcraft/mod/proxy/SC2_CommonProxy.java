@@ -1,5 +1,6 @@
 package com.steamcraft.mod.proxy;
 
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -61,5 +62,10 @@ public class SC2_CommonProxy
 	public boolean isClient() 
 	{
 		return false;
+	}
+
+	public ModelBiped getArmorModel(int id)
+	{
+		return null;
 	}
 }

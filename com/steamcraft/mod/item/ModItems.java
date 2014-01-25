@@ -75,5 +75,7 @@ public class ModItems
 		LanguageRegistry.addName(reactorCore, "Reactor Core");
 		LanguageRegistry.addName(teaSeed, "Tea Seeds");
 		LanguageRegistry.addName(teaLeaves, "Tea Leaves");
+		LanguageRegistry.addName(copperWire, "Copper Wire");
+		LanguageRegistry.addName(brassWatch, "Brass Pocket-Watch");
 	}
 }

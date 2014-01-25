@@ -16,8 +16,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderLaser extends Render
+public class RenderLaser //extends Render
 {
+	/*
 	private static final ResourceLocation laser = new ResourceLocation("textures/entity/beacon_beam.png");
 
 	public void renderLaser(EntityLaser laser, double par2, double par4, double par6, float par8)
@@ -123,5 +124,5 @@ public class RenderLaser extends Render
     public void doRender(Entity entity, double d1, double d2, double d3, float f1, float f2)
     {
         this.renderLaser((EntityLaser) entity, d1, d2, d3, f1);
-    }
+    }*/
 }

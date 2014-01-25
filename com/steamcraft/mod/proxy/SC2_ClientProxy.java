@@ -1,16 +1,16 @@
 package com.steamcraft.mod.proxy;
 
+import net.minecraft.client.model.ModelBiped;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.steamcraft.mod.entity.EntityBullet;
-import com.steamcraft.mod.entity.EntityLaser;
 import com.steamcraft.mod.handler.SC2_HUDHandler;
 import com.steamcraft.mod.handler.SC2_SoundEventHandler;
 import com.steamcraft.mod.lib.SC2_EntityIDs;
 import com.steamcraft.mod.lib.SC2_Info;
 import com.steamcraft.mod.main.SC2;
+import com.steamcraft.mod.model.ModelBrassMonocle;
 import com.steamcraft.mod.render.RenderBullet;
-import com.steamcraft.mod.render.RenderLaser;
 import com.steamcraft.mod.tileentity.TileEntityLampRenderer;
 import com.steamcraft.mod.tileentity.TileEntityLightningRodRenderer;
 
@@ -31,7 +31,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		super.preInit(event);
 		this.initWeaponEntities();
 	}
-	
+
 	@Override
 	public void init(FMLInitializationEvent event)
 	{
@@ -40,7 +40,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		TickRegistry.registerTickHandler(new SC2_HUDHandler(), Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new SC2_SoundEventHandler());
 		//MinecraftForgeClient.registerItemRenderer(ModTools.drillSteam.itemID, new SC2_ItemRenderer());
-		
+
 		this.initTileEntities();
 	}
 
@@ -51,11 +51,13 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", SC2_EntityIDs.BULLET_ID, SC2.instance, 100, 10, false);
 		// Laser
+		/*
 		RenderingRegistry.registerEntityRenderingHandler(EntityLaser.class, new RenderLaser());
 		EntityRegistry.registerGlobalEntityID(EntityLaser.class, "Laser", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerModEntity(EntityLaser.class, "Laser", SC2_EntityIDs.LASER_ID, SC2.instance, 100, 10, false);
+		 */
 	}
-	
+
 	public void initTileEntities()
 	{
 		// Lamp
@@ -71,5 +73,23 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 	public boolean isClient() 
 	{
 		return true;
+	}
+
+	private static final ModelBrassMonocle chest = new ModelBrassMonocle(1.0F);
+	private static final ModelBrassMonocle legs = new ModelBrassMonocle(0.5F);
+
+	@Override
+	public ModelBiped getArmorModel(int id)
+	{
+		switch (id) 
+		{
+		case 0:
+			return chest;
+		case 1:
+			return legs;
+		default:
+			break;
+		}
+		return chest; // default, if whenever you should have passed on a wrong ID
 	}
 }
