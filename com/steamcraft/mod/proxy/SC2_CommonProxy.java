@@ -76,7 +76,7 @@ public class SC2_CommonProxy
 		return null;
 	}
 	
-	public Object rayBeam(World world, EntityPlayer player, double tx, double ty, double tz, int type, int color, boolean reverse, float endmod, Object input, int impact)
+	public Object rayBeam(World world, EntityPlayer player, double tx, double ty, double tz, int type, /*int color,*/ boolean reverse, float endmod, Object input, int impact)
 	{
 		return null;
 	}

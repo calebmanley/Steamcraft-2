@@ -179,6 +179,7 @@ public class FXRayGun extends EntityFX
 		this.rotationspeed = rotationspeed;
 	}
 
+	@Override
 	public void renderParticle(Tessellator tessellator, float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		tessellator.draw();
@@ -281,7 +282,6 @@ public class FXRayGun extends EntityFX
 		GL11.glDisable(3042);
 		GL11.glEnable(2884);
 		GL11.glPopMatrix();
-		//Minecraft.getMinecraft().renderEngine.bindTexture(UtilsFX.getParticleTexture());
 		tessellator.startDrawingQuads();
 		this.prevSize = size;
 	}

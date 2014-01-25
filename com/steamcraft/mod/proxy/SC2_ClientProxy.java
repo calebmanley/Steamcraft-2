@@ -122,10 +122,11 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 	}
 
 	@Override
-	public Object rayBeam(World world, EntityPlayer player, double tx, double ty, double tz, int type, int color, boolean reverse, float endmod, Object input, int impact)
+	public Object rayBeam(World world, EntityPlayer player, double tx, double ty, double tz, int type, /*int color,*/ boolean reverse, float endmod, Object input, int impact)
 	{
 		FXRayGun ray = null;
-		Color c = new Color(color);
+		//Color c = new Color(color);
+		Color color = Color.RED;
 
 		if((input instanceof FXRayGun))
 		{
@@ -133,7 +134,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		}
 		if((ray == null) || (ray.isDead)) 
 		{
-			ray = new FXRayGun(world, player, tx, ty, tz, c.getRed() / 255.0F, c.getGreen() / 255.0F, c.getBlue() / 255.0F, 8);
+			ray = new FXRayGun(world, player, tx, ty, tz, color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F, 8);
 			ray.setType(type);
 			ray.setEndMod(endmod);
 			ray.setReverse(reverse);
