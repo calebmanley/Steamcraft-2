@@ -16,21 +16,15 @@ import com.steamcraft.mod.model.ModelBrassMonocle;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-/**
- * 
- * @author MrArcane111
- *
- */
-
-public class ItemBrassMonocle extends ItemSCArmor
+public class ItemBrassWings extends ItemSCArmor
 {
-	public ItemBrassMonocle(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
+	public ItemBrassWings(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(id, mat, renderIndex, armorType);
 		mat = material;
 		this.setMaxStackSize(1);
 		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);
-		this.setUnlocalizedName("brassmonocle");
+		this.setUnlocalizedName("brasswings");
 	}
 
 	@Override
@@ -41,16 +35,16 @@ public class ItemBrassMonocle extends ItemSCArmor
 		
 		if(itemStack != null)
 		{
-			if(itemStack.getItem() instanceof ItemBrassMonocle)
+			if(itemStack.getItem() instanceof ItemBrassWings)
 			{
 				int type = ((ItemArmor)itemStack.getItem()).armorType;
 
 				if(type == 1 || type == 3)
 				{
-					armorModel = SC2.proxy.getMonocleArmorModel(0);
+					armorModel = SC2.proxy.getWingsArmorModel(0);
 				} else
 				{
-					armorModel = SC2.proxy.getMonocleArmorModel(1);
+					armorModel = SC2.proxy.getWingsArmorModel(1);
 				}
 			}
 			if(armorModel != null)
@@ -83,9 +77,9 @@ public class ItemBrassMonocle extends ItemSCArmor
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
-		if(stack.itemID == ModArmors.brassMonocle.itemID)
+		if(stack.itemID == ModArmors.brassWings.itemID)
 		{
-			return SC2_Info.MOD_ID.toLowerCase() + ":textures/armor/brassmonocle.png";
+			return SC2_Info.MOD_ID.toLowerCase() + ":textures/armor/brasswings.png";
 		} else
 		{
 			return null;

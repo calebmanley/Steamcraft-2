@@ -21,13 +21,13 @@ public class ModelBrassMonocle extends ModelBiped
 
 	public ModelBrassMonocle(float f)
 	{
-		super(f, 0, 32, 32);
+		super(f, 0, 64, 32);
 		//textureWidth = 64;
 		//textureHeight = 32;
 		Shape1 = new ModelRenderer(this, 0, 0);
 		Shape1.addBox(0F, 0F, 0F, 1, 2, 1);
-		//Shape1.setRotationPoint(-4F, -4.5F, -5F);
-		Shape1.setRotationPoint(0F, 0F, 0F);
+		Shape1.setRotationPoint(-4F, -4.5F, -5F);
+		//Shape1.setRotationPoint(0F, 0F, 0F);
 		Shape1.setTextureSize(64, 32);
 		Shape1.mirror = true;
 		this.setRotation(Shape1, 0F, 0F, 0F);
@@ -63,10 +63,10 @@ public class ModelBrassMonocle extends ModelBiped
 		this.setRotation(Shape5, 0F, 0F, 0F);
 		
 		this.bipedHead.addChild(Shape3);
-		this.bipedLeftArm.addChild(Shape1);
-		this.bipedRightArm.addChild(Shape2);
-		this.bipedBody.addChild(Shape4);
-		this.bipedBody.addChild(Shape5);
+		this.bipedHead.addChild(Shape1);
+		this.bipedHead.addChild(Shape2);
+		this.bipedHead.addChild(Shape4);
+		this.bipedHead.addChild(Shape5);
 
 	}
 

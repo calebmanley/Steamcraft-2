@@ -50,6 +50,7 @@ public class ModArmors
 		bootsObsidian = new ItemSCArmor(SC2_ItemIDs.bootsObsidianID, SC2_Material.OBSIDIAN_ARMOR, 0, 3).setUnlocalizedName("obsidianboots");
 		
 		brassMonocle = new ItemBrassMonocle(SC2_ItemIDs.brassMonocleID, SC2_Material.STEAM_ARMOR, 0, 0);
+		brassWings = new ItemBrassWings(SC2_ItemIDs.brassWingsID, SC2_Material.STEAM_ARMOR, 0, 1);
 		
 		initArmorNames();
 	}
@@ -70,5 +71,8 @@ public class ModArmors
 		LanguageRegistry.addName(plateObsidian, "Obsidian Chestplate");
 		LanguageRegistry.addName(legsObsidian, "Obsidian Leggings");
 		LanguageRegistry.addName(bootsObsidian, "Obsidian Boots");
+		
+		LanguageRegistry.addName(brassMonocle, "Brass Monocle");
+		LanguageRegistry.addName(brassWings, "Brass Wings");
 	}
 }

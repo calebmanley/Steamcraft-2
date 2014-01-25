@@ -2,6 +2,8 @@ package com.steamcraft.mod.proxy;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
 import org.lwjgl.input.Keyboard;
@@ -64,7 +66,17 @@ public class SC2_CommonProxy
 		return false;
 	}
 
-	public ModelBiped getArmorModel(int id)
+	public ModelBiped getMonocleArmorModel(int id)
+	{
+		return null;
+	}
+	
+	public ModelBiped getWingsArmorModel(int id)
+	{
+		return null;
+	}
+	
+	public Object rayBeam(World world, EntityPlayer player, double tx, double ty, double tz, int type, int color, boolean reverse, float endmod, Object input, int impact)
 	{
 		return null;
 	}

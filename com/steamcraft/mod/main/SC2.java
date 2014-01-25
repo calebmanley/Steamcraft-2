@@ -43,7 +43,3 @@ public class SC2
 		proxy.postInit(event);
 	}
 }
-
-// TODO: add IDs to config handler, add mouse-over info to items,
-// change ore generation, change tool material aspects, add extra
-// drill functionality, fix nuke furnace texture bug
