@@ -1,5 +1,7 @@
 package com.steamcraft.mod.lib;
 
+import org.lwjgl.input.Keyboard;
+
 public final class SC2_Info 
 {
     public static final String MOD_ID = "Steamcraft";
@@ -10,4 +12,14 @@ public final class SC2_Info
 
     public static final String COMMON_PROXY = "com.steamcraft.mod.proxy.SC2_CommonProxy";
     public static final String CLIENT_PROXY = "com.steamcraft.mod.proxy.SC2_ClientProxy";
+    
+    //Put this here, feel free to move it to a more appropriate file
+    
+	public static String shiftForInfo = "\u00A77Hold §aShift \u00A77for more info.";
+	
+	public static boolean isShiftKeyDown()
+	{
+		return (Keyboard.isKeyDown(42)) || (Keyboard.isKeyDown(54));
+	}
+	
 }
