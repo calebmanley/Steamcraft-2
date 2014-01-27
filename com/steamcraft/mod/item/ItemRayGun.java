@@ -7,8 +7,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
-import com.steamcraft.mod.entity.EntityLaser;
 import com.steamcraft.mod.lib.SC2_CreativeTabs;
 import com.steamcraft.mod.main.SC2_Coord;
 

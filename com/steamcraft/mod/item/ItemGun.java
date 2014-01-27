@@ -12,10 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemGun extends ItemSC
 {
 	private int damage; // damage in half-hearts
-	private int reloadTick; 
-	private int reloadMax; 
 	private int ammoID;
-	private int fireTick; 
 	private int fireMax; 
 	private String fireSound; 
 	private String reloadSound;
@@ -25,9 +22,6 @@ public class ItemGun extends ItemSC
 		super(id); 
 		this.damage = damage;
 		this.fireMax = delay;
-		this.fireTick = fireMax; 
-		this.reloadMax = 5; 
-		this.reloadTick = 0; 
 		this.ammoID = ammoID; 
 		this.fireSound = fireSound; 
 		this.reloadSound = reloadSound; 
@@ -42,53 +36,47 @@ public class ItemGun extends ItemSC
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-	{
+    public void onUsingItemTick(ItemStack stack, EntityPlayer player, int count)
+    {
+		
+		/*
+		 * 
+		 * Also implemented the reload.The weapon fires first then reloads, but if you do not hold the right mouse button for long enough, it won't
+		 * play the reload sound, which is a small problem.To track if it is reloaded or not, it needs to be implemented through NBT and onUpdate()
+		 * 
+		 */
+
 		if(player.inventory.hasItem(this.ammoID))
 		{
-			player.inventory.consumeInventoryItem(this.ammoID);
-
-			if(this.fireTick == this.fireMax && this.fireMax != 0)
+			World world = player.worldObj;
+			
+			if(count==1)
+				world.playSoundAtEntity(player, this.reloadSound, 0.8F, 1.0F);
+			
+			if(count==this.getMaxItemUseDuration(stack)/2)
 			{
-				if(!world.isRemote)
-				{
-					world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 1));
-				}
-
-				world.playSoundAtEntity(player, this.fireSound, 1.0F, 1.0F);
-				this.fireTick = 0;
-			} else
-			{
-				++this.fireTick;
-			}
-			if(this.fireMax == 0)
-			{
-				if(!world.isRemote)
-				{
-					world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 1));
-				}
-
-				world.playSoundAtEntity(player, this.fireSound, 1.0F, 1.0F);
-			}
-			/*
-			if(this.reloadTick == this.reloadMax)
-			{
-				this.reloadTick = 0;
-				world.playSoundAtEntity(player, this.reloadSound, 1.0F, 1.0F);
 				player.inventory.consumeInventoryItem(this.ammoID);
-			} else
-			{
-				++this.reloadTick;
+	
+				if(!world.isRemote)
+				{
+					world.spawnEntityInWorld(new EntityBullet(world, player, this.damage, 1));
+				}
+	
+				world.playSoundAtEntity(player, this.fireSound, 0.6F, 1.0F);
 			}
-			 */
-		} 
-
+		}
+    }
+	
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 		return stack;
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int itemInUseCount)
-	{
-		this.fireTick = this.fireMax;
-	}
+    public int getMaxItemUseDuration(ItemStack par1ItemStack)
+    {
+        return this.fireMax;
+    }
 }
