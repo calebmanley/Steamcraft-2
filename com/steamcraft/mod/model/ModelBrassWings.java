@@ -25,7 +25,7 @@ public class ModelBrassWings extends ModelBiped
 	public ModelBrassWings(float f)
 	{
 		super(f, 0, 64, 32);
-		//textureWidth = 64;
+		//textureWidth = 64; <-- these things are bullshit, they do nothing useful
 		//textureHeight = 32;
 		Shape1 = new ModelRenderer(this, 0, 0);
 		Shape1.addBox(0F, 0F, 0F, 4, 4, 2);
@@ -132,16 +132,17 @@ public class ModelBrassWings extends ModelBiped
 		this.bipedBody.addChild(Shape1);
 		this.bipedBody.addChild(Shape2);
 		this.bipedBody.addChild(Shape3);
-		this.bipedBody.addChild(Shape4);
-		this.bipedBody.addChild(Shape5);
 		this.bipedBody.addChild(Shape6);
 		this.bipedBody.addChild(Shape7);
+		this.bipedBody.addChild(Shape4);
+		this.bipedBody.addChild(Shape5);
 		this.bipedBody.addChild(Shape8);
 		this.bipedBody.addChild(Shape9);
 		this.bipedBody.addChild(Shape10);
 		this.bipedBody.addChild(Shape11);
 		this.bipedBody.addChild(Shape12);
 		this.bipedBody.addChild(Shape13);
+		this.bipedBody.addChild(Shape15);
 		this.bipedBody.addChild(Shape14);
 	}
 

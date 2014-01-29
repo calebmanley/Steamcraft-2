@@ -5,19 +5,26 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.steamcraft.mod.lib.SC2_BlockIDs;
+import org.lwjgl.opengl.GL11;
+
 import com.steamcraft.mod.lib.SC2_CreativeTabs;
+import com.steamcraft.mod.model.ModelLightningRod;
 import com.steamcraft.mod.tileentity.TileEntityLightningRod;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockLightningRod extends BlockContainer
+public class BlockLightningRod extends BlockContainer //implements ISimpleBlockRenderingHandler
 {	
 	public BlockLightningRod(int id)
 	{

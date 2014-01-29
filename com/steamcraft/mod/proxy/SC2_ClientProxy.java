@@ -134,7 +134,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		}
 		if((ray == null) || (ray.isDead)) 
 		{
-			ray = new FXRayGun(world, player, tx, ty, tz, color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F, 8);
+			ray = new FXRayGun(world, player, tx, ty, tz, color.getRed() / 255.0F, color.getGreen() / 255.0F, color.getBlue() / 255.0F, 9);
 			ray.setType(type);
 			ray.setEndMod(endmod);
 			ray.setReverse(reverse);

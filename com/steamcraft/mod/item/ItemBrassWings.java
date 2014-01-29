@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import com.steamcraft.mod.lib.SC2_CreativeTabs;
 import com.steamcraft.mod.lib.SC2_Info;
@@ -27,12 +28,33 @@ public class ItemBrassWings extends ItemSCArmor
 		this.setUnlocalizedName("brasswings");
 	}
 
+	@Override // Thank-you Forge for this method. Otherwise, I would have to use TickHandlers...
+	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+	{
+		//System.out.println("Kittens and penguins!");
+		int flyTime = 0;
+		
+		if(!player.onGround && player.isSneaking())
+		{
+			player.motionY /= 2.0D;
+		} else if(player.motionY > 0.0D && !player.onGround && flyTime <= 1000)
+		{
+			player.motionY += 2.0D;
+			flyTime++;
+		}
+		if(flyTime > 1000)
+		{
+			flyTime = 0;
+		}
+
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) 
 	{
 		ModelBiped armorModel = new ModelBiped();
-		
+
 		if(itemStack != null)
 		{
 			if(itemStack.getItem() instanceof ItemBrassWings)
@@ -60,12 +82,12 @@ public class ItemBrassWings extends ItemSCArmor
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
 				armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
-				
+
 				if(entityLiving instanceof EntityPlayer)
 				{
 					armorModel.aimedBow = ((EntityPlayer)entityLiving).getItemInUseDuration() > 2;
 				}
-				
+
 				return armorModel;
 			}
 		}

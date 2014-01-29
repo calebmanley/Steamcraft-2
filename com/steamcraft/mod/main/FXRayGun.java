@@ -51,13 +51,11 @@ public class FXRayGun extends EntityFX
 	private int rotationspeed = 5;
 	private float prevSize = 0.0F;
 	public int impact;
+	private static final ResourceLocation rayTex = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/misc/ray.png");
 
-	// Textures:
-	private static final ResourceLocation tex3 = new ResourceLocation(SC2_Info.MOD_ID.toLowerCase(), "textures/misc/ray3.png");
-
-	public FXRayGun(World par1World, EntityPlayer player, double tx, double ty, double tz, float red, float green, float blue, int age)
+	public FXRayGun(World world, EntityPlayer player, double tx, double ty, double tz, float red, float green, float blue, int age)
 	{
-		super(par1World, player.posX, player.posY, player.posZ, 0.0D, 0.0D, 0.0D);
+		super(world, player.posX, player.posY, player.posZ, 0.0D, 0.0D, 0.0D);
 
 		if(player.entityId != Minecraft.getMinecraft().renderViewEntity.entityId) 
 		{
@@ -88,8 +86,15 @@ public class FXRayGun extends EntityFX
 		this.particleMaxAge = age;
 		EntityLivingBase renderentity = FMLClientHandler.instance().getClient().renderViewEntity;
 		int visibleDistance = 50;
-		if (!FMLClientHandler.instance().getClient().gameSettings.fancyGraphics) visibleDistance = 25;
-		if (renderentity.getDistance(player.posX, player.posY, player.posZ) > visibleDistance) this.particleMaxAge = 0;
+
+		if(!FMLClientHandler.instance().getClient().gameSettings.fancyGraphics)
+		{
+			visibleDistance = 25;
+		}
+		if(renderentity.getDistance(player.posX, player.posY, player.posZ) > visibleDistance)
+		{
+			this.particleMaxAge = 0;
+		}
 	}
 
 	public void updateRay(double x, double y, double z)
@@ -97,7 +102,11 @@ public class FXRayGun extends EntityFX
 		this.tX = x;
 		this.tY = y;
 		this.tZ = z;
-		while (this.particleMaxAge - this.particleAge < 4) this.particleMaxAge += 1;
+
+		while(this.particleMaxAge - this.particleAge < 4) 
+		{
+			this.particleMaxAge += 1;
+		}
 	}
 
 	@Override
@@ -109,41 +118,36 @@ public class FXRayGun extends EntityFX
 		this.ptX = this.tX;
 		this.ptY = this.tY;
 		this.ptZ = this.tZ;
-
 		this.prevYaw = this.rotYaw;
 		this.prevPitch = this.rotPitch;
-
 		float xd = (float)(this.player.posX - this.tX);
 		float yd = (float)(this.player.posY + this.offset - this.tY);
 		float zd = (float)(this.player.posZ - this.tZ);
-
 		this.length = MathHelper.sqrt_float(xd * xd + yd * yd + zd * zd);
-
 		double var7 = MathHelper.sqrt_double(xd * xd + zd * zd);
-
 		this.rotYaw = (float)(Math.atan2(xd, zd) * 180.0D / 3.141592653589793D);
 
-		for (this.rotPitch = (float)(Math.atan2(yd, var7) * 180.0D / 3.141592653589793D); this.rotPitch - this.prevPitch < -180.0F; this.prevPitch -= 360.0F);
-		while (this.rotPitch - this.prevPitch >= 180.0F)
+		for(this.rotPitch = (float)(Math.atan2(yd, var7) * 180.0D / 3.141592653589793D); this.rotPitch - this.prevPitch < -180.0F; this.prevPitch -= 360.0F);
+
+		while(this.rotPitch - this.prevPitch >= 180.0F)
 		{
 			this.prevPitch += 360.0F;
 		}
-
-		while (this.rotYaw - this.prevYaw < -180.0F)
+		while(this.rotYaw - this.prevYaw < -180.0F)
 		{
 			this.prevYaw -= 360.0F;
 		}
-
-		while (this.rotYaw - this.prevYaw >= 180.0F)
+		while(this.rotYaw - this.prevYaw >= 180.0F)
 		{
 			this.prevYaw += 360.0F;
 		}
-
-		if (this.impact > 0) this.impact -= 1;
-
-		if (this.particleAge++ >= this.particleMaxAge)
+		if(this.impact > 0)
 		{
-			setDead();
+			this.impact -= 1;
+		}
+		if(this.particleAge++ >= this.particleMaxAge)
+		{
+			this.setDead();
 		}
 	}
 
@@ -187,7 +191,6 @@ public class FXRayGun extends EntityFX
 		float var9 = 1.0F;
 		float slide = (float)this.worldObj.getWorldTime();
 		float rot = (float)(this.worldObj.provider.getWorldTime() % (360 / this.rotationspeed) * this.rotationspeed) + this.rotationspeed * f;
-
 		float size = 1.0F;
 
 		if(this.pulse) 
@@ -206,20 +209,23 @@ public class FXRayGun extends EntityFX
 		switch(this.type)
 		{
 		default:
-			//Minecraft.getMinecraft().renderEngine.bindTexture(tex1);
 			break;
 		case 1:
-			//Minecraft.getMinecraft().renderEngine.bindTexture(tex2);
 			break;
 		case 2:
-			Minecraft.getMinecraft().renderEngine.bindTexture(tex3);
+			Minecraft.getMinecraft().renderEngine.bindTexture(rayTex);
 		}
 
 		GL11.glTexParameterf(3553, 10242, 10497.0F);
 		GL11.glTexParameterf(3553, 10243, 10497.0F);
 		GL11.glDisable(2884);
 		float var11 = slide + f;
-		if (this.reverse) var11 *= -1.0F;
+
+		if(this.reverse) 
+		{
+			var11 *= -1.0F;
+		}
+
 		float var12 = -var11 * 0.2F - MathHelper.floor_float(-var11 * 0.1F);
 		GL11.glEnable(3042);
 		GL11.glBlendFunc(770, 1);
