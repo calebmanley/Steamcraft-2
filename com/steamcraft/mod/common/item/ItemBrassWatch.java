@@ -10,7 +10,10 @@ import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-import com.steamcraft.mod.common.lib.SC2_Info;
+import com.steamcraft.mod.common.lib.SC2_GeneralUtils;
+
+
+
 
 public class ItemBrassWatch extends ItemSC
 {
@@ -24,9 +27,9 @@ public class ItemBrassWatch extends ItemSC
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag)
 	{
-		if(!SC2_Info.isShiftKeyDown())
+		if(!SC2_GeneralUtils.isShiftKeyDown())
 		{
-			list.add(SC2_Info.shiftForInfo);
+			list.add(SC2_GeneralUtils.shiftForInfo);
 			return; // Probs don't need this, but it's cute
 		}
 		
