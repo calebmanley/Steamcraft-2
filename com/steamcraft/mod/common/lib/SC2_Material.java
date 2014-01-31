@@ -13,7 +13,12 @@ public class SC2_Material
 	// name, int harvest level, int max uses, float efficiency, float damage, int enchantability
 	public static EnumToolMaterial OBSIDIAN_TOOL = EnumHelper.addToolMaterial("OBSIDIAN_TOOL", 4, -1, 3.0F, 6.5F, 7);
 	public static EnumToolMaterial ETHERIUM_TOOL = EnumHelper.addToolMaterial("ETHERIUM_TOOL", 4, 2345, 10.5F, 9.5F, 14);
-	public static EnumToolMaterial STEAM_TOOL = EnumHelper.addToolMaterial("STEAM_TOOL", 2, 321, 12.0F, 8.5F, 0);
+	/*
+	 * Nerfed the damage on steam tools
+	 * Other tools damage should be nerfed as well in my opinion
+	 * 
+	 */
+	public static EnumToolMaterial STEAM_TOOL = EnumHelper.addToolMaterial("STEAM_TOOL", 2, 321, 12.0F, 4.0F, 0);
 	// DRILLS!
 	public static EnumToolMaterial D_WOOD = EnumHelper.addToolMaterial("D_WOOD", 0, 89, 4.0F, 0.0F, 0);
 	public static EnumToolMaterial D_STONE = EnumHelper.addToolMaterial("D_STONE", 0, 197, 8.0F, 0.0F, 0);

@@ -24,7 +24,8 @@ public class ItemSCSword extends ItemSCTool
 
 	public ItemSCSword(int id, EnumToolMaterial toolMat)
 	{
-		super(id, id, toolMat, blocksEffectiveAgainst);
+		//Fixed the damage on swords
+		super(id, 5.0F, toolMat, blocksEffectiveAgainst);
 		this.toolMaterial = toolMat;
 		this.maxStackSize = 1;
 		this.setMaxDamage(toolMat.getMaxUses());
