@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemCoreDrill extends ItemSC
+public class ItemCoreDrill extends ItemSC2
 {
 	protected ItemCoreDrill(int id)
 	{

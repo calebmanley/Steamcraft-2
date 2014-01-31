@@ -37,11 +37,11 @@ public class ModOres
 	
 	public static void initOres()
 	{
-		oreBornite = new BlockSCOre(SC2_BlockIDs.oreBorniteID, "bornite").setUnlocalizedName(SC2_BlockNames.ORE_BORNITE);
-		oreBrimstone = new BlockSCOre(SC2_BlockIDs.oreBrimstoneID, "brimstone").setUnlocalizedName(SC2_BlockNames.ORE_BRIMSTONE);
-		orePhosphate = new BlockSCOre(SC2_BlockIDs.orePhosphateID, "phosphate").setUnlocalizedName(SC2_BlockNames.ORE_PHOSPHATE);
+		oreBornite = new BlockSC2Ore(SC2_BlockIDs.oreBorniteID, "bornite").setUnlocalizedName(SC2_BlockNames.ORE_BORNITE);
+		oreBrimstone = new BlockSC2Ore(SC2_BlockIDs.oreBrimstoneID, "brimstone").setUnlocalizedName(SC2_BlockNames.ORE_BRIMSTONE);
+		orePhosphate = new BlockSC2Ore(SC2_BlockIDs.orePhosphateID, "phosphate").setUnlocalizedName(SC2_BlockNames.ORE_PHOSPHATE);
 		oreUranite = new BlockUraniteOre(SC2_BlockIDs.oreUraniteID).setUnlocalizedName(SC2_BlockNames.ORE_URANITE);
-		oreVolucite = new BlockSCOre(SC2_BlockIDs.oreVoluciteID, "volucite").setUnlocalizedName(SC2_BlockNames.ORE_VOLUCITE);
+		oreVolucite = new BlockSC2Ore(SC2_BlockIDs.oreVoluciteID, "volucite").setUnlocalizedName(SC2_BlockNames.ORE_VOLUCITE);
 		
 		registerOres();
 		initOreNames();
@@ -51,11 +51,11 @@ public class ModOres
 	
 	public static void registerOres()
 	{
-		GameRegistry.registerBlock(oreBornite, "orebornite");
-		GameRegistry.registerBlock(oreBrimstone, "orebrimstone");
-		GameRegistry.registerBlock(orePhosphate, "orephosphate");
-		GameRegistry.registerBlock(oreUranite, "oreuranite");
-		GameRegistry.registerBlock(oreVolucite, "orevolucite");
+		GameRegistry.registerBlock(oreBornite, SC2_BlockNames.ORE_BORNITE);
+		GameRegistry.registerBlock(oreBrimstone, SC2_BlockNames.ORE_BRIMSTONE);
+		GameRegistry.registerBlock(orePhosphate, SC2_BlockNames.ORE_PHOSPHATE);
+		GameRegistry.registerBlock(oreUranite, SC2_BlockNames.ORE_URANITE);
+		GameRegistry.registerBlock(oreVolucite, SC2_BlockNames.ORE_VOLUCITE);
 	}
 	
 	public static void initOreNames()

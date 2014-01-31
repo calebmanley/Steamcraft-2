@@ -20,7 +20,7 @@ import com.steamcraft.mod.common.SC2;
 import com.steamcraft.mod.common.lib.SC2_CreativeTabs;
 import com.steamcraft.mod.common.lib.SC2_Info;
 
-public class ItemRayGun extends ItemSC
+public class ItemRayGun extends ItemSC2
 {
 	String raySound;
 	private Random random = new Random();

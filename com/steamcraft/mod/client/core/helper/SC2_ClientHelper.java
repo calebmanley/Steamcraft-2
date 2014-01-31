@@ -17,8 +17,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.FontRenderer;
 
+import org.lwjgl.input.Keyboard;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+@SideOnly(Side.CLIENT)
 /**
- * @author MrArcane111
+ * @author MrArcane111 & EntireCraft
  *
  */
 public class SC2_ClientHelper 
@@ -36,5 +42,13 @@ public class SC2_ClientHelper
 	public static EntityClientPlayerMP clientPlayer() 
 	{
 		return mc().thePlayer;
+	}
+
+	// I think these are handled by the client, not server
+	public static String shiftForInfo = "\u00A77Hold §aShift \u00A77for more info.";
+
+	public static boolean isShiftKeyDown()
+	{
+		return (Keyboard.isKeyDown(42)) || (Keyboard.isKeyDown(54));
 	}
 }

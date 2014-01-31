@@ -29,9 +29,9 @@ import net.minecraft.world.World;
  * @author MrArcane111
  *
  */
-public class BlockSCOre extends BlockSC2
+public class BlockSC2Ore extends BlockSC2
 {
-	public BlockSCOre(int id, String type)
+	public BlockSC2Ore(int id, String type)
 	{
 		super(id, Material.rock);
 		this.setCreativeTab(SC2_CreativeTabs.tabSCBlocks);

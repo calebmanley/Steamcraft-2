@@ -17,12 +17,12 @@ import com.steamcraft.mod.common.lib.SC2_Material;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSCSword extends ItemSCTool
+public class ItemSC2Sword extends ItemSC2Tool
 {
 	protected EnumToolMaterial toolMaterial;
 	private float weaponDamage;
 
-	public ItemSCSword(int id, EnumToolMaterial toolMat)
+	public ItemSC2Sword(int id, EnumToolMaterial toolMat)
 	{
 		//Fixed the damage on swords
 		super(id, 5.0F, toolMat, blocksEffectiveAgainst);

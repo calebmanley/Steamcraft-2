@@ -11,11 +11,11 @@ import com.steamcraft.mod.common.lib.SC2_Material;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSCHoe extends ItemSC
+public class ItemSC2Hoe extends ItemSC2
 {
 	protected EnumToolMaterial toolMaterial;
 
-	public ItemSCHoe(int id, EnumToolMaterial toolMat)
+	public ItemSC2Hoe(int id, EnumToolMaterial toolMat)
 	{
 		super(id);
 		this.maxStackSize = 1;

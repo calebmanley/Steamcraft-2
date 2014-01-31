@@ -21,6 +21,27 @@ import net.minecraft.server.MinecraftServer;
  */
 public class SC2_CommonHelper 
 {
+	/*
+	 * 0 - Black
+     * 1 - Dark Blue
+     * 2 - Dark Green
+     * 3 - Dark Aqua
+     * 4 - Dark Red
+     * 5 - Purple
+     * 6 - Orange (Gold)
+     * 7 - Gray
+     * 8 - Dark Gray
+     * 9 - Indigo
+     * a - Bright Green
+     * b - Aqua
+     * c - Red
+     * d - Pink
+     * e - Yellow
+     * f - White
+     * 
+	 */
+	public static String baseStem = "\u00a7";
+
 	public static MinecraftServer server()
 	{
 		return MinecraftServer.getServer();
@@ -32,5 +53,87 @@ public class SC2_CommonHelper
 			System.out.println(message);
 		for(StackTraceElement element : Thread.currentThread().getStackTrace())
 			System.out.println(element);
+	}
+
+	// The colors of the rainbow:
+	
+	public String getBlack(String s)
+	{
+		return this.baseStem + "0";
+	}
+	
+	public String getDarkBlue(String s)
+	{
+		return this.baseStem + "1";
+	}
+	
+	public String getDarkGreen(String s)
+	{
+		return this.baseStem + "2";
+	}
+	
+	public String getDarkAqua(String s)
+	{
+		return this.baseStem + "3";
+	}
+	
+	public String getDarkRed(String s)
+	{
+		return this.baseStem + "4";
+	}
+	
+	public String getPurple(String s)
+	{
+		return this.baseStem + "5";
+	}
+	
+	public String getGold(String s)
+	{
+		return this.baseStem + "6";
+	}
+	
+	public String getGray(String s)
+	{
+		return this.baseStem + "7";
+	}
+	
+	public String getDarkGray(String s)
+	{
+		return this.baseStem + "8";
+	}
+	
+	public String getIndigo(String s)
+	{
+		return this.baseStem + "9";
+	}
+	
+	public String getBrightGreen(String s)
+	{
+		return this.baseStem + "a";
+	}
+	
+	public String getAqua(String s)
+	{
+		return this.baseStem + "b";
+	}
+	
+	public String getRed(String s)
+	{
+		return this.baseStem + "c";
+	}
+	
+	public String getPink(String s)
+	{
+		return this.baseStem + "d";
+	}
+	
+	public String getYellow(String s)
+	{
+		return this.baseStem + "e";
+	}
+	
+	public String getWhite(String s)
+	{
+		return this.baseStem + "f";
 	}
 }

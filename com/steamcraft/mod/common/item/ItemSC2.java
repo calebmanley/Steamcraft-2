@@ -10,9 +10,9 @@ import com.steamcraft.mod.common.lib.SC2_Info;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSC extends Item
+public class ItemSC2 extends Item
 {
-	public ItemSC(int id)
+	public ItemSC2(int id)
 	{
 		super(id);
 		this.setCreativeTab(SC2_CreativeTabs.tabSCItems);

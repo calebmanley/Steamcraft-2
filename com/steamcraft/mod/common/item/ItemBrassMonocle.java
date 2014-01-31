@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class ItemBrassMonocle extends ItemSCArmor
+public class ItemBrassMonocle extends ItemSC2Armor
 {
 	public ItemBrassMonocle(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
 	{

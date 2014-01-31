@@ -13,11 +13,11 @@ import com.steamcraft.mod.common.lib.SC2_Material;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSCArmor extends ItemArmor
+public class ItemSC2Armor extends ItemArmor
 {
 	EnumArmorMaterial material;
 
-	public ItemSCArmor(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
+	public ItemSC2Armor(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
 	{
 		super(id, mat, renderIndex, armorType);
 		mat = material;

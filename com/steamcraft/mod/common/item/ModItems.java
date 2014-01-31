@@ -35,19 +35,19 @@ public class ModItems
 	
 	public static void initItems()
 	{
-		etherium = new ItemSC(SC2_ItemIDs.etheriumID).setUnlocalizedName("etherium");
-		chemicSalt = new ItemSC(SC2_ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
-		bornite = new ItemSC(SC2_ItemIDs.borniteID).setUnlocalizedName("copper");
-		obsidianSlate = new ItemSC(SC2_ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
-		ingotBrass = new ItemSC(SC2_ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
-		ingotCastIron = new ItemSC(SC2_ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
-		lightBulb = new ItemSC(SC2_ItemIDs.lightBulbID).setUnlocalizedName("lightbulb");
-		phosphorus = new ItemSC(SC2_ItemIDs.phosphorusID).setUnlocalizedName("phosphorus");
-		uraniumOre = new ItemSC(SC2_ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");
-		uraniumPellet = new ItemSC(SC2_ItemIDs.uraniumID).setUnlocalizedName("uraniumpellet");
-		reactorCore = new ItemSC(SC2_ItemIDs.reactorCoreID).setUnlocalizedName("reactorcore");
+		etherium = new ItemSC2(SC2_ItemIDs.etheriumID).setUnlocalizedName("etherium");
+		chemicSalt = new ItemSC2(SC2_ItemIDs.chemicSaltID).setUnlocalizedName("sulphur");
+		bornite = new ItemSC2(SC2_ItemIDs.borniteID).setUnlocalizedName("copper");
+		obsidianSlate = new ItemSC2(SC2_ItemIDs.obsidianSlateID).setUnlocalizedName("obsidianslate");
+		ingotBrass = new ItemSC2(SC2_ItemIDs.ingotBrassID).setUnlocalizedName("ingotbrass");
+		ingotCastIron = new ItemSC2(SC2_ItemIDs.ingotCastIronID).setUnlocalizedName("ingotcastiron");
+		lightBulb = new ItemSC2(SC2_ItemIDs.lightBulbID).setUnlocalizedName("lightbulb");
+		phosphorus = new ItemSC2(SC2_ItemIDs.phosphorusID).setUnlocalizedName("phosphorus");
+		uraniumOre = new ItemSC2(SC2_ItemIDs.uraniumStoneID).setUnlocalizedName("uraniumstone");
+		uraniumPellet = new ItemSC2(SC2_ItemIDs.uraniumID).setUnlocalizedName("uraniumpellet");
+		reactorCore = new ItemSC2(SC2_ItemIDs.reactorCoreID).setUnlocalizedName("reactorcore");
 		teaSeed = new ItemTeaSeeds(SC2_ItemIDs.teaSeedID, ModBlocks.teaPlant.blockID, Block.tilledField.blockID).setUnlocalizedName("teaseed"); 
-		teaLeaves = new ItemSC(SC2_ItemIDs.teaLeavesID).setUnlocalizedName("tealeaves");
+		teaLeaves = new ItemSC2(SC2_ItemIDs.teaLeavesID).setUnlocalizedName("tealeaves");
 		//coldKettle = new ItemKettle(SC_ItemIDs.coldKettleID, 300).setUnlocalizedName("kettle");
 		//hotKettle = new ItemKettle(SC_ItemIDs.hotKettleID, 300).setUnlocalizedName("kettle");
 		//emptyKettle = new ItemKettle(SC_ItemIDs.emptyKettleID, 300).setUnlocalizedName("kettle");

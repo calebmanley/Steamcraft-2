@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 
 import com.steamcraft.mod.common.block.ModPowerBlocks;
 
-public class ItemCopperWire extends ItemSC
+public class ItemCopperWire extends ItemSC2
 {
 	public ItemCopperWire(int id)
 	{

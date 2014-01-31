@@ -26,13 +26,13 @@ public class ModGuns
 
 	public static void initGuns()
 	{
-		musketRound = new ItemSC(SC2_ItemIDs.musketRoundID).setUnlocalizedName("musketcartridge");
-		rifleRound = new ItemSC(SC2_ItemIDs.rifleRoundID).setUnlocalizedName("rifleround");
-		percussionRound = new ItemSC(SC2_ItemIDs.percussionRoundID).setUnlocalizedName("percussioncap");
-		percussionLock = new ItemSC(SC2_ItemIDs.percussionLockID).setUnlocalizedName("percussionlock");
-		smoothBarrel = new ItemSC(SC2_ItemIDs.smoothBarrelID).setUnlocalizedName("smoothbarrel");
-		rifledBarrel = new ItemSC(SC2_ItemIDs.rifledBarrelID).setUnlocalizedName("rifledbarrel");
-		woodenStock = new ItemSC(SC2_ItemIDs.woodenStockID).setUnlocalizedName("woodenstock");
+		musketRound = new ItemSC2(SC2_ItemIDs.musketRoundID).setUnlocalizedName("musketcartridge");
+		rifleRound = new ItemSC2(SC2_ItemIDs.rifleRoundID).setUnlocalizedName("rifleround");
+		percussionRound = new ItemSC2(SC2_ItemIDs.percussionRoundID).setUnlocalizedName("percussioncap");
+		percussionLock = new ItemSC2(SC2_ItemIDs.percussionLockID).setUnlocalizedName("percussionlock");
+		smoothBarrel = new ItemSC2(SC2_ItemIDs.smoothBarrelID).setUnlocalizedName("smoothbarrel");
+		rifledBarrel = new ItemSC2(SC2_ItemIDs.rifledBarrelID).setUnlocalizedName("rifledbarrel");
+		woodenStock = new ItemSC2(SC2_ItemIDs.woodenStockID).setUnlocalizedName("woodenstock");
 		// int id, int damage, int ammoID, int delay, String fireSound, String reloadSound
 		// multiplied the delay 20 times for balance
 		flintlockMusket = new ItemGun(SC2_ItemIDs.flintlockMusketID, 6, 60, musketRound.itemID, "steamcraft:musket", "steamcraft:reload").setUnlocalizedName("flintlockmusket");

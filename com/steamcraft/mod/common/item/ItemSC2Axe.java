@@ -5,12 +5,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 
-public class ItemSCAxe extends ItemSCTool
+public class ItemSC2Axe extends ItemSC2Tool
 {
 	public static final Block[] blocksEffectiveAgainst = new Block[] {Block.planks, Block.bookShelf, 
 		Block.wood, Block.chest, Block.stoneDoubleSlab, Block.stoneSingleSlab, Block.pumpkin, Block.pumpkinLantern};
 	
-    protected ItemSCAxe(int id, EnumToolMaterial toolMat)
+    protected ItemSC2Axe(int id, EnumToolMaterial toolMat)
     {
         super(id, 3.0F, toolMat, blocksEffectiveAgainst);
     }

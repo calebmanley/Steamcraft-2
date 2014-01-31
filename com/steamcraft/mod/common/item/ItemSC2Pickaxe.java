@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 import com.steamcraft.mod.common.lib.SC2_Material;
 
-public class ItemSCPickaxe extends ItemSCTool
+public class ItemSC2Pickaxe extends ItemSC2Tool
 {
 	public static final Block[] blocksEffectiveAgainst = new Block[] {Block.cobblestone, 
 		Block.stoneDoubleSlab, Block.stoneSingleSlab, Block.stone, Block.sandStone,
@@ -17,7 +17,7 @@ public class ItemSCPickaxe extends ItemSCTool
 		Block.oreRedstoneGlowing, Block.rail, Block.railDetector, Block.railPowered, 
 		Block.railActivator};
 
-	protected ItemSCPickaxe(int id, EnumToolMaterial toolMat)
+	protected ItemSC2Pickaxe(int id, EnumToolMaterial toolMat)
 	{
 		super(id, 2.0F, toolMat, blocksEffectiveAgainst);
 	}

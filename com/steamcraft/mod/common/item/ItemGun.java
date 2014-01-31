@@ -9,7 +9,7 @@ import com.steamcraft.mod.common.entity.EntityBullet;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGun extends ItemSC
+public class ItemGun extends ItemSC2
 {
 	private int damage; // damage in half-hearts
 	private int ammoID;

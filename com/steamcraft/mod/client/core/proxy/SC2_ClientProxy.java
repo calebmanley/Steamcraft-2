@@ -54,7 +54,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		super.preInit(event);
-		this.initWeaponEntities();
+		this.initEntities();
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		this.initTileEntities();
 	}
 
-	public void initWeaponEntities()
+	public void initEntities()
 	{
 		// Bullet
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());

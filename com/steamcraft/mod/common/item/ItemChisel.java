@@ -12,7 +12,7 @@ import com.steamcraft.mod.common.block.ModBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemChisel extends ItemSC
+public class ItemChisel extends ItemSC2
 {
 	private Random random = new Random();
 

@@ -38,14 +38,6 @@ public class BlockLightningRod extends BlockContainer //implements ISimpleBlockR
         this.setResistance(0.5F);
 	}
 	
-	/*
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister icon)
-	{
-		this.blockIcon = icon.registerIcon("Roads:TrafficLightIcon");
-	}*/
-	
 	@Override
 	public int tickRate(World world)
 	{

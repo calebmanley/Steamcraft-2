@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 import com.steamcraft.mod.common.lib.SC2_Material;
 
-public class ItemSCDrill extends ItemSCTool
+public class ItemSC2Drill extends ItemSC2Tool
 {
 	private Random random = new Random();
 	public static final Block[] blocksEffectiveAgainst = new Block[] {Block.cobblestone, 
@@ -20,7 +20,7 @@ public class ItemSCDrill extends ItemSCTool
 		Block.netherrack, Block.dirt, Block.gravel, Block.grass, Block.sand};
 	protected EnumToolMaterial toolMaterial;
 
-	protected ItemSCDrill(int id, EnumToolMaterial toolMat)
+	protected ItemSC2Drill(int id, EnumToolMaterial toolMat)
 	{
 		super(id, 1.0F, toolMat, blocksEffectiveAgainst);
 		this.toolMaterial = toolMat;

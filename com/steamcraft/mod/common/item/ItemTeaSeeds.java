@@ -8,7 +8,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
 
-public class ItemTeaSeeds extends ItemSC implements IPlantable
+public class ItemTeaSeeds extends ItemSC2 implements IPlantable
 {
 	private int blockType;
 	private int soilBlockID;

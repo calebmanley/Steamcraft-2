@@ -1,5 +1,19 @@
+/**
+ * This class was created by <MrArcane111> or his SC2 development team. 
+ * This class is available as part of the Steamcraft 2 Mod for Minecraft.
+ *
+ * Steamcraft 2 is open-source and is distributed under the MIT License.
+ * (http://opensource.org/licenses/MIT)
+ * 
+ * Steamcraft 2 is based on the original Steamcraft created by Proloe.
+ * Steamcraft (c) Proloe 2011
+ * (http://www.minecraftforum.net/topic/251532-181-steamcraft-source-code-releasedmlv054wip/)
+ * 
+ * File created @ [Jan 30, 2014, 6:11:43 PM]
+ */
 package com.steamcraft.mod.common.item;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,7 +23,8 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.steamcraft.mod.client.model.ModelBrassMonocle;
+import org.lwjgl.input.Keyboard;
+
 import com.steamcraft.mod.common.SC2;
 import com.steamcraft.mod.common.lib.SC2_CreativeTabs;
 import com.steamcraft.mod.common.lib.SC2_Info;
@@ -17,7 +32,12 @@ import com.steamcraft.mod.common.lib.SC2_Info;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBrassWings extends ItemSCArmor
+/**
+ * 
+ * @author MrArcane111
+ *
+ */
+public class ItemBrassWings extends ItemSC2Armor
 {
 	public ItemBrassWings(int id, EnumArmorMaterial mat, int renderIndex, int armorType)
 	{
@@ -28,25 +48,31 @@ public class ItemBrassWings extends ItemSCArmor
 		this.setUnlocalizedName("brasswings");
 	}
 
-	@Override // Thank-you Forge for this method. Otherwise, I would have to use TickHandlers...
+	@Override
+	@SideOnly(Side.CLIENT) // Thank-you Forge for this method. Otherwise, I would have to use TickHandlers...
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
 	{
-		//System.out.println("Kittens and penguins!");
-		int flyTime = 0;
-		
-		if(!player.onGround && player.isSneaking())
+		if(Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.keyCode))
 		{
-			player.motionY /= 2.0D;
-		} else if(player.motionY > 0.0D && !player.onGround && flyTime <= 1000)
-		{
-			player.motionY += 2.0D;
-			flyTime++;
-		}
-		if(flyTime > 1000)
-		{
-			flyTime = 0;
-		}
+			if(player.motionY > 0.0D)
+			{
+				player.motionY += 0.08499999910593033D;
+			} else
+			{
+				player.motionY += 0.11699999910593033D;
+			}
 
+			world.spawnParticle("smoke", player.posX, player.posY - 1.0D, player.posZ, 0.0D, 0.0D, 0.0D);
+		}
+		if(player.motionY < 0.0D)
+		{
+			player.motionY /= 1.149999976158142D;
+		}
+		if(!player.onGround)
+		{
+			player.motionX *= 1.0399999618530273D;
+			player.motionZ *= 1.0399999618530273D;
+		}
 	}
 
 	@Override
@@ -101,7 +127,7 @@ public class ItemBrassWings extends ItemSCArmor
 	{
 		if(stack.itemID == ModArmors.brassWings.itemID)
 		{
-			return SC2_Info.MOD_ID.toLowerCase() + ":textures/armor/brasswings.png";
+			return SC2_Info.SC2_PREFIX + "textures/armor/brasswings.png";
 		} else
 		{
 			return null;
