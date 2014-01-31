@@ -1,17 +1,21 @@
 package com.steamcraft.mod.common.item;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
+import com.steamcraft.mod.common.lib.SC2_GeneralUtils;
 import com.steamcraft.mod.common.lib.SC2_Material;
 
 import cpw.mods.fml.relauncher.Side;
@@ -33,13 +37,16 @@ public class ItemSCTool extends ItemSC
 		this.setMaxDamage(toolMat.getMaxUses());
 		this.efficiencyOnProperMaterial = toolMat.getEfficiencyOnProperMaterial();
 		
+		/*
+		 * This makes the damage of steam tools negative
+		 * 
 		if(this.toolMaterial == SC2_Material.STEAM_TOOL)
 		{
 			damageVsEntity = damage - (int) Math.round(this.getMaxDamage() * 5 / 320);
-		} else
-		{
-			this.damageVsEntity = damage + toolMat.getDamageVsEntity();
 		}
+		*/
+		
+		this.damageVsEntity = damage + toolMat.getDamageVsEntity();
 	}
 
 	@Override
@@ -106,5 +113,53 @@ public class ItemSCTool extends ItemSC
 
 		stack.damageItem(1, living);
 		return true;
+	}
+	
+	@Override
+	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean bool) 
+	{
+    	if(toolMaterial==SC2_Material.INSTANCE.STEAM_TOOL)
+    	{
+			if(!SC2_GeneralUtils.isShiftKeyDown())
+			{
+				list.add(SC2_GeneralUtils.shiftForInfo);
+				return;
+			}
+			
+			list.add("\u00A77"+ (this.getMaxDamage()-itemStack.getItemDamage()) + "/" + this.getMaxDamage() + " steam");
+    	}
+	}
+    
+    @Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		if(!world.isRemote)
+		{
+			if(toolMaterial==SC2_Material.INSTANCE.STEAM_TOOL)
+			{
+				/*
+				 * Probably not the most efficient way to do it, but it works so you can't complain :P
+				 */
+				if(player.inventory.hasItem(ModItems.steamCanister.itemID))
+				{
+					int i=0;
+					while(stack.getItemDamage()!=0 && i<36)
+					{
+						if(player.inventory.mainInventory[i].itemID==ModItems.steamCanister.itemID)
+						{
+							while(player.inventory.mainInventory[i].getItemDamage()<ModItems.steamCanister.getMaxDamage() && stack.getItemDamage()>0)
+							{
+								player.inventory.mainInventory[i].damageItem(1, player);
+								stack.setItemDamage(stack.getItemDamage()-1);
+							}
+						}
+						i++;
+					}
+				}
+					
+			}
+		}
+		
+		return stack;
 	}
 }

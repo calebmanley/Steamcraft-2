@@ -30,6 +30,8 @@ public class ModItems
 	public static Item emptyKettle;
 	public static Item copperWire;
 	public static Item brassWatch;
+	public static Item steamCanister;
+	public static Item gasCanister;
 	
 	public static void initItems()
 	{
@@ -53,6 +55,8 @@ public class ModItems
 		//emptyTeacup = new ItemTeacup(SC_ItemIDs.emptyTeacupID, 0, 0.0F, false).setUnlocalizedName("teacupempty");
 		copperWire = new ItemCopperWire(SC2_ItemIDs.copperWireID).setUnlocalizedName("copperwire");
 		brassWatch = new ItemBrassWatch(SC2_ItemIDs.brassWatchID);
+		steamCanister = new ItemCanister(SC2_ItemIDs.steamCanisterID, 500).setUnlocalizedName("steamcanister");
+		gasCanister = new ItemCanister(SC2_ItemIDs.gasCanisterID, 1000).setUnlocalizedName("gascanister");
 		
 		initNames();
 		ModTools.initTools();
@@ -77,5 +81,7 @@ public class ModItems
 		LanguageRegistry.addName(teaLeaves, "Tea Leaves");
 		LanguageRegistry.addName(copperWire, "Copper Wire");
 		LanguageRegistry.addName(brassWatch, "Brass Pocket-Watch");
+		LanguageRegistry.addName(steamCanister, "Steam Canister");
+		LanguageRegistry.addName(gasCanister, "Compressed Gas Canister");
 	}
 }
