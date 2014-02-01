@@ -66,7 +66,7 @@ public class ItemBrassWings extends ItemSC2Armor
 
 				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
 			}
-			if(player.motionY < 0.0D)
+			if(player.motionY < 0.0D && !player.isSneaking())
 			{
 				player.motionY /= 1.149999976158142D;
 			}

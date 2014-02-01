@@ -92,7 +92,8 @@ public class ItemCape extends ItemSC2Armor
 
 		return null;
 	}
-
+	
+	/*
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
@@ -105,4 +106,5 @@ public class ItemCape extends ItemSC2Armor
 			return null;
 		}
 	}
+	*/
 }
