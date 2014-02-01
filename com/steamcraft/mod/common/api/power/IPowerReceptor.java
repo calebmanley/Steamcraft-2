@@ -16,12 +16,10 @@ package com.steamcraft.mod.common.api.power;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
-/**
- * Using the power system from Buildcraft is the best starting point that will
- * eventually turn into one of my own.
+/** 
+ * @author CovertJaguar, SirSengir, Krapht, cpw & bdew from Buildcraft, adapted by MrArcane111
+ * (https://github.com/BuildCraft/BuildCraft/PowerHandler)
  * 
- * @author MrArcane111 & CovertJaguar
- *
  */
 public interface IPowerReceptor 
 {

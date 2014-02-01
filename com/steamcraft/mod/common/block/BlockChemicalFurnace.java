@@ -24,11 +24,9 @@ import com.steamcraft.mod.common.block.tile.TileEntityChemicalFurnace;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockChemicalFurnace extends BlockContainer
+public class BlockChemicalFurnace extends BlockPowerGenerator
 {
-	private Random furnaceRand;
 	private final boolean isActive;
-	private static boolean keepFurnaceInventory = false;
 	@SideOnly(Side.CLIENT)
 	private Icon furnaceIconTop;
 	@SideOnly(Side.CLIENT)
@@ -37,7 +35,6 @@ public class BlockChemicalFurnace extends BlockContainer
 	public BlockChemicalFurnace(int id, boolean flag)
 	{
 		super(id, Material.iron);
-		this.furnaceRand = new Random();
 		this.isActive = flag;
 		this.setHardness(4.5F);
 		this.setStepSound(Block.soundMetalFootstep);
@@ -165,7 +162,7 @@ public class BlockChemicalFurnace extends BlockContainer
 	{
 		int l = world.getBlockMetadata(i, j, k);
 		TileEntity tile = world.getBlockTileEntity(i, j, k);
-		keepFurnaceInventory = true;
+		keepInventory = true;
 		
 		if(flag)
 		{
@@ -175,7 +172,7 @@ public class BlockChemicalFurnace extends BlockContainer
 			world.setBlock(i, j, k, ModMachines.chemOvenIdle.blockID);
 		}
 		
-		keepFurnaceInventory = false;
+		keepInventory = false;
 		world.setBlock(i, j, k, l);
 		
 		if(tile != null)
@@ -217,7 +214,7 @@ public class BlockChemicalFurnace extends BlockContainer
 	@Override
 	public void breakBlock(World world, int i, int j, int k, int l, int m)
 	{
-		if(!keepFurnaceInventory)
+		if(!keepInventory)
 		{
 			TileEntityChemicalFurnace furnace = (TileEntityChemicalFurnace) world.getBlockTileEntity(i, j, k);
 			
@@ -233,9 +230,9 @@ public class BlockChemicalFurnace extends BlockContainer
 							continue;
 						}
 						
-						float f = furnaceRand.nextFloat() * 0.8F + 0.1F;
-						float f1 = furnaceRand.nextFloat() * 0.8F + 0.1F;
-						float f2 = furnaceRand.nextFloat() * 0.8F + 0.1F;
+						float f = random.nextFloat() * 0.8F + 0.1F;
+						float f1 = random.nextFloat() * 0.8F + 0.1F;
+						float f2 = random.nextFloat() * 0.8F + 0.1F;
 						
 						do
 						{
@@ -244,7 +241,7 @@ public class BlockChemicalFurnace extends BlockContainer
 								continue label0;
 							}
 							
-							int i1 = furnaceRand.nextInt(21) + 10;
+							int i1 = random.nextInt(21) + 10;
 							
 							if(i1 > stack.stackSize)
 							{
@@ -254,9 +251,9 @@ public class BlockChemicalFurnace extends BlockContainer
 							stack.stackSize -= i1;
 							EntityItem item = new EntityItem(world, (float)i + f, (float)j + f1, (float)k + f2, new ItemStack(stack.itemID, i1, stack.getItemDamage()));
 							float f3 = 0.05F;
-							item.motionX = (float)furnaceRand.nextGaussian() * f3;
-							item.motionY = (float)furnaceRand.nextGaussian() * f3 + 0.2F;
-							item.motionZ = (float)furnaceRand.nextGaussian() * f3;
+							item.motionX = (float)random.nextGaussian() * f3;
+							item.motionY = (float)random.nextGaussian() * f3 + 0.2F;
+							item.motionZ = (float)random.nextGaussian() * f3;
 							world.spawnEntityInWorld(item);
 						} while(true);
 					}

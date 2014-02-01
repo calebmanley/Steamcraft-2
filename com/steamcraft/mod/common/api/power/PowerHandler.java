@@ -17,7 +17,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 
 /**
- * @author CovertJaguar from Buildcraft, adapted by MrArcane111
+ * @author CovertJaguar, SirSengir & cpw from Buildcraft, adapted by MrArcane111
  * (https://github.com/BuildCraft/BuildCraft/PowerHandler)
  *
  */
