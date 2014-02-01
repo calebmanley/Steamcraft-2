@@ -13,6 +13,10 @@
  */
 package com.steamcraft.mod.common.core.proxy;
 
+import com.steamcraft.mod.common.entity.EntityBullet;
+import com.steamcraft.mod.common.lib.SC2_EntityIDs;
+import com.steamcraft.mod.common.lib.SC2_Info;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,7 +47,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 /**
- * @author MrArcane111
+ * @author MrArcane111 & general3214
  *
  */
 public class SC2_CommonProxy 
@@ -56,6 +60,7 @@ public class SC2_CommonProxy
         cfgHandler.loadConfig();
 		ModBlocks.initBlocks();
 		ModItems.initItems();
+        this.initEntities();
 	}
 
 	public void init(FMLInitializationEvent event) 
@@ -67,6 +72,8 @@ public class SC2_CommonProxy
 		TickRegistry.registerTickHandler(new SC2_ServerTickHandler(), Side.SERVER);
 		SC2_ChestGenHandler.addItemsToChests();
 		//this.registerKeyBinds();
+
+        this.initTileEntities();
 	}
 
 	public void postInit(FMLPostInitializationEvent event) 
@@ -74,6 +81,21 @@ public class SC2_CommonProxy
         cfgHandler.saveConfig();
 		//ModRecipes.initRecipes();
 	}
+
+    public void initEntities()
+    {
+        // Bullet
+        EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
+        EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", SC2_EntityIDs.BULLET_ID, SC2.instance, 100, 10, false);
+    }
+
+    public void initTileEntities()
+    {
+        // Lamp
+        GameRegistry.registerTileEntity(com.steamcraft.mod.common.block.tile.TileEntityLamp.class, SC2_Info.MOD_ID + "TELamp");
+        // Lightning Rod
+        GameRegistry.registerTileEntity(com.steamcraft.mod.common.block.tile.TileEntityLightningRod.class, SC2_Info.MOD_ID + "TELightningRod");
+    }
 
 	public void registerKeyBinds()
 	{
