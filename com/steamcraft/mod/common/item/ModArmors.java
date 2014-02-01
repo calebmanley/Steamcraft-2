@@ -31,7 +31,7 @@ public class ModArmors
 	// ==== Experimental! ==== //
 	public static Item brassMonocle;
 	public static Item brassWings;
-	public static Item cape;
+	//public static Item cape;
 	//public static Item utilityBelt;
 	
 	public static void initArmors()
@@ -54,7 +54,7 @@ public class ModArmors
 		
 		brassMonocle = new ItemBrassMonocle(SC2_ItemIDs.brassMonocleID, SC2_Material.STEAM_ARMOR, 0, 0);
 		brassWings = new ItemBrassWings(SC2_ItemIDs.brassWingsID, SC2_Material.STEAM_ARMOR, 0, 1);
-		cape = new ItemCape(SC2_ItemIDs.capeID, EnumArmorMaterial.CLOTH, 0, 1);
+		//cape = new ItemCape(SC2_ItemIDs.capeID, EnumArmorMaterial.CLOTH, 0, 1);
 	
 		
 		initArmorNames();
@@ -79,6 +79,6 @@ public class ModArmors
 		
 		LanguageRegistry.addName(brassMonocle, "Brass Monocle");
 		LanguageRegistry.addName(brassWings, "Brass Wings");
-		LanguageRegistry.addName(cape, "Leather Cloak");
+		//LanguageRegistry.addName(cape, "Leather Cloak");
 	}
 }
