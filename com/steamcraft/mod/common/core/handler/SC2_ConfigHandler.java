@@ -20,28 +20,48 @@ import net.minecraftforge.common.Configuration;
 
 /**
  * 
- * @author MrArcane111 & EntireCraft
+ * @author MrArcane111, EntireCraft & general3214
  *
  */
 public final class SC2_ConfigHandler 
 {
 	private static Configuration config;
+    private static int nextBlockId = 2600;
+    private static int nextItemId = 1300;
 
-	public static void loadConfig(File file) 
+    public SC2_ConfigHandler(File file)
+    {
+        config = new Configuration(file);
+    }
+
+	public void loadConfig()
 	{
-		config = new Configuration(file);
 		config.load();
 		//
-		config.save();
 	}
 
-	private static int loadItem(String label, int defaultID) 
-	{
-		return config.getItem("id_item." + label, defaultID).getInt(defaultID);
-	}
+    public void saveConfig()
+    {
+        config.save();
+    }
 
-	private static int loadBlock(String label, int defaultID) 
-	{
-		return config.getBlock("id_tile." + label, defaultID).getInt(defaultID);
-	}
+    public int loadItem(String label)
+    {
+        return loadItem(label, nextItemId++);
+    }
+
+    private int loadItem(String label, int defaultID)
+    {
+        return config.getItem("id_item." + label, defaultID).getInt(defaultID) - 256;
+    }
+
+    public int loadBlock(String label)
+    {
+        return loadBlock(label, nextBlockId++);
+    }
+
+    private int loadBlock(String label, int defaultID)
+    {
+        return config.getBlock("id_tile." + label, defaultID).getInt(defaultID);
+    }
 }
