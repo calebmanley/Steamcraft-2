@@ -15,11 +15,13 @@ package com.steamcraft.mod.common.block;
 
 import java.util.Random;
 
-import com.steamcraft.mod.common.lib.SC2_BlockNames;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.world.World;
+
+import com.steamcraft.mod.client.core.helper.SC2_IconHelper;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -39,6 +41,13 @@ public class BlockUraniteOre extends BlockSC2
 		this.setHardness(10F);
 		this.setResistance(6F);
 		this.setStepSound(Block.soundStoneFootstep);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister icon)
+	{
+		blockIcon = SC2_IconHelper.forBlock(icon, this);
 	}
 
 	@Override

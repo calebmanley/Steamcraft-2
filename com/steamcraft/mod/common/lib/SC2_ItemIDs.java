@@ -80,4 +80,6 @@ public class SC2_ItemIDs
 	public static int brassMonocleID = 1376;
 	public static int steamCanisterID = 1377;
 	public static int gasCanisterID = 1378;
+	public static int capeID = 1379;
+	public static int utilityBeltID = 1380;
 }

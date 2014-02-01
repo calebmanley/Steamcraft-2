@@ -15,11 +15,16 @@ package com.steamcraft.mod.common.block;
 
 import java.util.Random;
 
+import com.steamcraft.mod.client.core.helper.SC2_IconHelper;
 import com.steamcraft.mod.common.item.ModItems;
 import com.steamcraft.mod.common.lib.SC2_CreativeTabs;
+import com.steamcraft.mod.common.lib.SC2_Info;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -53,6 +58,13 @@ public class BlockSC2Ore extends BlockSC2
 			this.setHardness(50.0F);
 			this.setResistance(6000000.0F);
 		}
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister icon)
+	{
+		blockIcon = SC2_IconHelper.forBlock(icon, this);
 	}
 
 	@Override

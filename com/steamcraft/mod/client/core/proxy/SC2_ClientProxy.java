@@ -25,6 +25,7 @@ import com.steamcraft.mod.client.core.handler.SC2_SoundEventHandler;
 import com.steamcraft.mod.client.fx.FXRayGun;
 import com.steamcraft.mod.client.model.ModelBrassMonocle;
 import com.steamcraft.mod.client.model.ModelBrassWings;
+import com.steamcraft.mod.client.model.ModelCape;
 import com.steamcraft.mod.client.render.RenderBullet;
 import com.steamcraft.mod.common.SC2;
 import com.steamcraft.mod.common.block.tile.TileEntityLampRenderer;
@@ -130,7 +131,26 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 			break;
 		}
 
-		return chest; // Default, if the wrong ID is passed
+		return chest1; // Default, if the wrong ID is passed
+	}
+
+	private static final ModelCape chest2 = new ModelCape(1.0F);
+	private static final ModelCape legs2 = new ModelCape(0.5F);
+
+	@Override
+	public ModelBiped getCapeArmorModel(int id)
+	{
+		switch(id)
+		{
+		case 0:
+			return chest2;
+		case 1:
+			return legs2;
+		default:
+			break;
+		}
+
+		return chest2; // Default, if the wrong ID is passed
 	}
 
 	@Override
@@ -138,7 +158,7 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 	{
 		FXRayGun ray = null;
 		//Color c = new Color(color);
-		Color color = Color.RED;
+		Color color = Color.RED; // Change le color here
 
 		if((input instanceof FXRayGun))
 			ray = (FXRayGun)input;

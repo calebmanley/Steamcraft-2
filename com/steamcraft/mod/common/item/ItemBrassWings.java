@@ -52,26 +52,29 @@ public class ItemBrassWings extends ItemSC2Armor
 	@SideOnly(Side.CLIENT) // Thank-you Forge for this method. Otherwise, I would have to use TickHandlers...
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
 	{
-		if(Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.keyCode))
+		if(!player.capabilities.allowFlying)
 		{
-			if(player.motionY > 0.0D)
+			if(Minecraft.getMinecraft().currentScreen == null && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.keyCode))
 			{
-				player.motionY += 0.08499999910593033D;
-			} else
-			{
-				player.motionY += 0.11699999910593033D;
-			}
+				if(player.motionY > 0.0D)
+				{
+					player.motionY += 0.08499999910593033D;
+				} else
+				{
+					player.motionY += 0.11699999910593033D;
+				}
 
-			world.spawnParticle("smoke", player.posX, player.posY - 1.0D, player.posZ, 0.0D, 0.0D, 0.0D);
-		}
-		if(player.motionY < 0.0D)
-		{
-			player.motionY /= 1.149999976158142D;
-		}
-		if(!player.onGround)
-		{
-			player.motionX *= 1.0399999618530273D;
-			player.motionZ *= 1.0399999618530273D;
+				world.spawnParticle("smoke", player.posX, player.posY - 0.25D, player.posZ, 0.0D, 0.0D, 0.0D);
+			}
+			if(player.motionY < 0.0D)
+			{
+				player.motionY /= 1.149999976158142D;
+			}
+			if(!player.onGround)
+			{
+				player.motionX *= 1.0399999618530273D;
+				player.motionZ *= 1.0399999618530273D;
+			}
 		}
 	}
 
