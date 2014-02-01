@@ -55,7 +55,6 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		super.preInit(event);
-		this.initEntities();
 	}
 
 	@Override
@@ -66,26 +65,24 @@ public class SC2_ClientProxy extends SC2_CommonProxy
 		TickRegistry.registerTickHandler(new SC2_HUDHandler(), Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new SC2_SoundEventHandler());
 		//MinecraftForgeClient.registerItemRenderer(ModTools.drillSteam.itemID, new SC2_ItemRenderer());
-
-		this.initTileEntities();
 	}
 
+    @Override
 	public void initEntities()
 	{
+        super.initEntities();
 		// Bullet
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
-		EntityRegistry.registerGlobalEntityID(EntityBullet.class, "Bullet", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", SC2_EntityIDs.BULLET_ID, SC2.instance, 100, 10, false);
 	}
 
+    @Override
 	public void initTileEntities()
 	{
+        super.initTileEntities();
 		// Lamp
 		ClientRegistry.bindTileEntitySpecialRenderer(com.steamcraft.mod.common.block.tile.TileEntityLamp.class, new TileEntityLampRenderer());
-		GameRegistry.registerTileEntity(com.steamcraft.mod.common.block.tile.TileEntityLamp.class, SC2_Info.MOD_ID + "TELamp");
 		// Lightning Rod
 		ClientRegistry.bindTileEntitySpecialRenderer(com.steamcraft.mod.common.block.tile.TileEntityLightningRod.class, new TileEntityLightningRodRenderer());
-		GameRegistry.registerTileEntity(com.steamcraft.mod.common.block.tile.TileEntityLightningRod.class, SC2_Info.MOD_ID + "TELightningRod");
 	}
 
 	@Override
