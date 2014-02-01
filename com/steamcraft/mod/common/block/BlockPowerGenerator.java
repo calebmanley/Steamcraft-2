@@ -22,37 +22,40 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.steamcraft.mod.common.api.power.EnumPower;
+import com.steamcraft.mod.common.api.power.IPowerGenerator;
+import com.steamcraft.mod.common.block.tile.TileEntityMachine;
 import com.steamcraft.mod.common.lib.SC2_CreativeTabs;
 
 /**
  * @author MrArcane111, based off the Buildcraft power system
  *
  */
-public abstract class BlockPowerGenerator extends BlockSC2Container
+public abstract class BlockPowerGenerator extends BlockSC2Container //implements IPowerGenerator
 {
 	protected static boolean keepInventory = false;
 	protected static Random random = new Random();
-	
+	protected boolean isPowered = false;
+
 	protected BlockPowerGenerator(int id, Material material)
 	{
 		super(id, material);
 		this.setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
 		this.setHardness(5.0F);
+		this.setTickRandomly(true);
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase living, ItemStack stack)
 	{
 		super.onBlockPlacedBy(world, i, j, k, living, stack);
-		
-		/*
+
 		TileEntity tile = world.getBlockTileEntity(i, j, k);
-		
-		if(tile instanceof TileMachine) 
+
+		if(tile instanceof TileEntityMachine) 
 		{
-			((TileMachine) tile).onBlockPlacedBy(living, stack);
+			//((TileEntityMachine) tile).onBlockPlacedBy(living, stack);
 		}
-		*/
 	}
 
 	@Override
@@ -66,9 +69,9 @@ public abstract class BlockPowerGenerator extends BlockSC2Container
 	public int getLightValue(IBlockAccess iBlockAccess, int i, int j, int k) 
 	{
 		TileEntity tile = iBlockAccess.getBlockTileEntity(i, j, k);
-		
+
 		//if(tile instanceof IMachine && ((IMachine) tile).isActive())
-			//return super.getLightValue(iBlockAccess, i, j, k) + 8;
+		//return super.getLightValue(iBlockAccess, i, j, k) + 8;
 		return super.getLightValue(iBlockAccess, i, j, k);
 	}
 }

@@ -15,17 +15,19 @@ package com.steamcraft.mod.common.api.power;
 
 import net.minecraftforge.common.ForgeDirection;
 
+
 /**
  * This Tile Entity interface allows you to indicate that a block can emit power
  * from a specific side.
  * 
- * @author CovertJaguar from Buildcraft, adapted by MrArcane111
- * (https://github.com/BuildCraft/BuildCraft/PowerHandler)
- * 
+ * @author MrArcane111
+ *
  */
-public interface IPowerEmitter 
+public interface IPowerGenerator 
 {
-	public int powerEmittionLimit();
-	public int emittPower();
-	public boolean canEmitPowerFromSide(ForgeDirection side);
+	// The maximum power amount
+	public int powerEmitionLimit();
+	
+	// Determines whether to generate power
+	public boolean generatePower(ForgeDirection side);
 }

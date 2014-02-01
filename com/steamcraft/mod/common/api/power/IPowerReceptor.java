@@ -17,35 +17,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
 /** 
- * @author CovertJaguar, SirSengir, Krapht, cpw & bdew from Buildcraft, adapted by MrArcane111
- * (https://github.com/BuildCraft/BuildCraft/PowerHandler)
+ * @author MrArcane111
  * 
  */
 public interface IPowerReceptor 
 {
-	/**
-	 * Get the PowerReceiver for this side of the block. You can return the same
-	 * PowerReceiver for all sides or one for each side.
-	 *
-	 * You should NOT return null to this method unless you mean to NEVER
-	 * receive power from that side. Returning null, after previous returning a
-	 * PowerReceiver, will most likely cause pipe connections to derp out and
-	 * engines to eventually explode.
-	 *
-	 * @param side
-	 * @return
-	 */
-	public PowerHandler.PowerReceiver getPowerReceiver(ForgeDirection side);
+	// Determines if the tile entity is receiving power from a specified side
+	public void receievePower(ForgeDirection side);
 
-	/**
-	 * Call back from the PowerHandler that is called when the stored power
-	 * exceeds the activation power.
-	 *
-	 * It can be triggered by update() calls or power modification calls.
-	 *
-	 * @param workProvider
-	 */
-	public void doWork(PowerHandler workProvider);
+	// Now get to work, bitch
+	public void doWork();
 
+	// Grabs a world instance
 	public World getWorld();
 }
