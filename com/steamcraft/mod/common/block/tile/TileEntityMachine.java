@@ -30,12 +30,8 @@ import com.steamcraft.mod.common.api.power.IPowerReceptor;
  */
 public class TileEntityMachine extends TileEntity implements IPowerGenerator, IPowerReceptor
 {
-	public float currentOutput = 0;
-	public boolean isRedstonePowered = false;
-	private boolean checkOrienation = false;
-	public int progress;
-	public int energy;
-	public int heat;
+	protected boolean isRedstonePowered;
+	protected boolean isReceivingPower;
 	ForgeDirection orientation = ForgeDirection.UP;
 	
 	@Override
@@ -53,7 +49,19 @@ public class TileEntityMachine extends TileEntity implements IPowerGenerator, IP
 	@Override
 	public void receievePower(ForgeDirection side)
 	{
+		if(this.isRedstonePowered = true)
+		{
+			this.checkForRedstonePower();
+		} else
+		{
+			
+		}
+	}
 	
+	@Override
+	public boolean isReceivingPower()
+	{
+		return this.isReceivingPower;
 	}
 
 	@Override
@@ -80,30 +88,7 @@ public class TileEntityMachine extends TileEntity implements IPowerGenerator, IP
 		return side == this.orientation;
 	}
 	
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		orientation = ForgeDirection.getOrientation(nbt.getInteger("orientation"));
-		progress = nbt.getInteger("progress");
-		energy = nbt.getInteger("energyF");
-		NBTBase tag = nbt.getTag("heat");
-		
-		if(tag instanceof NBTTagFloat)
-			heat = nbt.getInteger("heat");
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound data) 
-	{
-		super.writeToNBT(data);
-		data.setInteger("orientation", orientation.ordinal());
-		data.setFloat("progress", progress);
-		data.setFloat("energyF", energy);
-		data.setFloat("heat", heat);
-	}
-	
-	public void checkRedstonePower() 
+	public void checkForRedstonePower() 
 	{
 		this.isRedstonePowered = this.worldObj.isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord);
 	}

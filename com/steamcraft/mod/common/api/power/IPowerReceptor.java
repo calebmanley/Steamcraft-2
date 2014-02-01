@@ -30,4 +30,6 @@ public interface IPowerReceptor
 
 	// Grabs a world instance
 	public World getWorld();
+	
+	public boolean isReceivingPower();
 }
