@@ -39,7 +39,7 @@ public class TileEntityMachine extends TileEntity implements IPowerGenerator, IP
 	{
 		if(this instanceof IPowerGenerator)
 		{
-			this.generatePower(this.orientation);
+			this.generatePower(this.orientation); // Cats
 		} else if(this instanceof IPowerReceptor)
 		{
 			this.receievePower(this.orientation);
