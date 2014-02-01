@@ -13,11 +13,13 @@
  */
 package com.steamcraft.mod.client.lib;
 
+import com.steamcraft.mod.common.core.proxy.SC2_CommonProxy;
+
 /**
- * @author MrArcane111
+ * @author MrArcane111 & general3214
  *
  */
 public class SC2_RenderIDs 
 {
-	public static int chimneyID = 8;
+	public static int chimneyID = SC2_CommonProxy.cfgHandler.loadRender("chimneyID");
 }
