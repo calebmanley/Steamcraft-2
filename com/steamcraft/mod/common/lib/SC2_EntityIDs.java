@@ -1,8 +1,10 @@
 package com.steamcraft.mod.common.lib;
 
-public class SC2_EntityIDs 
+import com.steamcraft.mod.common.core.proxy.SC2_CommonProxy;
+
+public class SC2_EntityIDs
 {
-	public static final int BULLET_ID = 5;
-	public static final int LASER_ID = 6;
-	public static final int LIGHTNINGROD_ID = 7;
+	public static final int BULLET_ID = SC2_CommonProxy.cfgHandler.loadEntity("BULLET_ID");
+	public static final int LASER_ID = SC2_CommonProxy.cfgHandler.loadEntity("LASER_ID");
+	public static final int LIGHTNINGROD_ID = SC2_CommonProxy.cfgHandler.loadEntity("LIGHTNINGROD_ID");
 }
