@@ -48,9 +48,12 @@ import cpw.mods.fml.relauncher.Side;
  */
 public class SC2_CommonProxy 
 {
-	public void preInit(FMLPreInitializationEvent event) 
+    public static SC2_ConfigHandler cfgHandler;
+
+    public void preInit(FMLPreInitializationEvent event)
 	{
-		SC2_ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
+        cfgHandler = new SC2_ConfigHandler(event.getSuggestedConfigurationFile());
+        cfgHandler.loadConfig();
 		ModBlocks.initBlocks();
 		ModItems.initItems();
 	}
@@ -68,6 +71,7 @@ public class SC2_CommonProxy
 
 	public void postInit(FMLPostInitializationEvent event) 
 	{
+        cfgHandler.saveConfig();
 		//ModRecipes.initRecipes();
 	}
 

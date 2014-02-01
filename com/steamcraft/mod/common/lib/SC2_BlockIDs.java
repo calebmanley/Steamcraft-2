@@ -1,53 +1,55 @@
 package com.steamcraft.mod.common.lib;
 
-public class SC2_BlockIDs 
+import com.steamcraft.mod.common.core.proxy.SC2_CommonProxy;
+
+public class SC2_BlockIDs
 {
-	/*
-	public static int torchElectricIdleID = 2600;
-	public static int torchElectricActiveID = 2601;
-	public static int torchTeslaIdleID = 2602;
-	public static int torchTeslaActiveID = 2603;
-	public static int teslaReceiverIdleID = 2604;
-	public static int teslaReceiverActiveID = 2605;
-	public static int batteryID = 2612;
-	*/
-	public static int steamOvenIdleID = 2600;
-	public static int steamOvenActiveID = 2601;
-	public static int chemOvenIdleID = 2602;
-	public static int chemOvenActiveID = 2603;
-	public static int nukeOvenIdleID = 2604;
-	public static int nukeOvenActiveID = 2605;
-	public static int oreBrimstoneID = 2606;
-	public static int oreBorniteID = 2607;
-	public static int orePhosphateID = 2608;
-	public static int oreUraniteID = 2609;
-	public static int oreVoluciteID = 2610;
-	public static int blockCastIronID = 2611;
-	public static int blockVoluciteID = 2612;
-	public static int blockBrassID = 2613;
-	public static int blockUraniumID = 2614;
-	public static int decorIronID = 2615;
-	public static int decorGoldID = 2616;
-	public static int decorDiamondID = 2617;
-	public static int decorCastIronID = 2618;
-	public static int decorBrassID = 2619;
-	public static int decorVoluciteID = 2620;
-	public static int decorLapisID = 2621;
-	public static int decorStoneID = 2622;
-	public static int decorUraniumID = 2623;
-	public static int railingCastIronID = 2624;
-	public static int gateCastIronID = 2625;
-	public static int lampOnID = 2626;
-	public static int lampOffID = 2627;
-	public static int woodBrassID = 2628;
-	public static int leavesLampID = 2629;
-	public static int ironLampIdleID = 2630;
-	public static int ironLampActiveID = 2631;
-	public static int teaPlantID = 2632;
-	public static int castIronLampIdleID = 2633;
-	public static int castIronLampActiveID = 2634;
-	public static int copperWireID = 2635;
-	public static int blockSlateTileID = 2636;
-	public static int stairsSlateTileID = 2637;
-	public static int lightningRodID = 2638;
+    /*
+    public static int torchElectricIdleID = 2600;
+    public static int torchElectricActiveID = 2601;
+    public static int torchTeslaIdleID = 2602;
+    public static int torchTeslaActiveID = 2603;
+    public static int teslaReceiverIdleID = 2604;
+    public static int teslaReceiverActiveID = 2605;
+    public static int batteryID = 2612;
+    */
+    public static int steamOvenIdleID = SC2_CommonProxy.cfgHandler.loadBlock("steamOvenIdleID");
+    public static int steamOvenActiveID = SC2_CommonProxy.cfgHandler.loadBlock("steamOvenActiveID");
+    public static int chemOvenIdleID = SC2_CommonProxy.cfgHandler.loadBlock("chemOvenIdleID");
+    public static int chemOvenActiveID = SC2_CommonProxy.cfgHandler.loadBlock("chemOvenActiveID");
+    public static int nukeOvenIdleID = SC2_CommonProxy.cfgHandler.loadBlock("nukeOvenIdleID");
+    public static int nukeOvenActiveID = SC2_CommonProxy.cfgHandler.loadBlock("nukeOvenActiveID");
+    public static int oreBrimstoneID = SC2_CommonProxy.cfgHandler.loadBlock("oreBrimstoneID");
+    public static int oreBorniteID = SC2_CommonProxy.cfgHandler.loadBlock("oreBorniteID");
+    public static int orePhosphateID = SC2_CommonProxy.cfgHandler.loadBlock("orePhosphateID");
+    public static int oreUraniteID = SC2_CommonProxy.cfgHandler.loadBlock("oreUraniteID");
+    public static int oreVoluciteID = SC2_CommonProxy.cfgHandler.loadBlock("oreVoluciteID");
+    public static int blockCastIronID = SC2_CommonProxy.cfgHandler.loadBlock("blockCastIronID");
+    public static int blockVoluciteID = SC2_CommonProxy.cfgHandler.loadBlock("blockVoluciteID");
+    public static int blockBrassID = SC2_CommonProxy.cfgHandler.loadBlock("blockBrassID");
+    public static int blockUraniumID = SC2_CommonProxy.cfgHandler.loadBlock("blockUraniumID");
+    public static int decorIronID = SC2_CommonProxy.cfgHandler.loadBlock("decorIronID");
+    public static int decorGoldID = SC2_CommonProxy.cfgHandler.loadBlock("decorGoldID");
+    public static int decorDiamondID = SC2_CommonProxy.cfgHandler.loadBlock("decorDiamondID");
+    public static int decorCastIronID = SC2_CommonProxy.cfgHandler.loadBlock("decorCastIronID");
+    public static int decorBrassID = SC2_CommonProxy.cfgHandler.loadBlock("decorBrassID");
+    public static int decorVoluciteID = SC2_CommonProxy.cfgHandler.loadBlock("decorVoluciteID");
+    public static int decorLapisID = SC2_CommonProxy.cfgHandler.loadBlock("decorLapisID");
+    public static int decorStoneID = SC2_CommonProxy.cfgHandler.loadBlock("decorStoneID");
+    public static int decorUraniumID = SC2_CommonProxy.cfgHandler.loadBlock("decorUraniumID");
+    public static int railingCastIronID = SC2_CommonProxy.cfgHandler.loadBlock("railingCastIronID");
+    public static int gateCastIronID = SC2_CommonProxy.cfgHandler.loadBlock("gateCastIronID");
+    public static int lampOnID = SC2_CommonProxy.cfgHandler.loadBlock("lampOnID");
+    public static int lampOffID = SC2_CommonProxy.cfgHandler.loadBlock("lampOffID");
+    public static int woodBrassID = SC2_CommonProxy.cfgHandler.loadBlock("woodBrassID");
+    public static int leavesLampID = SC2_CommonProxy.cfgHandler.loadBlock("leavesLampID");
+    public static int ironLampIdleID = SC2_CommonProxy.cfgHandler.loadBlock("ironLampIdleID");
+    public static int ironLampActiveID = SC2_CommonProxy.cfgHandler.loadBlock("ironLampActiveID");
+    public static int teaPlantID = SC2_CommonProxy.cfgHandler.loadBlock("teaPlantID");
+    public static int castIronLampIdleID = SC2_CommonProxy.cfgHandler.loadBlock("castIronLampIdleID");
+    public static int castIronLampActiveID = SC2_CommonProxy.cfgHandler.loadBlock("castIronLampActiveID");
+    public static int copperWireID = SC2_CommonProxy.cfgHandler.loadBlock("copperWireID");
+    public static int blockSlateTileID = SC2_CommonProxy.cfgHandler.loadBlock("blockSlateTileID");
+    public static int stairsSlateTileID = SC2_CommonProxy.cfgHandler.loadBlock("stairsSlateTileID");
+    public static int lightningRodID = SC2_CommonProxy.cfgHandler.loadBlock("lightningRodID");
 }
