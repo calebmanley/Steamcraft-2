@@ -43,13 +43,13 @@ public class SC2_GuiHandler implements IGuiHandler
 
 		switch(id)
 		{
-		case SC2_GuiIDs.GUI_ID_NukeOven:
+		case SC2_GuiIDs.GUI_ID_NUKE_OVEN:
 			return new ContainerNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
 
-		case SC2_GuiIDs.GUI_ID_ChemicalOven:
+		case SC2_GuiIDs.GUI_ID_CHEM_OVEN:
 			return new ContainerChemicalFurnace(player.inventory, (TileEntityChemicalFurnace) tile);
 
-		case SC2_GuiIDs.GUI_ID_SteamOven:
+		case SC2_GuiIDs.GUI_ID_STEAM_OVEN:
 			return new ContainerSteamFurnace(player.inventory, (TileEntitySteamFurnace) tile);
 		}
 		
@@ -63,13 +63,13 @@ public class SC2_GuiHandler implements IGuiHandler
 
 		switch(id)
 		{
-		case SC2_GuiIDs.GUI_ID_NukeOven:
+		case SC2_GuiIDs.GUI_ID_NUKE_OVEN:
 			return new GuiNukeFurnace(player.inventory, (TileEntityNukeFurnace) tile);
 
-		case SC2_GuiIDs.GUI_ID_ChemicalOven:
+		case SC2_GuiIDs.GUI_ID_CHEM_OVEN:
 			return new GuiChemicalFurnace(player.inventory, (TileEntityChemicalFurnace) tile);
 
-		case SC2_GuiIDs.GUI_ID_SteamOven:
+		case SC2_GuiIDs.GUI_ID_STEAM_OVEN:
 			return new GuiSteamFurnace(player.inventory, (TileEntitySteamFurnace) tile);
 		}
 		

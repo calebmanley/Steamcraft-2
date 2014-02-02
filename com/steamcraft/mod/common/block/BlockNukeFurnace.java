@@ -161,7 +161,7 @@ public class BlockNukeFurnace extends BlockSC2Container
 		
 		if(furnace != null)
 		{
-			player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_NukeOven, world, i, j, k);
+			player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_NUKE_OVEN, world, i, j, k);
 		}
 		
 		return true;

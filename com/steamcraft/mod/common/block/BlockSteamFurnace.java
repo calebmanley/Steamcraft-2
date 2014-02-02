@@ -173,7 +173,7 @@ public class BlockSteamFurnace extends BlockContainer
 		
 		if(furnace != null)
 		{
-			player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_SteamOven, world, i, j, k);
+			player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_STEAM_OVEN, world, i, j, k);
 		}
 		
 		return true;

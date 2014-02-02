@@ -24,8 +24,9 @@ import com.steamcraft.mod.common.block.tile.TileEntityChemicalFurnace;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockChemicalFurnace extends BlockPowerGenerator
+public class BlockChemicalFurnace extends BlockSC2Container
 {
+	private Random random = new Random();
 	private final boolean isActive;
 	@SideOnly(Side.CLIENT)
 	private Icon furnaceIconTop;
@@ -152,7 +153,7 @@ public class BlockChemicalFurnace extends BlockPowerGenerator
 		
 		if(furnace != null)
 		{
-			player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_ChemicalOven, world, i, j, k);
+			player.openGui(SC2.instance, SC2_GuiIDs.GUI_ID_CHEM_OVEN, world, i, j, k);
 		}
 		
 		return true;

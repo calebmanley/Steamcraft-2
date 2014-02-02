@@ -13,13 +13,22 @@
  */
 package com.steamcraft.mod.common.block;
 
+import java.util.Random;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.steamcraft.mod.client.core.helper.SC2_IconHelper;
+import com.steamcraft.mod.common.block.tile.TileEntitySC2;
+import com.steamcraft.mod.common.lib.SC2_CreativeTabs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,14 +37,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author MrArcane111
  *
  */
-public abstract class BlockSC2Container <TILE extends TileEntity> extends BlockContainer
+public abstract class BlockSC2Container extends BlockContainer
 {
-	protected BlockSC2Container(int id, Material mat)
-	{
-		super(id, mat);
-		// creative mod boolean
-	}
-	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister icon)
@@ -43,11 +46,45 @@ public abstract class BlockSC2Container <TILE extends TileEntity> extends BlockC
 		blockIcon = SC2_IconHelper.forBlock(icon, this);
 	}
 	
-	public static boolean shouldLoadInCreative()
+	protected static boolean keepInventory = false;
+	protected final Random random = new Random();
+	public static String owner = "[SC2]";
+	
+	protected BlockSC2Container(int id, Material mat)
 	{
-		return true;
+		super(id, mat);
+		this.setCreativeTab(SC2_CreativeTabs.tabSCBlocks);
+		this.setHardness(5.0F);
 	}
 	
+	public String getOwner() 
+	{
+		return owner;
+	}
+
 	@Override
-	public abstract TILE createNewTileEntity(World world);
+	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase living, ItemStack stack)
+	{
+		super.onBlockPlacedBy(world, i, j, k, living, stack);
+	
+		if(living instanceof EntityPlayer)
+			owner = ((EntityPlayer) living).username;
+	}
+
+	@Override
+	public void breakBlock(World world, int i, int j, int k, int oldID, int oldMeta) 
+	{
+		super.breakBlock(world, i, j, k, oldID, oldMeta);
+	}
+
+	@Override
+	public int getLightValue(IBlockAccess world, int i, int j, int k)
+	{
+		TileEntity tile = world.getBlockTileEntity(i, j, k);
+		
+		if(tile instanceof IMachine && ((IMachine) tile).isActive())
+			return super.getLightValue(world, i, j, k) + 8;
+		
+		return super.getLightValue(world, i, j, k);
+	}
 }
