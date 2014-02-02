@@ -34,7 +34,7 @@ public class BlockCompressor extends BlockSC2Container
 {
 	public BlockCompressor(int id, Material mat)
 	{
-		super(id, Material.iron);
+		super(id, Material.iron); // Stuff!
 	}
 
 	@Override
